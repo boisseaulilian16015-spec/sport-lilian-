@@ -239,10 +239,10 @@ button:active{transform:scale(.96);opacity:.85;}
   <div class="header-inner">
     <div style="display:flex;align-items:center;gap:10px;">
       <div class="hav">L</div>
-      <div><div class="htitle">Programme Sport</div><div class="hsub">67 kg · 1m75 · Judo 2×/sem</div></div>
+      <div><div class="htitle">Programme Sport</div><div class="hsub">67 kg · 1m75 · Sèche 13→10%</div></div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
-      <div class="hbadge">66–68 kg</div>
+      <div class="hbadge">Objectif 10%</div>
       <button class="sync-btn" onclick="openSync()">🔄 Sync</button>
     </div>
   </div>
@@ -251,13 +251,13 @@ button:active{transform:scale(.96);opacity:.85;}
 <!-- PLANNING -->
 <div id="mp-planning" class="mpanel active">
   <div class="wk">
-    <div class="wb gym"><div class="wbn">Lun</div><div class="wbl">Haut 1</div><div class="wd" style="background:var(--bl);"></div></div>
-    <div class="wb judo"><div class="wbn">Mar</div><div class="wbl">Judo Tech</div><div class="wd" style="background:var(--tx4);"></div></div>
-    <div class="wb gym"><div class="wbn">Mer</div><div class="wbl">Bas 1</div><div class="wd" style="background:var(--co);"></div></div>
-    <div class="wb gym"><div class="wbn">Jeu</div><div class="wbl">Haut 2</div><div class="wd" style="background:var(--gr);"></div></div>
-    <div class="wb judo"><div class="wbn">Ven</div><div class="wbl">Judo Compét</div><div class="wd" style="background:var(--tx4);"></div></div>
-    <div class="wb gym"><div class="wbn">Sam</div><div class="wbl">Bas 2</div><div class="wd" style="background:var(--am);"></div></div>
-    <div class="wb mob"><div class="wbn">Dim</div><div class="wbl">Mobilité</div><div class="wd" style="background:var(--pu);"></div></div>
+    <div class="wb gym"><div class="wbn">Lun</div><div class="wbl">Push</div><div class="wd" style="background:var(--bl);"></div></div>
+    <div class="wb gym"><div class="wbn">Mar</div><div class="wbl">Pull</div><div class="wd" style="background:var(--gr);"></div></div>
+    <div class="wb mob"><div class="wbn">Mer</div><div class="wbl">Cardio Abdos</div><div class="wd" style="background:var(--co);"></div></div>
+    <div class="wb gym"><div class="wbn">Jeu</div><div class="wbl">Legs</div><div class="wd" style="background:var(--am);"></div></div>
+    <div class="wb gym"><div class="wbn">Ven</div><div class="wbl">Upper</div><div class="wd" style="background:var(--bl);"></div></div>
+    <div class="wb gym"><div class="wbn">Sam</div><div class="wbl">Lower + Bras</div><div class="wd" style="background:var(--pu);"></div></div>
+    <div class="wb judo"><div class="wbn">Dim</div><div class="wbl">Repos</div><div class="wd" style="background:var(--tx4);"></div></div>
   </div>
   <div class="card"><div class="ct">Temps de récup</div>
     <table class="rt2"><tbody>
@@ -267,27 +267,46 @@ button:active{transform:scale(.96);opacity:.85;}
       <tr><td>Abdos / gainage</td><td>45sec</td></tr>
     </tbody></table>
   </div>
-  <div class="card"><div class="ct">Mobilité dimanche — 20 min</div>
-    <div class="mitem"><span class="mname">Pigeon pose au sol</span><span class="mdur">2min/côté</span></div>
+  <div class="card"><div class="ct">🔥 Stratégie sèche — 13% → 10%</div>
+    <table class="rt2"><tbody>
+      <tr><td>Déficit calorique</td><td>300-400 kcal/jour</td></tr>
+      <tr><td>Protéines</td><td>135-150 g/jour</td></tr>
+      <tr><td>Charges muscu</td><td>Maintenir au max</td></tr>
+      <tr><td>Cardio zone 2</td><td>Mer + Sam</td></tr>
+      <tr><td>Durée estimée</td><td>6 à 8 semaines</td></tr>
+    </tbody></table>
+  </div>
+  <div class="card"><div class="ct">📈 Volume hebdo par muscle</div>
+    <div class="mitem"><span class="mname">Pecs (prioritaire)</span><span class="mdur">2×/sem · 14-16 séries</span></div>
+    <div class="mitem"><span class="mname">Bras tri+bi (prioritaire)</span><span class="mdur">3-4×/sem</span></div>
+    <div class="mitem"><span class="mname">Dos</span><span class="mdur">2×/sem · 12-14 séries</span></div>
+    <div class="mitem"><span class="mname">Épaules</span><span class="mdur">2×/sem · maintien</span></div>
+    <div class="mitem"><span class="mname">Jambes</span><span class="mdur">2×/sem (Legs + Lower)</span></div>
+    <div class="mitem"><span class="mname">Abdos</span><span class="mdur">Mercredi dédié</span></div>
+  </div>
+  <div class="card"><div class="ct">🧘 Mobilité dimanche (repos actif) — 15 min</div>
+    <div class="mitem"><span class="mname">Étirement pec (coin de mur)</span><span class="mdur">1min30/côté</span></div>
+    <div class="mitem"><span class="mname">Cat-cow + ouverture thoracique</span><span class="mdur">2min</span></div>
     <div class="mitem"><span class="mname">90/90 hanches</span><span class="mdur">2min/côté</span></div>
-    <div class="mitem"><span class="mname">Cat-cow colonne</span><span class="mdur">2min</span></div>
-    <div class="mitem"><span class="mname">Fente basse + rotation thoracique</span><span class="mdur">1min30/côté</span></div>
+    <div class="mitem"><span class="mname">Rotations épaule (posture)</span><span class="mdur">1min30/côté</span></div>
     <div class="mitem"><span class="mname">Étirement ischio allongé</span><span class="mdur">2min/côté</span></div>
-    <div class="mitem"><span class="mname">Rotations épaule au sol</span><span class="mdur">1min30/côté</span></div>
-    <div class="mitem"><span class="mname">Étirement pec (coin de mur)</span><span class="mdur">1min/côté</span></div>
   </div>
 </div>
 <!-- SEANCES -->
 <div id="mp-seances" class="mpanel">
   <div class="stabs">
-    <button class="stab active" onclick="switchS('lun',this)">Lundi</button>
-    <button class="stab" onclick="switchS('mer',this)">Mercredi</button>
-    <button class="stab" onclick="switchS('jeu',this)">Jeudi</button>
-    <button class="stab" onclick="switchS('sam',this)">Samedi</button>
+    <button class="stab active" onclick="switchS('lun',this)">Lun · Push</button>
+    <button class="stab" onclick="switchS('mar',this)">Mar · Pull</button>
+    <button class="stab" onclick="switchS('mer',this)">Mer · Abdos</button>
+    <button class="stab" onclick="switchS('jeu',this)">Jeu · Legs</button>
+    <button class="stab" onclick="switchS('ven',this)">Ven · Upper</button>
+    <button class="stab" onclick="switchS('sam',this)">Sam · Bras</button>
   </div>
   <div id="sp-lun" class="sp active"></div>
+  <div id="sp-mar" class="sp"></div>
   <div id="sp-mer" class="sp"></div>
   <div id="sp-jeu" class="sp"></div>
+  <div id="sp-ven" class="sp"></div>
   <div id="sp-sam" class="sp"></div>
 </div>
 <!-- TRACKER -->
@@ -306,17 +325,23 @@ button:active{transform:scale(.96);opacity:.85;}
     <div class="ct">+ Enregistrer un exercice</div>
     <div class="fl">Exercice</div>
     <select id="inp-exo" onchange="showLP()">
-      <optgroup label="— Lundi Haut 1 —">
-        <option>Développé couché haltères</option><option>Tractions pronation</option><option>Développé militaire</option><option>Rowing unilatéral</option><option>Élévations latérales</option><option>Facepull corde</option><option>Gainage planche lestée</option>
+      <optgroup label="— Lundi Push —">
+        <option>Développé incliné haltères 30°</option><option>Développé couché haltères</option><option>Dips lestés (buste penché)</option><option>Écarté poulie vis-à-vis</option><option>Développé militaire haltères</option><option>Élévations latérales</option><option>Barre au front (skull crusher)</option><option>Triceps corde poulie</option>
       </optgroup>
-      <optgroup label="— Mercredi Bas 1 —">
-        <option>Squat barre</option><option>Soulevé de terre roumain</option><option>Presse à cuisses</option><option>Leg curl allongé</option><option>Mollets debout</option><option>Gainage latéral</option>
+      <optgroup label="— Mardi Pull —">
+        <option>Tractions pronation lestées</option><option>Rowing barre buste penché</option><option>Tirage horizontal poulie</option><option>Tirage vertical prise neutre</option><option>Facepull corde</option><option>Curl barre EZ</option><option>Curl incliné haltères</option><option>Curl marteau</option>
       </optgroup>
-      <optgroup label="— Jeudi Haut 2 —">
-        <option>Développé incliné haltères</option><option>Tirage horizontal poulie</option><option>Dips lestés</option><option>Tirage vertical prise neutre</option><option>Curl incliné</option><option>Triceps corde</option>
+      <optgroup label="— Mercredi Abdos —">
+        <option>Relevés de jambes suspendus</option><option>Crunch à la poulie</option><option>Gainage planche</option><option>Gainage latéral (side plank)</option>
       </optgroup>
-      <optgroup label="— Samedi Bas 2 —">
-        <option>Trap bar deadlift</option><option>Bulgarian split squat</option><option>Hip thrust barre</option><option>Leg extension</option><option>Mollets assis</option><option>Relevés jambes suspendus</option>
+      <optgroup label="— Jeudi Legs —">
+        <option>Squat barre</option><option>Soulevé de terre roumain</option><option>Presse à cuisses</option><option>Leg curl allongé</option><option>Leg extension</option><option>Mollets debout</option><option>Mollets assis</option>
+      </optgroup>
+      <optgroup label="— Vendredi Upper —">
+        <option>Développé couché barre</option><option>Développé incliné haltères</option><option>Écarté incliné haltères</option><option>Tractions ou tirage vertical</option><option>Rowing haltère unilatéral</option><option>Superset Curl + Triceps</option>
+      </optgroup>
+      <optgroup label="— Samedi Lower + Bras —">
+        <option>Hip thrust barre</option><option>Fentes bulgares</option><option>Curl barre EZ (bonus)</option><option>Dips ou triceps poulie (bonus)</option>
       </optgroup>
     </select>
     <div class="lp-box" id="lp-box"></div>
@@ -357,13 +382,14 @@ button:active{transform:scale(.96);opacity:.85;}
 </div>
 <!-- REGLES -->
 <div id="mp-regles" class="mpanel">
-  <div class="rcard"><div class="ricon">📓</div><div><div class="rtitle">Note tes charges à chaque séance</div><div class="rtext">Charge + reps sur tous les gros exos. Sans ça tu ne sais pas si tu progresses vraiment.</div></div></div>
-  <div class="rcard"><div class="ricon">📈</div><div><div class="rtitle">Surcharge progressive</div><div class="rtext">Haut de la plage de reps sur toutes les séries → +2 à 2,5 kg la séance suivante.</div></div></div>
-  <div class="rcard"><div class="ricon">🥋</div><div><div class="rtitle">Pas de muscu le vendredi</div><div class="rtext">Judo compét = système nerveux sollicité. Si samedi trop dur → décale au dimanche.</div></div></div>
-  <div class="rcard"><div class="ricon">⚖️</div><div><div class="rtitle">Poids stable 66–68 kg</div><div class="rtext">+1,5 kg en 3 semaines → réduis les glucides le soir des jours de repos.</div></div></div>
-  <div class="rcard"><div class="ricon">🥩</div><div><div class="rtitle">130–140g protéines/jour</div><div class="rtext">2g par kg minimum. Non négociable pour la recomposition.</div></div></div>
-  <div class="rcard"><div class="ricon">🌙</div><div><div class="rtitle">7–8h de sommeil</div><div class="rtext">Cortisol élevé = graisse stockée + muscle freiné. Aussi important que l'entraînement.</div></div></div>
-  <div class="rcard"><div class="ricon">🚴</div><div><div class="rtitle">Cardio zone 2 — 1×/semaine</div><div class="rtext">20–30 min vélo tranquille ou marche inclinée. Cardio judo ++ · reste sec · aucune fatigue musculaire.</div></div></div>
+  <div class="rcard"><div class="ricon">📓</div><div><div class="rtitle">Note tes charges à chaque séance</div><div class="rtext">Charge + reps sur tous les gros exos. C'est le seul moyen de savoir si tu progresses vraiment.</div></div></div>
+  <div class="rcard"><div class="ricon">📈</div><div><div class="rtitle">Surcharge progressive</div><div class="rtext">Haut de la plage de reps sur toutes les séries → +1 à 2,5 kg la séance suivante. En sèche, viser le maintien des charges est déjà une victoire.</div></div></div>
+  <div class="rcard"><div class="ricon">🎯</div><div><div class="rtitle">Pecs et bras en priorité</div><div class="rtext">Premier exo de chaque séance = ta zone faible quand tu es le plus frais. Pecs 2×/sem, bras 3-4×/sem. C'est ça qui crée le rattrapage.</div></div></div>
+  <div class="rcard"><div class="ricon">🔥</div><div><div class="rtitle">Sèche : déficit léger</div><div class="rtext">300-400 kcal sous ta maintenance, pas plus. Trop agressif = tu perds du muscle. Le but est de fondre le gras en gardant le muscle.</div></div></div>
+  <div class="rcard"><div class="ricon">🥩</div><div><div class="rtitle">135-150g protéines/jour</div><div class="rtext">2g par kg minimum, encore plus important en sèche pour protéger le muscle. Non négociable.</div></div></div>
+  <div class="rcard"><div class="ricon">🏋️</div><div><div class="rtitle">Garde les charges lourdes</div><div class="rtext">En déficit, soulever lourd est le signal qui dit à ton corps de garder le muscle. Ne baisse jamais les charges sous prétexte de sèche.</div></div></div>
+  <div class="rcard"><div class="ricon">🌙</div><div><div class="rtitle">7-8h de sommeil</div><div class="rtext">Cortisol élevé = graisse stockée + muscle freiné + récup compromise. Aussi important que l'entraînement, encore plus en sèche.</div></div></div>
+  <div class="rcard"><div class="ricon">🚴</div><div><div class="rtitle">Cardio zone 2 — Mer + Sam</div><div class="rtext">25-30 min modéré (tu peux parler en pédalant). Brûle du gras sans empiéter sur la récup musculaire. Pas de HIIT épuisant en sèche.</div></div></div>
 </div>
 </div>
 <nav class="bnav">
@@ -424,42 +450,61 @@ button:active{transform:scale(.96);opacity:.85;}
 
 <script>
 const ED={
-  lun:{badge:'Force + Base',dur:'60–70 min',warmup:['3 min rameur léger','Rotations épaules + cercles bras : 30 sec','Band pull-apart élastique : 2×15','Facepull élastique léger : 2×15','2 séries légères développé couché (40-50%)'],exos:[
-    {n:1,name:'Développé couché haltères',muscles:'Pecs · Triceps · Épaules avant',sets:'4×5-8',recup:'2min30',badge:'bf',bl:'Force',why:'Les haltères offrent une meilleure amplitude que la barre — étirement en bas qui recrute plus de fibres. En force 5-8 reps tu développes des fibres épaisses et denses.',exec:'Descends lentement (3 sec). Squeeze fort en haut. 8 reps propres sur les 4 séries = monte à 36 kg.',esth:'Pecs épais et denses, saillants même sans pompe.',judo:'Extension des bras = renfort des appuis en garde.',charge:'Force (5-8 reps) : 34 kg/main · Hypertrophie : 26-28 kg · Objectif : 36 kg'},
-    {n:2,name:'Tractions pronation lestées',muscles:'Grand dorsal · Biceps · Haut du dos',sets:'4×6-10',recup:'2min',badge:'bf',bl:'Force',why:'Le meilleur exo pour créer la forme en V. Largeur du dos = effet taille fine immédiat. Transfert judo direct.',exec:'Coudes vers le bas et l\'arrière. 10 reps propres à +5 kg → passe à +7,5 kg.',esth:'Largeur du dos = silhouette athlétique.',judo:'Kumi-kata solide sous fatigue.',charge:'Force (6-8 reps) : +5 à +8 kg · Volume : poids de corps · Objectif : +10 kg'},
-    {n:3,name:'Développé militaire haltères',muscles:'Deltoïdes · Triceps',sets:'3×8-12',recup:'2min',badge:'bh',bl:'Hypertrophie',why:'Épaules rondes et larges = première chose visible nu ou habillé. Trajectoire naturelle des haltères = moins de stress articulaire.',exec:'Haltères à hauteur des oreilles, coudes à 45°. Pousse en arc de cercle naturel.',esth:'Épaules qui arrondissent la silhouette.',judo:null,charge:'Hypertrophie (8-12 reps) : 26 kg/main · Objectif : 28 kg'},
-    {n:4,name:'Rowing unilatéral haltère',muscles:'Grand dorsal · Dos épaisseur · Biceps',sets:'3×10-12/bras',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Corrige les déséquilibres G/D. Largeur (tractions) + épaisseur (rowings) = dos complet.',exec:'Tire vers la hanche. Coude haut en fin. Contrôle la descente 2-3 sec.',esth:'Dos épais et strié.',judo:'Force équilibrée G/D.',charge:'Hypertrophie (10-12 reps) : 30 kg/main · Objectif : 32 kg'},
-    {n:5,name:'Élévations latérales + drop set',muscles:'Deltoïde moyen',sets:'4×12-20',recup:'1min',badge:'bi',bl:'Isolation',why:'Le deltoïde moyen donne la largeur des épaules. 4 séries pour maximiser le volume.',exec:'Légèrement penché en avant. Tempo lent descente. Drop set immédiat à 6 kg jusqu\'à l\'échec.',esth:'Épaules larges = illusion de V permanent.',judo:null,charge:'Série principale : 10 kg/main · Drop set : 6 kg jusqu\'à l\'échec'},
-    {n:6,name:'Facepull corde poulie',muscles:'Deltoïde arrière · Rotateurs',sets:'3×15-20',recup:'1min',badge:'bi',bl:'Santé épaule',why:'Le mouvement le plus important pour la santé des épaules. Sans travail arrière = blessure à terme.',exec:'Corde à hauteur du visage. Tire en écartant vers les oreilles, coudes hauts. Pouces vers l\'arrière.',esth:'Épaule complète vue de toute part.',judo:null,charge:'Zone de travail : 15-25 kg poulie · Qualité > charge'},
-    {n:7,name:'Gainage planche dynamique lestée',muscles:'Abdos profonds · Transverse',sets:'3×40sec',recup:'45sec',badge:'bs',bl:'Gainage',why:'Le transverse = ceinture abdominale naturelle. Variante dynamique (tap épaule) = plus de recrutement.',exec:'Corps aligné tête-talons. Tap épaule alternée sans bouger le bassin.',esth:'Tronc gainé = ventre plat + posture droite.',judo:'Colonne stable.',charge:'Lest actuel : +10 kg · Progression : +15 kg'}
+  lun:{badge:'Push · Pecs prioritaire',dur:'70–80 min',warmup:['4 min rameur ou vélo','Rotations épaules + cercles bras : 1 min','Band pull-apart élastique : 2×20','Étirement pec au mur : 30 sec/côté','2 séries légères développé incliné (40-50%)'],exos:[
+    {n:1,name:'Développé incliné haltères 30°',muscles:'Haut pecs · Deltoïde antérieur · Triceps',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Pecs',why:'En PREMIER car le haut des pecs est ta zone faible. Tu attaques ton point faible quand tu es le plus frais et le plus fort. C\'est la règle d\'or de la priorisation : le premier exercice reçoit ton énergie maximale.',exec:'Inclinaison 30° max. Descends lentement (2-3 sec), étirement complet en bas. Pousse explosif. 8 reps propres sur les 4 séries → +1kg.',esth:'Le haut des pecs = le "shelf" sous la clavicule, la zone qui donne le pec plein et bombé que tu cherches.',judo:null,charge:'Départ : 26-28 kg/main · Objectif : 32 kg'},
+    {n:2,name:'Développé couché haltères',muscles:'Pecs global · Triceps · Épaules avant',sets:'4×8-10',recup:'2min',badge:'bh',bl:'Hypertrophie · Pecs',why:'Construit l\'épaisseur globale du pec. Les haltères donnent une amplitude supérieure à la barre — étirement plus profond = plus de fibres recrutées sur ta zone faible.',exec:'Descente contrôlée 2 sec, étirement complet. Squeeze les pecs en haut. Ne verrouille pas les coudes.',esth:'Épaisseur et densité du pectoral entier.',judo:null,charge:'Départ : 28-30 kg/main · Objectif : 34 kg'},
+    {n:3,name:'Dips lestés (buste penché)',muscles:'Pecs bas · Triceps',sets:'3×8-10',recup:'2min',badge:'bf',bl:'Force · Pec bas',why:'TA ZONE FAIBLE prioritaire. Le pec bas donne la ligne nette sous le pectoral. Penche le buste en avant pour cibler le pec plutôt que le triceps.',exec:'Buste penché à 30° vers l\'avant, descends jusqu\'à l\'étirement (épaules sous les coudes). Remonte sans verrouiller.',esth:'La ligne inférieure du pec, le galbe qui sépare nettement pec et abdos.',judo:null,charge:'Départ : +15-20 kg · Objectif : +30 kg'},
+    {n:4,name:'Écarté poulie vis-à-vis',muscles:'Pec interne · Pec global',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Isolation · Étirement',why:'La poulie maintient une tension constante que les haltères perdent en haut. De haut vers bas pour cibler le pec interne et bas — exactement tes zones en retard.',exec:'Poulies hautes. Amène les mains vers le bas et le centre, croise légèrement. Squeeze 1 sec. Étirement contrôlé.',esth:'Le pec interne crée la séparation centrale entre les deux pectoraux.',judo:null,charge:'Départ : 10-15 kg/côté · Qualité de contraction > charge'},
+    {n:5,name:'Développé militaire haltères',muscles:'Deltoïdes · Triceps',sets:'3×8-10',recup:'1min45',badge:'bh',bl:'Hypertrophie · Épaules',why:'Tes épaules sont déjà ton point fort — on les maintient avec un volume suffisant sans en faire trop. Trajectoire haltères = moins de stress articulaire.',exec:'Haltères à hauteur des oreilles, coudes à 45°. Pousse en arc naturel. Ne cambre pas le dos.',esth:'Maintien des épaules rondes et larges.',judo:null,charge:'Départ : 24-26 kg/main · Objectif : 28 kg'},
+    {n:6,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×12-15',recup:'1min',badge:'bi',bl:'Isolation · Largeur',why:'Le deltoïde moyen = la largeur d\'épaule qui fait la carrure. Léger penché en avant pour mieux cibler le faisceau moyen.',exec:'Légèrement penché, coudes légèrement devant le corps. Monte à l\'horizontale, contrôle la descente 2 sec. Pas d\'élan.',esth:'Largeur d\'épaule = effet V immédiat.',judo:null,charge:'Départ : 8-10 kg/main · Tempo lent'},
+    {n:7,name:'Barre au front (skull crusher)',muscles:'Triceps (longue portion)',sets:'4×8-10',recup:'1min45',badge:'bf',bl:'Force · Triceps',why:'TA PRIORITÉ bras. Le triceps fait 60% du volume du bras — c\'est lui qui donne le bras épais, pas le biceps. La barre au front cible la longue portion, la plus volumineuse.',exec:'Allongé, barre EZ. Descends vers le front en gardant les coudes fixes et serrés. Étirement complet derrière la tête possible.',esth:'Le triceps en fer à cheval, l\'arrière du bras qui donne l\'épaisseur de profil.',judo:null,charge:'Départ : 20-30 kg barre EZ · Objectif : progression constante'},
+    {n:8,name:'Triceps corde poulie',muscles:'Triceps (finition)',sets:'3×12-15',recup:'1min',badge:'bi',bl:'Isolation · Triceps',why:'Finit le triceps en congestion. Écarte la corde en bas pour contracter la longue portion à fond. Volume supplémentaire sur ta zone prioritaire.',exec:'Coudes fixes collés au corps. Descends et écarte la corde en bas. Squeeze 1 sec. Contrôle la remontée.',esth:'Définition et stries du triceps.',judo:null,charge:'Départ : 20-30 kg poulie · Congestion recherchée'}
   ]},
-  mer:{badge:'Force + Explosivité',dur:'65–70 min',warmup:['3 min vélo léger','Cercles de hanches : 30 sec chaque sens','Fente basse + rotation thoracique : 45 sec / côté','Hip flexor stretch dynamique : 1 min / côté','Squat poids de corps : 2×10','2 séries légères squat (40-50%)'],explo:'Squat jump : 4×4 · récup 45 sec · poids de corps · intention maximale.',exos:[
-    {n:1,name:'Squat barre',muscles:'Quadriceps · Fessiers · Gainage',sets:'4×5-8',recup:'3min',badge:'bf',bl:'Force',why:'Irremplaçable pour la puissance de jambe. Déclenche le plus de testostérone et GH naturels.',exec:'Parallèle minimum. Genoux dans l\'axe des orteils. Pousse fort dans le sol à la remontée.',esth:'Cuisses volumineuses, fessiers hauts.',judo:'Puissance des jambes = projections debout.',charge:'Force (5-8 reps) : 80-90 kg · Hypertrophie : 65-75 kg',est:true},
-    {n:2,name:'Soulevé de terre roumain (RDL)',muscles:'Ischios · Fessiers · Lombaires',sets:'4×8-10',recup:'2min30',badge:'bf',bl:'Force-Hypertrophie',why:'Meilleur exo pour ischio ET fessier ensemble — travaille sous étirement maximum.',exec:'Hanches vers l\'arrière, jambes quasi-tendues. Fort étirement ischios en bas. La sensation prime.',esth:'Fessiers hauts et ronds. Jonction fesse/cuisse nette.',judo:'Explosivité de hanche = puissance de projection.',charge:'Zone de travail (8-10 reps) : 70-90 kg',est:true},
-    {n:3,name:'Presse à cuisses',muscles:'Quadriceps · Fessiers',sets:'3×10-15',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Après le squat lourd, la presse continue le volume sans fatigue nerveuse.',exec:'Pieds milieu = quads. Pieds hauts = fessiers. Amplitude complète.',esth:'Volume supplémentaire sur les cuisses.',judo:null,charge:'Hypertrophie (10-12 reps) : 100-140 kg',est:true},
-    {n:4,name:'Leg curl allongé',muscles:'Ischio-jambiers',sets:'3×10-15',recup:'1min15',badge:'bi',bl:'Isolation',why:'Équilibre quad/ischio. Déséquilibre = première cause de blessure genou.',exec:'Descente lente obligatoire (3 sec). Tempo > charge brute.',esth:'Cuisse arrière développée = jambes belles de tous les côtés.',judo:null,charge:'Zone de travail : 35-50 kg machine',est:true},
-    {n:5,name:'Mollets debout',muscles:'Gastrocnémien',sets:'4×15-20',recup:'1min',badge:'bi',bl:'Isolation',why:'Gastrocnémien = partie visible du mollet. Avec mollets assis (sam) = mollets complets.',exec:'Amplitude totale. Étirement max en bas, contraction forte en haut 2 sec.',esth:'Mollets développés = finition athlétique.',judo:null,charge:'Zone de travail : poids de corps + 20-40 kg',est:true},
-    {n:6,name:'Gainage latéral (side plank)',muscles:'Obliques · Stabilisateurs de hanche',sets:'3×35sec/côté',recup:'45sec',badge:'bs',bl:'Gainage',why:'Résistance aux déséquilibres latéraux = ce qui se passe quand un adversaire tire sur ton kumi-kata.',exec:'Hanches hautes, corps aligné. Progression : hip dip dynamique.',esth:'Flancs définis = V-cut abdominal.',judo:'Meilleur kuzushi défensif.',charge:'Poids de corps · Progression : hip dip dynamique'}
+  mar:{badge:'Pull · Dos + Biceps',dur:'70–75 min',warmup:['4 min rameur','Rotations épaules + band pull-apart : 2×20','Suspension à la barre : 2×20 sec','Tractions légères : 1×5','2 séries légères rowing'],exos:[
+    {n:1,name:'Tractions pronation lestées',muscles:'Grand dorsal · Biceps · Haut du dos',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Largeur',why:'Le meilleur exo pour la largeur du dos et la forme en V. Lesté en force pour développer la densité. Ton dos est déjà bon (judo), on le rend exceptionnel.',exec:'Prise un peu plus large que les épaules. Coudes vers le bas et l\'arrière. Menton au-dessus de la barre. Descente contrôlée complète.',esth:'Largeur du dos = taille qui paraît plus fine, effet V.',judo:null,charge:'Départ : +5-10 kg · Objectif : +15 kg'},
+    {n:2,name:'Rowing barre buste penché',muscles:'Dos épaisseur · Rhomboïdes · Trapèzes',sets:'4×8-10',recup:'2min',badge:'bf',bl:'Force · Épaisseur',why:'Largeur (tractions) + épaisseur (rowing) = dos complet en 3D. Le rowing barre permet la charge la plus lourde pour l\'épaisseur centrale du dos.',exec:'Buste penché à 45°, dos droit gainé. Tire la barre vers le nombril. Serre les omoplates en fin. Contrôle la descente.',esth:'Épaisseur et relief du dos, visible de profil.',judo:null,charge:'Départ : 50-60 kg · Objectif : progression'},
+    {n:3,name:'Tirage horizontal poulie',muscles:'Milieu du dos · Rhomboïdes',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Cible le milieu du dos en tension constante. Complète le rowing barre avec un angle différent et plus de contrôle.',exec:'Buste droit, tire vers le bas du ventre. Serre les omoplates, tiens 1 sec. Étirement complet en avant sans arrondir le dos.',esth:'Densité du milieu du dos, le sillon central.',judo:null,charge:'Départ : 50-60 kg · Objectif : progression'},
+    {n:4,name:'Tirage vertical prise neutre',muscles:'Grand dorsal · Biceps',sets:'3×10-12',recup:'1min30',badge:'bh',bl:'Hypertrophie',why:'Prise neutre recrute le dorsal inférieur différemment des tractions pronation. Stimulation complémentaire pour un dos complet.',exec:'Tire vers le haut de la poitrine, coudes vers les hanches. Squeeze en bas. Étirement complet en haut.',esth:'Finition et largeur basse du dorsal.',judo:null,charge:'Départ : 50-55 kg · Objectif : progression'},
+    {n:5,name:'Facepull corde',muscles:'Deltoïde arrière · Rotateurs · Trapèze moyen',sets:'4×15-20',recup:'1min',badge:'bi',bl:'POSTURE · Santé',why:'CORRIGE TES ÉPAULES ENROULÉES vues sur la photo. Le deltoïde postérieur et les rotateurs ouvrent la poitrine — ça fait paraître tes pecs plus pleins et redresse ta posture judo. Indispensable.',exec:'Corde à hauteur du visage. Tire en écartant vers les oreilles, coudes hauts. Pouces vers l\'arrière en fin. Lent et contrôlé.',esth:'Posture droite + épaules ouvertes = pecs qui ressortent davantage.',judo:null,charge:'Départ : 15-25 kg · Qualité > charge, toujours'},
+    {n:6,name:'Curl barre EZ',muscles:'Biceps (force)',sets:'4×8-10',recup:'1min45',badge:'bf',bl:'Force · Biceps',why:'L\'exo de base pour la masse du biceps. La barre permet de charger lourd pour développer l\'épaisseur globale. Priorité bras secondaire après le triceps.',exec:'Coudes fixes collés au corps. Monte sans balancer le dos. Contrôle la descente 2 sec. Étirement complet en bas.',esth:'Masse et épaisseur du biceps.',judo:null,charge:'Départ : 25-35 kg · Objectif : progression'},
+    {n:7,name:'Curl incliné haltères',muscles:'Biceps (longue portion · pic)',sets:'3×10-12',recup:'1min15',badge:'bh',bl:'Étirement · Pic',why:'CRÉE LE PIC qui te manque. Bras derrière le corps sur banc incliné = étirement maximal de la longue portion du biceps, celle qui forme le pic quand tu contractes.',exec:'Banc incliné 45-60°. Bras pendants derrière le plan du corps. Curl sans bouger les coudes. Étirement complet en bas.',esth:'Le pic du biceps, la bosse haute quand tu contractes.',judo:null,charge:'Départ : 10-12 kg/main · Étirement prioritaire'},
+    {n:8,name:'Curl marteau',muscles:'Brachial · Avant-bras',sets:'3×12',recup:'1min',badge:'bi',bl:'Isolation',why:'Le brachial passe SOUS le biceps et le pousse vers le haut — il augmente le pic et l\'épaisseur du bras vu de profil. Travaille aussi l\'avant-bras.',exec:'Prise marteau (paumes face à face). Coudes fixes. Monte et contrôle. Alterné ou simultané.',esth:'Épaisseur latérale du bras + avant-bras développé.',judo:null,charge:'Départ : 12-14 kg/main'}
   ]},
-  jeu:{badge:'Volume + Esthétique',dur:'60–65 min',warmup:['3 min rameur léger','Rotations thoraciques assis : 30 sec','Facepull élastique : 2×20 lent','2 séries légères développé incliné (40%)'],exos:[
-    {n:1,name:'Développé incliné haltères (30-35°)',muscles:'Haut pecs · Deltoïde antérieur · Triceps',sets:'4×8-12',recup:'2min',badge:'bh',bl:'Hypertrophie',why:'Le haut des pecs est la zone la plus esthétique — le shelf visible sous la clavicule. Lundi = plat, jeudi = incliné.',exec:'Inclinaison 30-35° MAX. Amplitude complète en bas.',esth:'Pec complet de la clavicule au sternum.',judo:null,charge:'Hypertrophie (8-12 reps) : 26 kg/main · Objectif : 28 kg'},
-    {n:2,name:'Tirage horizontal poulie basse',muscles:'Dos épaisseur · Rhomboïdes · Biceps',sets:'4×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Largeur (tractions) + épaisseur (rowings horizontaux). Le tirage horizontal cible les rhomboïdes et milieu du dos.',exec:'Coudes vers les hanches. Serre les omoplates en fin, tiens 1 sec.',esth:'Sillon médian du dos bien défini.',judo:null,charge:'Hypertrophie (10-12 reps) : 52 kg · Objectif : 56 kg'},
-    {n:3,name:'Dips lestés',muscles:'Pecs bas · Triceps',sets:'3×8-12',recup:'2min',badge:'bf',bl:'Force-Hypertrophie',why:'Pec bas (dips) + pec haut (incliné) = toute la hauteur du pectoral.',exec:'Corps légèrement penché en avant. Descends jusqu\'à l\'étirement.',esth:'Pec complet avec galbe inférieur.',judo:null,charge:'Force (6-8 reps) : +25 kg · Hypertrophie : +20 kg · Objectif : +30 kg'},
-    {n:4,name:'Tirage vertical prise neutre',muscles:'Grand dorsal · Biceps',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Prise neutre recrute différemment le dorsal inférieur vs pronation du lundi.',exec:'Tire vers le haut de la poitrine. Coudes vers les hanches.',esth:'Largeur + finition du dorsal inférieur.',judo:null,charge:'Zone de travail (10-12 reps) : 45-50 kg · Objectif : 52-56 kg'},
-    {n:5,name:'Facepull + Élévations lat. (superset)',muscles:'Deltoïde arrière + Deltoïde moyen',sets:'3×15+15',recup:'1min30',badge:'bi',bl:'Superset',why:'Épaule complète en économisant du temps. Facepull = santé arrière. Élévations = largeur.',exec:'Facepull d\'abord, enchaîne immédiatement les élévations. Repos 1min30 après.',esth:'Épaule complète vue de toute part.',judo:null,charge:'Facepull : 15-25 kg poulie · Élévations : 10 kg/main'},
-    {n:6,name:'Curl incliné + Triceps corde (superset)',muscles:'Biceps · Triceps',sets:'3×12+15',recup:'1min',badge:'bi',bl:'Superset',why:'Superset agoniste/antagoniste = gain de temps. Curl incliné à 45° = étirement max du biceps long = pic du biceps.',exec:'Curl : bras derrière le plan du corps en bas. Triceps : coudes fixes + écart des mains en bas.',esth:'Biceps avec pic + triceps en fer à cheval.',judo:null,charge:'Curl : 10 kg/main · Triceps corde : 20-35 kg poulie'}
+  mer:{badge:'Cardio + Abdos + Récup',dur:'45–50 min',warmup:['5 min marche ou vélo très léger pour démarrer','Mobilisation hanches et chevilles : 2 min'],cardio:'25-30 min cardio zone 2 — vélo, marche inclinée ou rameur lent. Intensité modérée : tu dois pouvoir tenir une conversation. Brûle du gras sans toucher au muscle ni à la récup.',exos:[
+    {n:1,name:'Relevés de jambes suspendus',muscles:'Bas abdos · Fléchisseurs de hanche',sets:'4×12-15',recup:'1min',badge:'bs',bl:'Abdos bas',why:'Le bas des abdos est la zone la plus dure à révéler et la plus visible quand tu sèches. La sèche les découvre, cet exo les construit.',exec:'Suspendu à la barre. Monte les genoux (ou jambes tendues en avancé) jusqu\'à soulever le bassin. Contrôle la descente, pas d\'élan.',esth:'Le bas du ventre et le V-cut qui plonge vers les hanches.',judo:null,charge:'Genoux fléchis → jambes tendues quand maîtrisé'},
+    {n:2,name:'Crunch à la poulie',muscles:'Abdos haut · Grand droit',sets:'4×15',recup:'1min',badge:'bs',bl:'Abdos haut',why:'Permet de charger les abdos en résistance progressive, contrairement aux crunchs au poids du corps. Les abdos sont un muscle : ils grossissent avec de la charge.',exec:'À genoux, corde derrière la nuque. Enroule le buste vers le bas en contractant les abdos. Le mouvement vient des abdos, pas des bras.',esth:'Épaisseur et relief des tablettes du haut.',judo:null,charge:'Départ : 25-40 kg · Progression possible'},
+    {n:3,name:'Gainage planche',muscles:'Transverse · Gainage profond',sets:'3×45sec',recup:'45sec',badge:'bs',bl:'Gainage',why:'Le transverse est la ceinture abdominale profonde — il garde le ventre plat au repos et protège le dos. Base de tout tronc solide.',exec:'Corps parfaitement aligné tête-talons. Serre les abdos et les fessiers. Ne creuse pas le bas du dos.',esth:'Ventre plat et tronc gainé.',judo:null,charge:'Poids de corps · Ajoute un lest sur le dos en progression'},
+    {n:4,name:'Gainage latéral (side plank)',muscles:'Obliques · Stabilisateurs',sets:'3×30sec/côté',recup:'45sec',badge:'bs',bl:'Obliques',why:'Les obliques encadrent les abdos et créent le V-cut latéral. Attention : pas de charge lourde en rotation pour ne pas épaissir la taille.',exec:'Sur le côté, corps aligné, hanches hautes. Tiens la position. Progression : lever la jambe du dessus.',esth:'Les lignes latérales du V-cut.',judo:null,charge:'Poids de corps'}
   ]},
-  sam:{badge:'Volume + Athlétique',dur:'65–70 min',warmup:['4 min vélo léger','90/90 stretch hanches au sol : 2 min / côté','Pigeon modifié : 1 min / côté','Fente basse + rotation : 1 min / côté','2 séries légères trap bar ou hack squat (40%)'],explo:'Fentes sautées : 4×5 alternées · récup 45 sec · poids de corps · transfert judo direct.',exos:[
-    {n:1,name:'Trap bar deadlift (ou Hack squat)',muscles:'Fessiers · Quads · Ischios · Dos',sets:'4×5-8',recup:'3min',badge:'bf',bl:'Force',why:'Combine squat et soulevé de terre. Volume global impressionnant sans stress lombaire.',exec:'Prise neutre. Dos droit. Pousse le sol loin de toi.',esth:'Corps entier musclé — mouvement roi.',judo:'Force de projection totale.',charge:'Force (5-8 reps) : 90-110 kg · Hack squat : 80-90 kg',est:true},
-    {n:2,name:'Bulgarian split squat',muscles:'Fessiers · Quadriceps · Équilibre',sets:'4×8-10/jambe',recup:'2min',badge:'bh',bl:'Hypertrophie',why:'Pied arrière surélevé = descente plus basse = meilleur étirement fessier. Corrige les déséquilibres G/D.',exec:'Genou avant dans l\'axe. Pousse sur le talon avant. Commence à 16 kg même si tu es fort.',esth:'Fessiers ronds et hauts — le meilleur résultat après le hip thrust.',judo:'Équilibre unilatéral = stabilité en projection.',charge:'Hypertrophie (8-10 reps) : 16-22 kg/main · Objectif : 22-28 kg',est:true},
-    {n:3,name:'Hip thrust barre',muscles:'Grand fessier · Fessier moyen · Ischios',sets:'4×10-12',recup:'2min',badge:'bh',bl:'Hypertrophie',why:'Meilleure activation du grand fessier en EMG. Travaille en contraction là où le squat travaille en étirement.',exec:'Dos sur banc. Barre sur les hanches (pad). Alignement en haut. Contracte 1 sec.',esth:'Fessiers ronds, hauts, puissants. L\'exo numéro 1 pour les fesses.',judo:'Extension de hanche explosive = uchi-mata, o-goshi.',charge:'Hypertrophie (10-12 reps) : 60-80 kg · Objectif : 90-110 kg',est:true},
-    {n:4,name:'Leg extension',muscles:'Quadriceps — isolation',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Isolation',why:'Seul exo qui isole le quad en contraction. Avec squat/presse (étirement) = 4 chefs complets.',exec:'Tiens 1 sec en haut. Descends lentement. Monte à 35 kg dès 15 reps propres.',esth:'Quadriceps définis et striés de face.',judo:'Renfort genou = prévention blessures.',charge:'Zone de travail (12-15 reps) : 32 kg · Objectif : 35 kg'},
-    {n:5,name:'Mollets assis',muscles:'Soléaire',sets:'3×15-20',recup:'1min',badge:'bi',bl:'Isolation',why:'Le soléaire pousse le gastrocnémien vers l\'extérieur — base volumétrique du mollet.',exec:'Amplitude maximale impérative.',esth:'Galbe latéral des mollets.',judo:null,charge:'Zone de travail : machine + 20-30 kg',est:true},
-    {n:6,name:'Relevés de jambes suspendus',muscles:'Bas abdos · Fléchisseurs de hanche',sets:'4×10-15',recup:'45sec',badge:'bs',bl:'Abdos',why:'Bas des abdos = zone la plus visible esthétiquement. Tension maximale là où les crunchs ne peuvent pas aller.',exec:'Genoux fléchis pour commencer. Monte jusqu\'à ce que les hanches se soulèvent. Avancé : jambes tendues.',esth:'Bas du ventre et V-cut abdominal.',judo:null,charge:'Standard : genoux fléchis · Avancé : jambes tendues · Pas de lest'}
+  jeu:{badge:'Legs · Jambes complètes',dur:'70–75 min',warmup:['4 min vélo','Cercles de hanches + fente basse rotation : 2 min','Squat poids de corps : 2×12','Hip flexor stretch : 1 min/côté','2 séries légères squat (40-50%)'],explo:'Squat jump : 3×5 · récup 60 sec · poids de corps · intention maximale · garde l\'explosivité acquise au judo.',exos:[
+    {n:1,name:'Squat barre',muscles:'Quadriceps · Fessiers · Gainage',sets:'4×6-8',recup:'3min',badge:'bf',bl:'Force',why:'Le roi des exercices de jambe. Déclenche le plus de testostérone et d\'hormone de croissance — bénéfice sur TOUT le corps, y compris tes pecs et bras. À garder lourd même en sèche pour protéger le muscle.',exec:'Barre sur les trapèzes. Descends au moins parallèle, genoux dans l\'axe des orteils. Pousse fort dans le sol à la remontée.',esth:'Cuisses volumineuses, fessiers hauts, densité générale.',judo:null,charge:'Départ : 80-90 kg · Maintien en sèche prioritaire'},
+    {n:2,name:'Soulevé de terre roumain',muscles:'Ischios · Fessiers · Lombaires',sets:'4×8-10',recup:'2min30',badge:'bf',bl:'Force-Hypertrophie',why:'Meilleur exo pour ischios et fessiers ensemble, sous étirement maximal. Équilibre l\'avant (quadri) et l\'arrière de la cuisse pour des jambes complètes.',exec:'Hanches vers l\'arrière, jambes quasi-tendues. Barre proche des jambes. Fort étirement ischios en bas. Remonte par les hanches.',esth:'Fessiers hauts et ronds, arrière de cuisse développé.',judo:null,charge:'Départ : 70-90 kg · La sensation prime sur la charge'},
+    {n:3,name:'Presse à cuisses',muscles:'Quadriceps · Fessiers',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Après le squat lourd, continue le volume sans fatigue nerveuse. Dos supporté = tu peux pousser fort en sécurité.',exec:'Pieds milieu de plateforme pour les quads. Amplitude complète, genoux vers la poitrine. Ne verrouille pas en haut.',esth:'Volume des cuisses.',judo:null,charge:'Départ : 100-140 kg · Progression'},
+    {n:4,name:'Leg curl allongé',muscles:'Ischio-jambiers',sets:'3×10-12',recup:'1min15',badge:'bi',bl:'Isolation',why:'Isole les ischios en contraction. Équilibre quadri/ischio = prévention de la blessure n°1 du genou. RDL (étirement) + leg curl (contraction) = ischios complets.',exec:'Descente lente obligatoire 3 sec. Contraction forte en haut. Le tempo prime sur la charge.',esth:'Arrière de cuisse galbé.',judo:null,charge:'Départ : 35-50 kg machine'},
+    {n:5,name:'Leg extension',muscles:'Quadriceps (isolation)',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Isolation',why:'Seul exo qui isole le quadriceps en contraction pure. Finit les quads après le travail lourd, cible la goutte au-dessus du genou.',exec:'Tiens 1 sec en haut, contraction maximale. Descente lente. Approche l\'échec sur la dernière série.',esth:'Quadriceps définis et striés de face.',judo:null,charge:'Départ : 32-40 kg · Progression'},
+    {n:6,name:'Mollets debout',muscles:'Gastrocnémien',sets:'4×12-15',recup:'1min',badge:'bi',bl:'Isolation',why:'Le gastrocnémien = la partie visible et bombée du mollet. Amplitude totale impérative, c\'est un muscle têtu qui demande de la rigueur.',exec:'Étirement maximal en bas (talon sous le niveau), contraction forte en haut tenue 2 sec. Lent.',esth:'Volume et galbe du mollet.',judo:null,charge:'Départ : PC + 20-40 kg'},
+    {n:7,name:'Mollets assis',muscles:'Soléaire',sets:'3×15-20',recup:'1min',badge:'bi',bl:'Isolation',why:'Le soléaire est sous le gastrocnémien et le pousse vers l\'extérieur = base du mollet. Genou fléchi = il cible spécifiquement le soléaire.',exec:'Amplitude maximale. Étirement complet, contraction complète. Reps élevées car fibres endurantes.',esth:'Épaisseur latérale du mollet.',judo:null,charge:'Départ : machine + 20-30 kg'}
+  ]},
+  ven:{badge:'Upper · 2e dose Pecs + Bras',dur:'70–80 min',warmup:['4 min rameur','Rotations épaules + band pull-apart : 2×20','Étirement pec au mur : 30 sec/côté','2 séries légères développé couché (40-50%)'],exos:[
+    {n:1,name:'Développé couché barre',muscles:'Pecs · Triceps · Épaules avant',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Pecs',why:'2e dose pecs de la semaine — c\'est ce qui crée le rattrapage. Cette fois à la barre et en force lourde pour développer la puissance de poussée et la densité. Variante différente du lundi (haltères) pour un stimulus complémentaire.',exec:'Barre touche le bas des pecs. Coudes à 45°, pas écartés à 90°. Pousse explosif, ne rebondis pas sur la poitrine.',esth:'Force et densité du pectoral, base de la masse.',judo:null,charge:'Départ : 55-65 kg · Objectif : 75-80 kg'},
+    {n:2,name:'Développé incliné haltères',muscles:'Haut pecs · Deltoïde antérieur',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie · Pecs',why:'Re-cible ta zone faible (haut des pecs) en volume cette fois, après l\'avoir travaillée en force lundi. Force + volume sur la même zone = rattrapage accéléré.',exec:'30° d\'inclinaison. Amplitude complète, étirement en bas. Plus léger que lundi, focus sur la congestion.',esth:'Le haut du pec, encore et toujours ta priorité.',judo:null,charge:'Départ : 22-26 kg/main'},
+    {n:3,name:'Écarté incliné haltères',muscles:'Pec haut · Étirement',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Isolation · Étirement',why:'L\'étirement sous charge est un puissant signal de croissance. L\'écarté incliné étire le haut du pec à fond — parfait pour développer la zone en retard.',exec:'Banc incliné. Bras légèrement fléchis, descends en grand arc jusqu\'à sentir l\'étirement. Remonte en serrant les pecs.',esth:'Étirement et galbe du haut du pec.',judo:null,charge:'Départ : 10-14 kg/main · Étirement contrôlé'},
+    {n:4,name:'Tractions ou tirage vertical',muscles:'Grand dorsal · Biceps',sets:'4×8-10',recup:'2min',badge:'bh',bl:'Hypertrophie · Dos',why:'Maintient le volume dos sur la 2e moitié de semaine. Tractions si tu as de l\'énergie, tirage vertical si fatigué — les deux travaillent la largeur.',exec:'Amplitude complète. Coudes vers le bas. Squeeze le dos en bas du mouvement.',esth:'Largeur du dos maintenue.',judo:null,charge:'Tractions : PC ou lesté · Tirage : 50-55 kg'},
+    {n:5,name:'Rowing haltère unilatéral',muscles:'Dos épaisseur · Biceps',sets:'3×10-12/bras',recup:'1min30',badge:'bh',bl:'Hypertrophie',why:'Unilatéral = corrige les petits déséquilibres gauche/droite. Épaisseur du dos en complément de la largeur des tractions.',exec:'Un genou et une main sur le banc. Tire l\'haltère vers la hanche, coude haut. Contrôle la descente, étirement complet.',esth:'Épaisseur et relief du dos.',judo:null,charge:'Départ : 28-32 kg/main'},
+    {n:6,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×15',recup:'1min',badge:'bi',bl:'Isolation · Largeur',why:'2e dose épaules de la semaine en volume léger. Le deltoïde moyen récupère vite et répond bien à la fréquence élevée.',exec:'Penché léger, tempo lent, pas d\'élan. Brûlure recherchée sur les dernières reps.',esth:'Largeur d\'épaule, carrure.',judo:null,charge:'Départ : 8-10 kg/main'},
+    {n:7,name:'Superset Curl + Triceps',muscles:'Biceps + Triceps',sets:'4×12+12',recup:'1min15',badge:'bi',bl:'Superset · Bras',why:'2e (triceps) et 3e (biceps) dose bras de la semaine. Le superset agoniste/antagoniste permet un max de volume en peu de temps avec une congestion énorme — idéal pour finir et rattraper les bras.',exec:'Curl haltères 12 reps, enchaîne immédiatement triceps poulie 12 reps. Repos 1min15 après les deux. 4 tours.',esth:'Congestion et rattrapage des deux faces du bras.',judo:null,charge:'Curl : 10-12 kg/main · Triceps : 20-30 kg poulie'}
+  ]},
+  sam:{badge:'Lower léger + Bras bonus',dur:'55–65 min',warmup:['4 min vélo','90/90 hanches + pigeon : 2 min/côté','Squat poids de corps : 2×12','2 séries légères hip thrust'],exos:[
+    {n:1,name:'Hip thrust barre',muscles:'Grand fessier · Ischios',sets:'4×10-12',recup:'2min',badge:'bh',bl:'Hypertrophie · Fessiers',why:'Meilleure activation du grand fessier (mesuré en EMG). Séance jambes plus légère que jeudi pour ne pas surcharger la récup en sèche, mais on garde le développement fessier.',exec:'Dos sur banc, barre sur les hanches (avec pad). Pousse par les talons, alignement complet en haut. Contracte les fessiers 1 sec. Ne cambre pas le bas du dos.',esth:'Fessiers ronds, hauts et puissants.',judo:null,charge:'Départ : 60-80 kg · Objectif : 100 kg'},
+    {n:2,name:'Fentes bulgares',muscles:'Fessiers · Quadriceps · Équilibre',sets:'3×10/jambe',recup:'1min45',badge:'bh',bl:'Hypertrophie · Unilatéral',why:'Pied arrière surélevé = étirement fessier maximal en bas. Unilatéral = corrige les déséquilibres et travaille l\'équilibre. Excellent rapport résultat/charge.',exec:'Pied arrière sur banc. Descends à la verticale, genou avant dans l\'axe. Pousse sur le talon avant. Buste légèrement penché pour le fessier.',esth:'Fessiers galbés, séparation fessier/cuisse.',judo:null,charge:'Départ : 14-18 kg/main'},
+    {n:3,name:'Mollets debout',muscles:'Gastrocnémien',sets:'4×15',recup:'45sec',badge:'bi',bl:'Isolation',why:'Les mollets supportent (et demandent) une fréquence élevée. 2e dose de la semaine pour ce muscle têtu.',exec:'Amplitude totale, étirement et contraction complètes. Tempo contrôlé.',esth:'Volume du mollet.',judo:null,charge:'Départ : PC + 20-40 kg'},
+    {n:4,name:'Curl barre EZ (bonus)',muscles:'Biceps',sets:'3×10-12',recup:'1min15',badge:'bi',bl:'Bonus bras',why:'OPTIONNEL mais recommandé pour ton rattrapage. 4e dose biceps de la semaine. Les bras sont de petits muscles qui récupèrent vite — cette fréquence élevée est ce qui les fait exploser.',exec:'Coudes fixes, pas de balancier. Contrôle la descente. Si tu es trop fatigué de la semaine, tu peux sauter ce bonus.',esth:'Volume du biceps.',judo:null,charge:'Départ : 25-30 kg · Optionnel selon fatigue'},
+    {n:5,name:'Dips ou triceps poulie (bonus)',muscles:'Triceps',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Bonus bras',why:'OPTIONNEL. 3e dose triceps de la semaine sur ta priorité n°1 du bras. Finit le rattrapage. Saute-le si la fatigue de la semaine est trop élevée.',exec:'Dips buste droit (focus triceps) ou triceps poulie. Amplitude complète, squeeze en bas.',esth:'Épaisseur du triceps.',judo:null,charge:'Dips : PC ou lesté · Poulie : 20-30 kg · Optionnel'}
   ]}
 };
-const KEY_EXOS=['Squat barre','Développé couché haltères','Soulevé de terre roumain','Trap bar deadlift','Hip thrust barre','Bulgarian split squat'];
-const TARGETS={'Développé couché haltères':{reps:'5-8',sets:4},'Tractions pronation':{reps:'6-10',sets:4},'Développé militaire':{reps:'8-12',sets:3},'Rowing unilatéral':{reps:'10-12',sets:3},'Squat barre':{reps:'5-8',sets:4},'Soulevé de terre roumain':{reps:'8-10',sets:4},'Développé incliné haltères':{reps:'8-12',sets:4},'Tirage horizontal poulie':{reps:'10-12',sets:4},'Dips lestés':{reps:'8-12',sets:3},'Tirage vertical prise neutre':{reps:'10-12',sets:3},'Trap bar deadlift':{reps:'5-8',sets:4},'Bulgarian split squat':{reps:'8-10',sets:4},'Hip thrust barre':{reps:'10-12',sets:4},'Leg extension':{reps:'12-15',sets:3}};
+const KEY_EXOS=['Développé incliné haltères 30°','Développé couché barre','Dips lestés (buste penché)','Tractions pronation lestées','Barre au front (skull crusher)','Curl barre EZ','Squat barre'];
+const TARGETS={'Développé incliné haltères 30°':{reps:'6-8',sets:4},'Développé couché haltères':{reps:'8-10',sets:4},'Dips lestés (buste penché)':{reps:'8-10',sets:3},'Écarté poulie vis-à-vis':{reps:'12-15',sets:3},'Développé militaire haltères':{reps:'8-10',sets:3},'Élévations latérales':{reps:'12-15',sets:4},'Barre au front (skull crusher)':{reps:'8-10',sets:4},'Triceps corde poulie':{reps:'12-15',sets:3},'Tractions pronation lestées':{reps:'6-8',sets:4},'Rowing barre buste penché':{reps:'8-10',sets:4},'Tirage horizontal poulie':{reps:'10-12',sets:3},'Tirage vertical prise neutre':{reps:'10-12',sets:3},'Facepull corde':{reps:'15-20',sets:4},'Curl barre EZ':{reps:'8-10',sets:4},'Curl incliné haltères':{reps:'10-12',sets:3},'Curl marteau':{reps:'12',sets:3},'Squat barre':{reps:'6-8',sets:4},'Soulevé de terre roumain':{reps:'8-10',sets:4},'Presse à cuisses':{reps:'10-12',sets:3},'Leg curl allongé':{reps:'10-12',sets:3},'Leg extension':{reps:'12-15',sets:3},'Mollets debout':{reps:'12-15',sets:4},'Développé couché barre':{reps:'6-8',sets:4},'Développé incliné haltères':{reps:'10-12',sets:3},'Rowing haltère unilatéral':{reps:'10-12',sets:3},'Hip thrust barre':{reps:'10-12',sets:4},'Fentes bulgares':{reps:'10',sets:3}};
+
 const RECUP_SEC={'bf':150,'bh':105,'bi':60,'bs':45,'be':60};
 let sessions=[];
 try{
@@ -541,6 +586,7 @@ function buildSession(key){
   h+=`<div class="wmup"><div class="bt">🔥 Échauffement</div>`;
   d.warmup.forEach(w=>{h+=`<div class="wi">· ${w}</div>`;});h+='</div>';
   if(d.explo){h+=`<div class="explo"><div class="bt">⚡ Bloc explosif</div><div class="wi">· ${d.explo}</div></div>`;}
+  if(d.cardio){h+=`<div class="explo" style="background:var(--co2);border-left-color:var(--co);"><div class="bt" style="color:var(--co);">🚴 Cardio sèche</div><div class="wi" style="color:var(--co);">· ${d.cardio}</div></div>`;}
   d.exos.forEach(e=>{
     const cid='exo-'+key+'-'+e.n;
     const lp=getLP(e.name);
@@ -572,32 +618,37 @@ function toggleExo(id){document.getElementById(id).classList.toggle('open');docu
 /* CHARGES */
 function buildCharges(){
   const haut=[
-    {n:'Développé couché alt.',f:'34kg/main',h:'26-28kg',i:null,o:'36kg/main'},
-    {n:'Tractions lestées',f:'+5 à +8kg',h:'Poids corps',i:null,o:'+10kg'},
-    {n:'Dév. militaire',f:null,h:'26kg/main',i:null,o:'28kg/main'},
-    {n:'Rowing unilatéral',f:null,h:'30kg/main',i:null,o:'32kg/main'},
-    {n:'Élévations latérales',f:null,h:null,i:'10kg+drop 6kg',o:'15 reps à 10kg'},
-    {n:'Dév. incliné',f:null,h:'26kg/main',i:null,o:'28kg/main'},
-    {n:'Tirage horizontal',f:null,h:'52kg',i:null,o:'56kg'},
-    {n:'Dips lestés',f:'+25kg',h:'+20kg',i:null,o:'+30kg'},
-    {n:'Tirage vertical neutre',f:null,h:'45-50kg',i:null,o:'52-56kg'},
-    {n:'Curl incliné',f:null,h:null,i:'10kg/main',o:'12kg/main'},
-    {n:'Gainage planche',f:null,h:null,i:'+10kg/40sec',o:'+15kg'},
+    {n:'Dév. incliné haltères 30°',f:'26-28kg/main',h:null,i:null,o:'32kg/main'},
+    {n:'Dév. couché haltères',f:null,h:'28-30kg/main',i:null,o:'34kg/main'},
+    {n:'Dév. couché barre',f:'55-65kg',h:null,i:null,o:'75-80kg'},
+    {n:'Dips lestés (pec bas)',f:'+15-20kg',h:null,i:null,o:'+30kg'},
+    {n:'Écarté poulie / incliné',f:null,h:null,i:'10-15kg/côté',o:'Contraction'},
+    {n:'Dév. militaire haltères',f:null,h:'24-26kg/main',i:null,o:'28kg/main'},
+    {n:'Élévations latérales',f:null,h:null,i:'8-10kg/main',o:'Tempo lent'},
+    {n:'Tractions lestées',f:'+5-10kg',h:null,i:null,o:'+15kg'},
+    {n:'Rowing barre',f:'50-60kg',h:null,i:null,o:'Progression'},
+    {n:'Tirage horizontal',f:null,h:'50-60kg',i:null,o:'Progression'},
+    {n:'Tirage vertical neutre',f:null,h:'50-55kg',i:null,o:'Progression'},
+    {n:'Facepull (posture)',f:null,h:null,i:'15-25kg',o:'Qualité'},
+    {n:'Curl barre EZ',f:'25-35kg',h:null,i:null,o:'Progression'},
+    {n:'Curl incliné (pic)',f:null,h:'10-12kg/main',i:null,o:'Étirement'},
+    {n:'Curl marteau',f:null,h:null,i:'12-14kg/main',o:'Progression'},
+    {n:'Barre au front triceps',f:'20-30kg EZ',h:null,i:null,o:'Progression'},
+    {n:'Triceps corde',f:null,h:null,i:'20-30kg',o:'Congestion'},
   ];
   const bas=[
-    {n:'Squat barre',f:'80-90kg',h:'65-75kg',i:null,o:'85+kg',est:true},
-    {n:'RDL',f:'70-90kg',h:'Étirement ischios',i:null,o:'90+kg',est:true},
-    {n:'Presse cuisses',f:null,h:'100-140kg',i:'80-100kg',o:'140+kg',est:true},
-    {n:'Leg curl',f:null,h:null,i:'35-50kg',o:'Tempo 3sec',est:true},
-    {n:'Trap bar deadlift',f:'90-110kg',h:'75-90kg',i:null,o:'110+kg',est:true},
-    {n:'Bulgarian split squat',f:null,h:'16-22kg/main',i:null,o:'22-28kg/main',est:true},
-    {n:'Hip thrust barre',f:'80-100kg',h:'60-80kg',i:null,o:'90-110kg',est:true},
-    {n:'Leg extension',f:null,h:null,i:'32kg',o:'35kg'},
-    {n:'Mollets debout',f:null,h:null,i:'PC+20-40kg',o:'Amplitude totale',est:true},
-    {n:'Mollets assis',f:null,h:null,i:'Machine+20-30kg',o:'Amplitude totale',est:true},
+    {n:'Squat barre',f:'80-90kg',h:null,i:null,o:'Maintien en sèche',est:true},
+    {n:'Soulevé de terre roumain',f:'70-90kg',h:null,i:null,o:'Sensation',est:true},
+    {n:'Presse à cuisses',f:null,h:'100-140kg',i:null,o:'Progression',est:true},
+    {n:'Leg curl allongé',f:null,h:null,i:'35-50kg',o:'Tempo 3sec',est:true},
+    {n:'Leg extension',f:null,h:null,i:'32-40kg',o:'Contraction'},
+    {n:'Hip thrust barre',f:'60-80kg',h:null,i:null,o:'100kg',est:true},
+    {n:'Fentes bulgares',f:null,h:'14-18kg/main',i:null,o:'Progression'},
+    {n:'Mollets debout',f:null,h:null,i:'PC+20-40kg',o:'Amplitude',est:true},
+    {n:'Mollets assis',f:null,h:null,i:'Machine+20-30kg',o:'Amplitude',est:true},
   ];
   function tbl(data){
-    return`<div style="overflow:hidden;border:0.5px solid var(--bd);border-radius:var(--rl);margin-bottom:12px;"><table class="cht"><thead><tr><th style="width:30%">Exercice</th><th>Force</th><th>Hypertro.</th><th>Isolation</th><th>Objectif</th></tr></thead><tbody>${data.map(r=>`<tr><td style="font-weight:700;">${r.n}${r.est?'<span class="est-b">est.</span>':''}</td><td>${r.f?`<span class="zf">${r.f}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td>${r.h?`<span class="zh">${r.h}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td>${r.i?`<span class="zi">${r.i}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td style="font-size:11px;color:var(--tx2);">${r.o}</td></tr>`).join('')}</tbody></table></div>`;
+    return`<div style="overflow:hidden;border:0.5px solid var(--bd);border-radius:var(--rl);margin-bottom:12px;"><table class="cht"><thead><tr><th style="width:34%">Exercice</th><th>Force</th><th>Hypertro.</th><th>Isolation</th><th>Objectif</th></tr></thead><tbody>${data.map(r=>`<tr><td style="font-weight:700;">${r.n}${r.est?'<span class="est-b">est.</span>':''}</td><td>${r.f?`<span class="zf">${r.f}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td>${r.h?`<span class="zh">${r.h}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td>${r.i?`<span class="zi">${r.i}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td style="font-size:11px;color:var(--tx2);">${r.o}</td></tr>`).join('')}</tbody></table></div>`;
   }
   document.getElementById('cp-haut').innerHTML=tbl(haut);
   document.getElementById('cp-bas').innerHTML=tbl(bas);
@@ -784,7 +835,7 @@ function switchMain(id,el){
   document.getElementById('mp-'+id).classList.add('active');el.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='tracker')refresh();
-  if(id==='seances')['lun','mer','jeu','sam'].forEach(buildSession);
+  if(id==='seances')['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);
 }
 function switchS(key,el){
   document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
@@ -799,7 +850,7 @@ function switchCharge(id,el){
 }
 function refresh(){updateStats();updateChart();updateProgBars();updateLog();}
 
-buildSession('lun');buildCharges();refresh();showLP();
+['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildCharges();refresh();showLP();
 </script>
 </body>
 </html>
