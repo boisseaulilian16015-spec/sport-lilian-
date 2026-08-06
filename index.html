@@ -24,24 +24,25 @@
   --nav:70px;--safe:env(safe-area-inset-bottom,0px);--top:env(safe-area-inset-top,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-html,body{height:100%;overscroll-behavior:none;background:var(--bg);}
-body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-serif;color:var(--tx);font-size:15px;line-height:1.5;}
-.header{background:rgba(10,10,9,.9);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:0.5px solid var(--bd);padding:calc(var(--top)+12px) 18px 12px;position:sticky;top:0;z-index:60;}
-.header-inner{display:flex;align-items:center;justify-content:space-between;}
+html{min-height:100%;background:var(--bg);scroll-padding-bottom:120px;}
+body{min-height:100%;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-serif;color:var(--tx);font-size:15px;line-height:1.5;overflow-x:hidden;}
+.header{background:rgba(10,10,9,.9);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:0.5px solid var(--bd);padding:calc(var(--top) + 12px) 18px 12px;position:sticky;top:0;z-index:60;}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;}
 .hav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--bl),var(--gr));display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;flex-shrink:0;}
-.htitle{font-size:17px;font-weight:700;color:var(--tx);letter-spacing:-.3px;}
-.hsub{font-size:12px;color:var(--tx3);}
-.hbadge{font-size:11px;padding:5px 11px;border-radius:20px;background:var(--gr3);color:var(--gr);font-weight:700;border:0.5px solid rgba(114,214,114,.2);}
-.sync-btn{background:none;border:0.5px solid var(--bd2);border-radius:8px;padding:6px 10px;font-size:12px;color:var(--tx2);cursor:pointer;}
-.bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,9,.93);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:0.5px solid var(--bd);padding:8px 0 calc(var(--safe)+5px);display:flex;z-index:60;}
+.htitle{font-size:16px;font-weight:700;color:var(--tx);letter-spacing:-.3px;white-space:nowrap;}
+.hsub{font-size:11.5px;color:var(--tx3);white-space:nowrap;}
+.hbadge{font-size:10.5px;padding:5px 10px;border-radius:20px;background:var(--gr3);color:var(--gr);font-weight:700;border:0.5px solid rgba(114,214,114,.2);white-space:nowrap;flex-shrink:0;}
+.sync-btn{background:none;border:0.5px solid var(--bd2);border-radius:8px;padding:6px 9px;font-size:11.5px;color:var(--tx2);cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,9,.93);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:0.5px solid var(--bd);padding:8px 0 calc(var(--safe) + 5px);display:flex;z-index:60;}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 0;}
 .ni:active{opacity:.6;}
-.ni-icon{font-size:22px;line-height:1;}
-.ni-label{font-size:10px;font-weight:600;color:var(--tx3);letter-spacing:.02em;transition:color .15s;}
+.ni-icon{font-size:20px;line-height:1;}
+.ni-label{font-size:9.5px;font-weight:600;color:var(--tx3);letter-spacing:.01em;transition:color .15s;white-space:nowrap;}
 .ni.active .ni-label{color:var(--bl);}
 .ni-bar{width:18px;height:2px;border-radius:1px;background:var(--bl);opacity:0;margin-top:2px;transition:opacity .15s;}
 .ni.active .ni-bar{opacity:1;}
-.content{padding:14px 15px calc(var(--nav)+var(--safe)+16px);max-width:580px;margin:0 auto;}
+.content{padding:14px 15px calc(var(--nav) + var(--safe) + 90px);max-width:580px;margin:0 auto;}
+.mpanel>*:last-child{margin-bottom:20px;}
 .mpanel{display:none;}.mpanel.active{display:block;animation:fu .22s ease;}
 @keyframes fu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 .card{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);padding:16px;margin-bottom:10px;}
@@ -75,6 +76,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-
 .explo .bt{color:var(--pu);}
 .wi{font-size:12px;color:var(--tx2);padding:1px 0;line-height:1.5;}
 .explo .wi{color:var(--pu);}
+.ec.modded{border-color:rgba(245,185,66,.35);}
+.mod-b{font-size:9px;padding:2px 7px;border-radius:6px;background:var(--am2);color:var(--am);margin-left:6px;font-weight:700;vertical-align:middle;}
+.mod-note{font-size:12px;color:var(--am);background:var(--am3);border:0.5px solid rgba(245,185,66,.2);border-radius:var(--r);padding:9px 11px;margin-top:12px;line-height:1.5;}
+.edit-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.btn-edit{flex:1;min-width:150px;padding:10px;border-radius:var(--r);background:var(--bg3);border:0.5px solid var(--bd2);color:var(--tx2);font-size:13px;font-weight:600;cursor:pointer;}
+.btn-restore{flex:1;min-width:140px;padding:10px;border-radius:var(--r);background:var(--am3);border:0.5px solid rgba(245,185,66,.3);color:var(--am);font-size:13px;font-weight:600;cursor:pointer;}
+.eov{position:fixed;inset:0;background:rgba(10,10,9,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:210;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;transition:opacity .3s;opacity:0;pointer-events:none;}
+.eov.show{opacity:1;pointer-events:all;}
+.esheet{background:var(--bg2);border:0.5px solid var(--bd);border-radius:24px 24px 0 0;width:100%;max-width:580px;padding:24px 20px calc(var(--safe) + 20px);animation:slu .3s ease;max-height:90vh;overflow-y:auto;}
+.orig-box{background:var(--bg3);border-radius:var(--r);padding:10px 12px;margin-bottom:14px;font-size:12px;color:var(--tx3);line-height:1.6;border-left:2px solid var(--bd3);}
 .ec{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);margin-bottom:8px;overflow:hidden;transition:border-color .15s;}
 .ec.open{border-color:rgba(91,168,245,.3);}
 .et{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;cursor:pointer;user-select:none;}
@@ -110,11 +121,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-
 .slabel{font-size:14px;font-weight:700;color:var(--tx);}
 .ssub{font-size:12px;color:var(--tx2);margin-top:2px;}
 .fcard{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);padding:16px;margin-bottom:10px;}
-.fl{font-size:12px;color:var(--tx2);margin-bottom:4px;font-weight:600;}
-select,input[type=number],textarea{width:100%;padding:11px 12px;border:0.5px solid var(--bd2);border-radius:var(--r);background:var(--bg3);color:var(--tx);font-size:15px;font-family:inherit;-webkit-appearance:none;appearance:none;transition:border-color .15s;}
+.fl{font-size:12px;color:var(--tx2);margin-bottom:4px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+select,input[type=number],input[type=text],textarea{width:100%;padding:11px 12px;border:0.5px solid var(--bd2);border-radius:var(--r);background:var(--bg3);color:var(--tx);font-size:15px;font-family:inherit;-webkit-appearance:none;appearance:none;transition:border-color .15s;}
 select:focus,input:focus,textarea:focus{outline:none;border-color:var(--bl);box-shadow:0 0 0 3px rgba(91,168,245,.12);}
 textarea{resize:vertical;min-height:46px;font-size:14px;}
-.irow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.irow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;align-items:end;}
 button{padding:12px 18px;border:0.5px solid var(--bd2);border-radius:var(--r);background:var(--bg3);color:var(--tx);font-size:14px;cursor:pointer;font-family:inherit;font-weight:600;transition:all .15s;}
 button:active{transform:scale(.96);opacity:.85;}
 .btn-p{background:var(--bl);color:#fff;border-color:var(--bl);width:100%;margin-top:10px;padding:14px;border-radius:var(--rl);font-size:15px;}
@@ -122,7 +133,7 @@ button:active{transform:scale(.96);opacity:.85;}
 .btn-sec{background:transparent;border:0.5px solid var(--bd2);color:var(--tx2);}
 .lp-box{background:var(--bl3);border:0.5px solid rgba(91,168,245,.2);border-radius:var(--r);padding:9px 12px;margin-top:10px;font-size:13px;color:var(--bl);display:none;}
 .lp-box.show{display:block;}
-.pbox{margin-top:12px;background:var(--bg3);border-radius:var(--r);padding:12px;border:0.5px solid var(--bd);}
+.pbox{margin-top:12px;background:var(--bg3);border-radius:var(--r);padding:14px;border:1px solid rgba(91,168,245,0.3);box-shadow:0 0 0 3px rgba(91,168,245,0.06);}
 .pname{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:8px;}
 .srow{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid var(--bd);font-size:13px;}
 .srow:last-of-type{border-bottom:none;}
@@ -136,7 +147,7 @@ button:active{transform:scale(.96);opacity:.85;}
 .saverow{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
 
 /* REST TIMER */
-.tov{position:fixed;inset:0;background:rgba(10,10,9,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .3s;opacity:0;pointer-events:none;}
+.tov{position:fixed;inset:0;background:rgba(10,10,9,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .3s;opacity:0;pointer-events:none;overflow-y:auto;padding:20px;}
 .tov.show{opacity:1;pointer-events:all;}
 .ttitle{font-size:13px;font-weight:700;color:var(--tx2);letter-spacing:.06em;text-transform:uppercase;}
 .texo{font-size:18px;font-weight:700;color:var(--tx);text-align:center;max-width:280px;line-height:1.3;}
@@ -156,7 +167,7 @@ button:active{transform:scale(.96);opacity:.85;}
 /* SYNC */
 .sov{position:fixed;inset:0;background:rgba(10,10,9,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;transition:opacity .3s;opacity:0;pointer-events:none;}
 .sov.show{opacity:1;pointer-events:all;}
-.ssheet{background:var(--bg2);border:0.5px solid var(--bd);border-radius:24px 24px 0 0;width:100%;max-width:580px;padding:24px 20px calc(var(--safe)+20px);animation:slu .3s ease;}
+.ssheet{background:var(--bg2);border:0.5px solid var(--bd);border-radius:24px 24px 0 0;width:100%;max-width:580px;padding:24px 20px calc(var(--safe) + 20px);animation:slu .3s ease;max-height:88vh;overflow-y:auto;}
 @keyframes slu{from{transform:translateY(100%);}to{transform:translateY(0);}}
 .stitle{font-size:18px;font-weight:700;color:var(--tx);margin-bottom:4px;}
 .ssub2{font-size:13px;color:var(--tx2);margin-bottom:18px;line-height:1.5;}
@@ -239,10 +250,10 @@ button:active{transform:scale(.96);opacity:.85;}
   <div class="header-inner">
     <div style="display:flex;align-items:center;gap:10px;">
       <div class="hav">L</div>
-      <div><div class="htitle">Programme Sport</div><div class="hsub">67 kg · 1m75 · Sèche 13→10%</div></div>
+      <div><div class="htitle">Programme Sport</div><div class="hsub">69 kg · 1m69 · Sèche</div></div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
-      <div class="hbadge">Objectif 10%</div>
+      <div class="hbadge">Cible 66kg</div>
       <button class="sync-btn" onclick="openSync()">🔄 Sync</button>
     </div>
   </div>
@@ -253,11 +264,21 @@ button:active{transform:scale(.96);opacity:.85;}
   <div class="wk">
     <div class="wb gym"><div class="wbn">Lun</div><div class="wbl">Push</div><div class="wd" style="background:var(--bl);"></div></div>
     <div class="wb gym"><div class="wbn">Mar</div><div class="wbl">Pull</div><div class="wd" style="background:var(--gr);"></div></div>
-    <div class="wb mob"><div class="wbn">Mer</div><div class="wbl">Cardio Abdos</div><div class="wd" style="background:var(--co);"></div></div>
-    <div class="wb gym"><div class="wbn">Jeu</div><div class="wbl">Legs</div><div class="wd" style="background:var(--am);"></div></div>
-    <div class="wb gym"><div class="wbn">Ven</div><div class="wbl">Upper</div><div class="wd" style="background:var(--bl);"></div></div>
-    <div class="wb gym"><div class="wbn">Sam</div><div class="wbl">Lower + Bras</div><div class="wd" style="background:var(--pu);"></div></div>
+    <div class="wb gym"><div class="wbn">Mer</div><div class="wbl">Legs</div><div class="wd" style="background:var(--am);"></div></div>
+    <div class="wb gym"><div class="wbn">Jeu</div><div class="wbl">Upper</div><div class="wd" style="background:var(--bl);"></div></div>
+    <div class="wb gym"><div class="wbn">Ven</div><div class="wbl">Lower Abdos</div><div class="wd" style="background:var(--pu);"></div></div>
+    <div class="wb mob"><div class="wbn">Sam</div><div class="wbl">Cardio opt.</div><div class="wd" style="background:var(--co);"></div></div>
     <div class="wb judo"><div class="wbn">Dim</div><div class="wbl">Repos</div><div class="wd" style="background:var(--tx4);"></div></div>
+  </div>
+  <div class="infonote">☀️ <strong>Cardio le midi (lun→ven)</strong> · 🌙 <strong>Muscu le soir</strong> — les deux séparés pour que le cardio ne touche pas ta récup muscu.</div>
+  <div class="card"><div class="ct">☀️ Cardio midi — zone 2 · 30-40 min</div>
+    <table class="rt2"><tbody>
+      <tr><td>Lun · Mar · Jeu</td><td>Marche inclinée 10-15%</td></tr>
+      <tr><td>Mer (jour Legs)</td><td>Vélo léger seulement</td></tr>
+      <tr><td>Ven (jour Lower)</td><td>Vélo léger seulement</td></tr>
+      <tr><td>Intensité</td><td>Tu peux parler</td></tr>
+      <tr><td>Règle d'or</td><td>Jamais crâmer les jambes</td></tr>
+    </tbody></table>
   </div>
   <div class="card"><div class="ct">Temps de récup</div>
     <table class="rt2"><tbody>
@@ -297,10 +318,10 @@ button:active{transform:scale(.96);opacity:.85;}
   <div class="stabs">
     <button class="stab active" onclick="switchS('lun',this)">Lun · Push</button>
     <button class="stab" onclick="switchS('mar',this)">Mar · Pull</button>
-    <button class="stab" onclick="switchS('mer',this)">Mer · Abdos</button>
-    <button class="stab" onclick="switchS('jeu',this)">Jeu · Legs</button>
-    <button class="stab" onclick="switchS('ven',this)">Ven · Upper</button>
-    <button class="stab" onclick="switchS('sam',this)">Sam · Bras</button>
+    <button class="stab" onclick="switchS('mer',this)">Mer · Legs</button>
+    <button class="stab" onclick="switchS('jeu',this)">Jeu · Upper</button>
+    <button class="stab" onclick="switchS('ven',this)">Ven · Lower</button>
+    <button class="stab" onclick="switchS('sam',this)">Sam · Cardio</button>
   </div>
   <div id="sp-lun" class="sp active"></div>
   <div id="sp-mar" class="sp"></div>
@@ -323,33 +344,24 @@ button:active{transform:scale(.96);opacity:.85;}
   </div>
   <div class="fcard">
     <div class="ct">+ Enregistrer un exercice</div>
+    <div style="font-size:12px;color:var(--tx3);margin:-6px 0 12px;">Les champs s'adaptent : reps, temps ou cardio selon l'exercice choisi.</div>
     <div class="fl">Exercice</div>
-    <select id="inp-exo" onchange="showLP()">
-      <optgroup label="— Lundi Push —">
-        <option>Développé incliné haltères 30°</option><option>Développé couché haltères</option><option>Dips lestés (buste penché)</option><option>Écarté poulie vis-à-vis</option><option>Développé militaire haltères</option><option>Élévations latérales</option><option>Barre au front (skull crusher)</option><option>Triceps corde poulie</option>
-      </optgroup>
-      <optgroup label="— Mardi Pull —">
-        <option>Tractions pronation lestées</option><option>Rowing barre buste penché</option><option>Tirage horizontal poulie</option><option>Tirage vertical prise neutre</option><option>Facepull corde</option><option>Curl barre EZ</option><option>Curl incliné haltères</option><option>Curl marteau</option>
-      </optgroup>
-      <optgroup label="— Mercredi Abdos —">
-        <option>Relevés de jambes suspendus</option><option>Crunch à la poulie</option><option>Gainage planche</option><option>Gainage latéral (side plank)</option>
-      </optgroup>
-      <optgroup label="— Jeudi Legs —">
-        <option>Squat barre</option><option>Soulevé de terre roumain</option><option>Presse à cuisses</option><option>Leg curl allongé</option><option>Leg extension</option><option>Mollets debout</option><option>Mollets assis</option>
-      </optgroup>
-      <optgroup label="— Vendredi Upper —">
-        <option>Développé couché barre</option><option>Développé incliné haltères</option><option>Écarté incliné haltères</option><option>Tractions ou tirage vertical</option><option>Rowing haltère unilatéral</option><option>Superset Curl + Triceps</option>
-      </optgroup>
-      <optgroup label="— Samedi Lower + Bras —">
-        <option>Hip thrust barre</option><option>Fentes bulgares</option><option>Curl barre EZ (bonus)</option><option>Dips ou triceps poulie (bonus)</option>
-      </optgroup>
-    </select>
+    <select id="inp-exo" onchange="showLP()"></select>
     <div class="lp-box" id="lp-box"></div>
-    <div class="irow">
+    <!-- Champs dynamiques selon le type d'exercice -->
+    <div class="irow" id="fields-reps">
       <div><div class="fl">Charge (kg)</div><input type="number" id="inp-kg" placeholder="34" min="0" step="0.5" inputmode="decimal"></div>
-      <div><div class="fl">Reps réalisées</div><input type="number" id="inp-reps" placeholder="8" min="1" max="50" inputmode="numeric"></div>
+      <div><div class="fl">Reps réalisées</div><input type="number" id="inp-reps" placeholder="8" min="1" max="100" inputmode="numeric"></div>
     </div>
-    <button class="btn-add" onclick="addSet()">+ Ajouter cette série</button>
+    <div class="irow" id="fields-time" style="display:none;">
+      <div><div class="fl">Durée (secondes)</div><input type="number" id="inp-time" placeholder="45" min="1" inputmode="numeric"></div>
+      <div><div class="fl">Lest (kg)<span style="color:var(--tx4);"> · optionnel</span></div><input type="number" id="inp-time-kg" placeholder="0" min="0" step="0.5" inputmode="decimal"></div>
+    </div>
+    <div class="irow" id="fields-cardio" style="display:none;">
+      <div><div class="fl">Durée (min)</div><input type="number" id="inp-cardio-min" placeholder="30" min="1" inputmode="numeric"></div>
+      <div><div class="fl">Distance (km)<span style="color:var(--tx4);"> · optionnel</span></div><input type="number" id="inp-cardio-km" placeholder="3.5" min="0" step="0.1" inputmode="decimal"></div>
+    </div>
+    <button class="btn-add" id="add-btn" onclick="addSet()">+ Ajouter cette série</button>
     <div id="pbox" style="display:none;" class="pbox">
       <div class="pname" id="pname"></div>
       <div id="psets"></div>
@@ -370,6 +382,87 @@ button:active{transform:scale(.96);opacity:.85;}
   <div style="text-align:right;margin-bottom:8px;"><button onclick="exportCSV()" style="font-size:12px;padding:6px 14px;">⬇ Export CSV</button></div>
   <div id="log-container"><div class="emptybl"><span class="ei">🏋️</span><p>Aucune séance enregistrée.<br>Entre ton premier exercice ci-dessus.</p></div></div>
 </div>
+<!-- NUTRITION -->
+<div id="mp-nutrition" class="mpanel">
+  <div class="infonote">🥗 Tes cibles pour la sèche (retour ~66kg avant reprise judo). Recalculées quand le judo reprend.</div>
+
+  <div class="sect">Objectifs du jour <div class="sectline"></div></div>
+  <div class="srow2">
+    <div class="sc"><div class="sl">Calories</div><div class="sv">2150</div><div class="ss">kcal / jour</div></div>
+    <div class="sc"><div class="sl">Protéines</div><div class="sv" style="color:var(--gr);">150</div><div class="ss">g · priorité n°1</div></div>
+    <div class="sc"><div class="sl">Glucides</div><div class="sv" style="color:var(--bl);">245</div><div class="ss">g · énergie</div></div>
+    <div class="sc"><div class="sl">Lipides</div><div class="sv" style="color:var(--am);">60</div><div class="ss">g · hormones</div></div>
+  </div>
+
+  <div class="sect">Compteur du jour <div class="sectline"></div></div>
+  <div class="fcard">
+    <div style="font-size:12px;color:var(--tx2);margin-bottom:10px;">Ajoute au fur et à mesure de la journée. Se remet à zéro chaque jour.</div>
+    <div class="irow" style="margin-top:0;">
+      <div><div class="fl">Calories</div><input type="number" id="nut-kcal" placeholder="ex 600" min="0" inputmode="numeric"></div>
+      <div><div class="fl">Protéines (g)</div><input type="number" id="nut-prot" placeholder="ex 40" min="0" inputmode="numeric"></div>
+    </div>
+    <button class="btn-add" onclick="addNut()">+ Ajouter ce repas</button>
+    <div style="margin-top:16px;">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;"><span style="color:var(--tx2);">Calories</span><span id="nut-kcal-txt" style="font-weight:700;">0 / 2150</span></div>
+      <div class="pbt" style="height:8px;"><div class="pbf" id="nut-kcal-bar" style="width:0%;background:var(--bl);"></div></div>
+    </div>
+    <div style="margin-top:12px;">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;"><span style="color:var(--tx2);">Protéines</span><span id="nut-prot-txt" style="font-weight:700;">0 / 150 g</span></div>
+      <div class="pbt" style="height:8px;"><div class="pbf" id="nut-prot-bar" style="width:0%;background:var(--gr);"></div></div>
+    </div>
+    <button class="btn-sec" style="width:100%;margin-top:14px;" onclick="resetNut()">↺ Remettre à zéro</button>
+  </div>
+
+  <div class="sect">Répartition des repas <div class="sectline"></div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('nut-1')">
+    <span class="enum">1</span>
+    <div class="ebody"><div class="ename">🌅 Petit-déjeuner</div><div class="emuscles">À ne plus jamais sauter</div><span class="badge bh">~500 kcal · 35g prot</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="nut-1">
+    <div class="dl">Pourquoi c'est clé</div><div class="dt">Sauter le petit-déj te fait te rattraper le soir, et manger tard en grosse quantité = stockage. Le petit-déj lance ton métabolisme et coupe les fringales.</div>
+    <div class="dl">Exemples</div><div class="dt">3 œufs + 60g flocons d'avoine + 1 fruit · OU · 200g fromage blanc + 40g flocons + fruits rouges + miel · OU · omelette 3 œufs + 2 tranches pain complet.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('nut-2')">
+    <span class="enum">2</span>
+    <div class="ebody"><div class="ename">🍽️ Déjeuner</div><div class="emuscles">Le repas le plus complet</div><span class="badge bf">~700 kcal · 45g prot</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="nut-2">
+    <div class="dl">Structure</div><div class="dt">Protéine (150-200g viande ou poisson) + glucides (riz, pâtes ou pommes de terre, ~200g cuit) + légumes à volonté. C'est le moment de mettre le plus de glucides car tu as la journée pour les utiliser.</div>
+    <div class="dl">Astuce famille</div><div class="dt">Mange le même plat que tout le monde, sers-toi juste un peu plus de la viande/poisson et un peu moins de féculents si c'est un jour sans grosse séance.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('nut-3')">
+    <span class="enum">3</span>
+    <div class="ebody"><div class="ename">🥤 Collation (autour muscu)</div><div class="emuscles">Utilise ta whey enfin !</div><span class="badge be">~250 kcal · 30g prot</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="nut-3">
+    <div class="dl">Pourquoi</div><div class="dt">Ta whey que tu n'utilises pas = ton meilleur allié en sèche. 1 shaker = ~25g de protéines pour seulement 120 kcal. Idéal pour atteindre 150g sans exploser les calories.</div>
+    <div class="dl">Exemples</div><div class="dt">1 shaker whey + 1 banane (avant séance) · OU · whey + poignée d'amandes · OU · fromage blanc + whey si pas de séance.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('nut-4')">
+    <span class="enum">4</span>
+    <div class="ebody"><div class="ename">🌙 Dîner</div><div class="emuscles">Léger en glucides</div><span class="badge bh">~600 kcal · 40g prot</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="nut-4">
+    <div class="dl">Structure</div><div class="dt">Protéine (viande/poisson/œufs) + légumes en grande quantité + peu ou pas de féculents (sauf si séance tardive). Manger moins de glucides le soir quand tu ne bouges plus aide à ne pas stocker.</div>
+    <div class="dl">Exemples</div><div class="dt">Poisson + grosse portion de légumes + un peu de riz · OU · poulet + salade composée + fromage blanc en dessert.</div>
+  </div></div>
+
+  <div class="sect">Compléments <div class="sectline"></div></div>
+  <div class="rcard"><div class="ricon">🥛</div><div><div class="rtitle">Whey — à utiliser !</div><div class="rtext">1-2 shakers/jour pour atteindre tes 150g de protéines facilement. Parfait en collation ou petit-déj. C'est ce qui te manque.</div></div></div>
+  <div class="rcard"><div class="ricon">💊</div><div><div class="rtitle">Créatine — 3-5g/jour</div><div class="rtext">Tous les jours, peu importe l'heure. Soutient ta force pendant la sèche. Rien à voir avec le gras, aucune raison d'arrêter.</div></div></div>
+  <div class="rcard"><div class="ricon">💧</div><div><div class="rtitle">Eau — 2,5 à 3L/jour</div><div class="rtext">En sèche, l'eau aide à éliminer et coupe la fausse faim. Une partie de ton "ventre gonflé" est de la rétention — bien s'hydrater la réduit.</div></div></div>
+
+  <div class="sect">Après reprise judo (septembre) <div class="sectline"></div></div>
+  <div class="card"><div class="ct">Nouvelles cibles — maintien 66kg</div>
+    <table class="rt2"><tbody>
+      <tr><td>Calories</td><td>~2870 kcal</td></tr>
+      <tr><td>Protéines</td><td>132 g</td></tr>
+      <tr><td>Glucides</td><td>438 g</td></tr>
+      <tr><td>Lipides</td><td>66 g</td></tr>
+    </tbody></table>
+    <div style="font-size:12px;color:var(--tx3);margin-top:10px;line-height:1.5;">Quand le judo reprend, ta dépense grimpe. On remonte les calories pour soutenir la performance en combat. Reviens me voir pour ajuster.</div>
+  </div>
+</div>
 <!-- CHARGES -->
 <div id="mp-charges" class="mpanel">
   <div class="greennote">✓ Attaque direct aux charges indiquées. Haut de la plage sur toutes les séries → +2 à 2,5 kg.</div>
@@ -389,16 +482,48 @@ button:active{transform:scale(.96);opacity:.85;}
   <div class="rcard"><div class="ricon">🥩</div><div><div class="rtitle">135-150g protéines/jour</div><div class="rtext">2g par kg minimum, encore plus important en sèche pour protéger le muscle. Non négociable.</div></div></div>
   <div class="rcard"><div class="ricon">🏋️</div><div><div class="rtitle">Garde les charges lourdes</div><div class="rtext">En déficit, soulever lourd est le signal qui dit à ton corps de garder le muscle. Ne baisse jamais les charges sous prétexte de sèche.</div></div></div>
   <div class="rcard"><div class="ricon">🌙</div><div><div class="rtitle">7-8h de sommeil</div><div class="rtext">Cortisol élevé = graisse stockée + muscle freiné + récup compromise. Aussi important que l'entraînement, encore plus en sèche.</div></div></div>
-  <div class="rcard"><div class="ricon">🚴</div><div><div class="rtitle">Cardio zone 2 — Mer + Sam</div><div class="rtext">25-30 min modéré (tu peux parler en pédalant). Brûle du gras sans empiéter sur la récup musculaire. Pas de HIIT épuisant en sèche.</div></div></div>
+  <div class="rcard"><div class="ricon">☀️</div><div><div class="rtitle">Cardio le midi, muscu le soir</div><div class="rtext">Cardio zone 2 lun→ven entre midi et 2, muscu le soir. Les séparer permet au cardio de brûler du gras sans crâmer ta récup muscu. Jours Legs/Lower : vélo léger seulement le midi.</div></div></div>
+  <div class="rcard"><div class="ricon">🍽️</div><div><div class="rtitle">Structure tes repas</div><div class="rtext">Ton vrai problème c'est l'irrégularité. 4 repas fixes (petit-déj, déjeuner, collation, dîner) règlent déjà la moitié du problème. Onglet Nutrition pour le détail.</div></div></div>
+  <div class="rcard" style="border-color:rgba(245,185,66,.25);"><div class="ricon">✏️</div><div style="flex:1;"><div class="rtitle">Modifier un exercice</div><div class="rtext">Machine prise ou exercice qui ne passe pas ? Déplie l'exercice dans Séances puis "Modifier". Ton programme d'origine est toujours conservé.</div>
+    <button class="btn-restore" style="width:100%;margin-top:10px;" onclick="restoreAll()">↺ Remettre tout le programme d'origine</button>
+  </div></div>
 </div>
 </div>
 <nav class="bnav">
   <div class="ni active" onclick="switchMain('planning',this)"><div class="ni-icon">📅</div><div class="ni-label">Planning</div><div class="ni-bar"></div></div>
   <div class="ni" onclick="switchMain('seances',this)"><div class="ni-icon">🏋️</div><div class="ni-label">Séances</div><div class="ni-bar"></div></div>
   <div class="ni" onclick="switchMain('tracker',this)"><div class="ni-icon">📈</div><div class="ni-label">Suivi</div><div class="ni-bar"></div></div>
+  <div class="ni" onclick="switchMain('nutrition',this)"><div class="ni-icon">🥗</div><div class="ni-label">Nutrition</div><div class="ni-bar"></div></div>
   <div class="ni" onclick="switchMain('charges',this)"><div class="ni-icon">⚖️</div><div class="ni-label">Charges</div><div class="ni-bar"></div></div>
   <div class="ni" onclick="switchMain('regles',this)"><div class="ni-icon">📋</div><div class="ni-label">Règles</div><div class="ni-bar"></div></div>
 </nav>
+<!-- EDIT EXO -->
+<div class="eov" id="eov" onclick="closeEditBg(event)">
+  <div class="esheet">
+    <div class="stitle">✏️ Modifier l'exercice</div>
+    <div class="ssub2">Remplace un exercice quand le matériel est pris ou qu'il ne te convient pas. Ton programme d'origine est conservé.</div>
+    <div class="orig-box" id="edit-orig"></div>
+    <div class="fl">Nom de l'exercice</div>
+    <input type="text" id="edit-name" placeholder="ex : Développé incliné machine">
+    <div class="irow">
+      <div><div class="fl">Séries × reps</div><input type="text" id="edit-sets" placeholder="4×8-10"></div>
+      <div><div class="fl">Récup</div><input type="text" id="edit-recup" placeholder="2min"></div>
+    </div>
+    <div style="margin-top:10px;"><div class="fl">Muscles travaillés</div>
+      <input type="text" id="edit-muscles" placeholder="Pecs · Triceps">
+    </div>
+    <div style="margin-top:10px;"><div class="fl">Type de saisie dans le suivi</div>
+      <select id="edit-type">
+        <option value="reps">Charge + répétitions</option>
+        <option value="time">Durée (gainage, isométrie)</option>
+        <option value="cardio">Cardio (durée + distance)</option>
+      </select>
+    </div>
+    <button class="btn-p" onclick="saveEdit()">✓ Enregistrer la modification</button>
+    <button class="btn-restore" style="width:100%;margin-top:8px;" onclick="restoreFromEdit()">↺ Remettre l'exercice d'origine</button>
+    <button class="btn-sec" style="width:100%;margin-top:8px;" onclick="closeEdit()">Annuler</button>
+  </div>
+</div>
 <!-- REST TIMER -->
 <div class="tov" id="tov">
   <div class="ttitle">REPOS</div>
@@ -450,6 +575,7 @@ button:active{transform:scale(.96);opacity:.85;}
 
 <script>
 const ED={
+
   lun:{badge:'Push · Pecs prioritaire',dur:'70–80 min',warmup:['4 min rameur ou vélo','Rotations épaules + cercles bras : 1 min','Band pull-apart élastique : 2×20','Étirement pec au mur : 30 sec/côté','2 séries légères développé incliné (40-50%)'],exos:[
     {n:1,name:'Développé incliné haltères 30°',muscles:'Haut pecs · Deltoïde antérieur · Triceps',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Pecs',why:'En PREMIER car le haut des pecs est ta zone faible. Tu attaques ton point faible quand tu es le plus frais et le plus fort. C\'est la règle d\'or de la priorisation : le premier exercice reçoit ton énergie maximale.',exec:'Inclinaison 30° max. Descends lentement (2-3 sec), étirement complet en bas. Pousse explosif. 8 reps propres sur les 4 séries → +1kg.',esth:'Le haut des pecs = le "shelf" sous la clavicule, la zone qui donne le pec plein et bombé que tu cherches.',judo:null,charge:'Départ : 26-28 kg/main · Objectif : 32 kg'},
     {n:2,name:'Développé couché haltères',muscles:'Pecs global · Triceps · Épaules avant',sets:'4×8-10',recup:'2min',badge:'bh',bl:'Hypertrophie · Pecs',why:'Construit l\'épaisseur globale du pec. Les haltères donnent une amplitude supérieure à la barre — étirement plus profond = plus de fibres recrutées sur ta zone faible.',exec:'Descente contrôlée 2 sec, étirement complet. Squeeze les pecs en haut. Ne verrouille pas les coudes.',esth:'Épaisseur et densité du pectoral entier.',judo:null,charge:'Départ : 28-30 kg/main · Objectif : 34 kg'},
@@ -460,6 +586,7 @@ const ED={
     {n:7,name:'Barre au front (skull crusher)',muscles:'Triceps (longue portion)',sets:'4×8-10',recup:'1min45',badge:'bf',bl:'Force · Triceps',why:'TA PRIORITÉ bras. Le triceps fait 60% du volume du bras — c\'est lui qui donne le bras épais, pas le biceps. La barre au front cible la longue portion, la plus volumineuse.',exec:'Allongé, barre EZ. Descends vers le front en gardant les coudes fixes et serrés. Étirement complet derrière la tête possible.',esth:'Le triceps en fer à cheval, l\'arrière du bras qui donne l\'épaisseur de profil.',judo:null,charge:'Départ : 20-30 kg barre EZ · Objectif : progression constante'},
     {n:8,name:'Triceps corde poulie',muscles:'Triceps (finition)',sets:'3×12-15',recup:'1min',badge:'bi',bl:'Isolation · Triceps',why:'Finit le triceps en congestion. Écarte la corde en bas pour contracter la longue portion à fond. Volume supplémentaire sur ta zone prioritaire.',exec:'Coudes fixes collés au corps. Descends et écarte la corde en bas. Squeeze 1 sec. Contrôle la remontée.',esth:'Définition et stries du triceps.',judo:null,charge:'Départ : 20-30 kg poulie · Congestion recherchée'}
   ]},
+
   mar:{badge:'Pull · Dos + Biceps',dur:'70–75 min',warmup:['4 min rameur','Rotations épaules + band pull-apart : 2×20','Suspension à la barre : 2×20 sec','Tractions légères : 1×5','2 séries légères rowing'],exos:[
     {n:1,name:'Tractions pronation lestées',muscles:'Grand dorsal · Biceps · Haut du dos',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Largeur',why:'Le meilleur exo pour la largeur du dos et la forme en V. Lesté en force pour développer la densité. Ton dos est déjà bon (judo), on le rend exceptionnel.',exec:'Prise un peu plus large que les épaules. Coudes vers le bas et l\'arrière. Menton au-dessus de la barre. Descente contrôlée complète.',esth:'Largeur du dos = taille qui paraît plus fine, effet V.',judo:null,charge:'Départ : +5-10 kg · Objectif : +15 kg'},
     {n:2,name:'Rowing barre buste penché',muscles:'Dos épaisseur · Rhomboïdes · Trapèzes',sets:'4×8-10',recup:'2min',badge:'bf',bl:'Force · Épaisseur',why:'Largeur (tractions) + épaisseur (rowing) = dos complet en 3D. Le rowing barre permet la charge la plus lourde pour l\'épaisseur centrale du dos.',exec:'Buste penché à 45°, dos droit gainé. Tire la barre vers le nombril. Serre les omoplates en fin. Contrôle la descente.',esth:'Épaisseur et relief du dos, visible de profil.',judo:null,charge:'Départ : 50-60 kg · Objectif : progression'},
@@ -470,13 +597,8 @@ const ED={
     {n:7,name:'Curl incliné haltères',muscles:'Biceps (longue portion · pic)',sets:'3×10-12',recup:'1min15',badge:'bh',bl:'Étirement · Pic',why:'CRÉE LE PIC qui te manque. Bras derrière le corps sur banc incliné = étirement maximal de la longue portion du biceps, celle qui forme le pic quand tu contractes.',exec:'Banc incliné 45-60°. Bras pendants derrière le plan du corps. Curl sans bouger les coudes. Étirement complet en bas.',esth:'Le pic du biceps, la bosse haute quand tu contractes.',judo:null,charge:'Départ : 10-12 kg/main · Étirement prioritaire'},
     {n:8,name:'Curl marteau',muscles:'Brachial · Avant-bras',sets:'3×12',recup:'1min',badge:'bi',bl:'Isolation',why:'Le brachial passe SOUS le biceps et le pousse vers le haut — il augmente le pic et l\'épaisseur du bras vu de profil. Travaille aussi l\'avant-bras.',exec:'Prise marteau (paumes face à face). Coudes fixes. Monte et contrôle. Alterné ou simultané.',esth:'Épaisseur latérale du bras + avant-bras développé.',judo:null,charge:'Départ : 12-14 kg/main'}
   ]},
-  mer:{badge:'Cardio + Abdos + Récup',dur:'45–50 min',warmup:['5 min marche ou vélo très léger pour démarrer','Mobilisation hanches et chevilles : 2 min'],cardio:'25-30 min cardio zone 2 — vélo, marche inclinée ou rameur lent. Intensité modérée : tu dois pouvoir tenir une conversation. Brûle du gras sans toucher au muscle ni à la récup.',exos:[
-    {n:1,name:'Relevés de jambes suspendus',muscles:'Bas abdos · Fléchisseurs de hanche',sets:'4×12-15',recup:'1min',badge:'bs',bl:'Abdos bas',why:'Le bas des abdos est la zone la plus dure à révéler et la plus visible quand tu sèches. La sèche les découvre, cet exo les construit.',exec:'Suspendu à la barre. Monte les genoux (ou jambes tendues en avancé) jusqu\'à soulever le bassin. Contrôle la descente, pas d\'élan.',esth:'Le bas du ventre et le V-cut qui plonge vers les hanches.',judo:null,charge:'Genoux fléchis → jambes tendues quand maîtrisé'},
-    {n:2,name:'Crunch à la poulie',muscles:'Abdos haut · Grand droit',sets:'4×15',recup:'1min',badge:'bs',bl:'Abdos haut',why:'Permet de charger les abdos en résistance progressive, contrairement aux crunchs au poids du corps. Les abdos sont un muscle : ils grossissent avec de la charge.',exec:'À genoux, corde derrière la nuque. Enroule le buste vers le bas en contractant les abdos. Le mouvement vient des abdos, pas des bras.',esth:'Épaisseur et relief des tablettes du haut.',judo:null,charge:'Départ : 25-40 kg · Progression possible'},
-    {n:3,name:'Gainage planche',muscles:'Transverse · Gainage profond',sets:'3×45sec',recup:'45sec',badge:'bs',bl:'Gainage',why:'Le transverse est la ceinture abdominale profonde — il garde le ventre plat au repos et protège le dos. Base de tout tronc solide.',exec:'Corps parfaitement aligné tête-talons. Serre les abdos et les fessiers. Ne creuse pas le bas du dos.',esth:'Ventre plat et tronc gainé.',judo:null,charge:'Poids de corps · Ajoute un lest sur le dos en progression'},
-    {n:4,name:'Gainage latéral (side plank)',muscles:'Obliques · Stabilisateurs',sets:'3×30sec/côté',recup:'45sec',badge:'bs',bl:'Obliques',why:'Les obliques encadrent les abdos et créent le V-cut latéral. Attention : pas de charge lourde en rotation pour ne pas épaissir la taille.',exec:'Sur le côté, corps aligné, hanches hautes. Tiens la position. Progression : lever la jambe du dessus.',esth:'Les lignes latérales du V-cut.',judo:null,charge:'Poids de corps'}
-  ]},
-  jeu:{badge:'Legs · Jambes complètes',dur:'70–75 min',warmup:['4 min vélo','Cercles de hanches + fente basse rotation : 2 min','Squat poids de corps : 2×12','Hip flexor stretch : 1 min/côté','2 séries légères squat (40-50%)'],explo:'Squat jump : 3×5 · récup 60 sec · poids de corps · intention maximale · garde l\'explosivité acquise au judo.',exos:[
+
+  mer:{badge:'Legs · Jambes complètes',dur:'70–75 min',warmup:['4 min vélo','Cercles de hanches + fente basse rotation : 2 min','Squat poids de corps : 2×12','Hip flexor stretch : 1 min/côté','2 séries légères squat (40-50%)'],explo:'Squat jump : 3×5 · récup 60 sec · poids de corps · intention maximale · garde l\'explosivité acquise au judo.',exos:[
     {n:1,name:'Squat barre',muscles:'Quadriceps · Fessiers · Gainage',sets:'4×6-8',recup:'3min',badge:'bf',bl:'Force',why:'Le roi des exercices de jambe. Déclenche le plus de testostérone et d\'hormone de croissance — bénéfice sur TOUT le corps, y compris tes pecs et bras. À garder lourd même en sèche pour protéger le muscle.',exec:'Barre sur les trapèzes. Descends au moins parallèle, genoux dans l\'axe des orteils. Pousse fort dans le sol à la remontée.',esth:'Cuisses volumineuses, fessiers hauts, densité générale.',judo:null,charge:'Départ : 80-90 kg · Maintien en sèche prioritaire'},
     {n:2,name:'Soulevé de terre roumain',muscles:'Ischios · Fessiers · Lombaires',sets:'4×8-10',recup:'2min30',badge:'bf',bl:'Force-Hypertrophie',why:'Meilleur exo pour ischios et fessiers ensemble, sous étirement maximal. Équilibre l\'avant (quadri) et l\'arrière de la cuisse pour des jambes complètes.',exec:'Hanches vers l\'arrière, jambes quasi-tendues. Barre proche des jambes. Fort étirement ischios en bas. Remonte par les hanches.',esth:'Fessiers hauts et ronds, arrière de cuisse développé.',judo:null,charge:'Départ : 70-90 kg · La sensation prime sur la charge'},
     {n:3,name:'Presse à cuisses',muscles:'Quadriceps · Fessiers',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Après le squat lourd, continue le volume sans fatigue nerveuse. Dos supporté = tu peux pousser fort en sécurité.',exec:'Pieds milieu de plateforme pour les quads. Amplitude complète, genoux vers la poitrine. Ne verrouille pas en haut.',esth:'Volume des cuisses.',judo:null,charge:'Départ : 100-140 kg · Progression'},
@@ -485,7 +607,8 @@ const ED={
     {n:6,name:'Mollets debout',muscles:'Gastrocnémien',sets:'4×12-15',recup:'1min',badge:'bi',bl:'Isolation',why:'Le gastrocnémien = la partie visible et bombée du mollet. Amplitude totale impérative, c\'est un muscle têtu qui demande de la rigueur.',exec:'Étirement maximal en bas (talon sous le niveau), contraction forte en haut tenue 2 sec. Lent.',esth:'Volume et galbe du mollet.',judo:null,charge:'Départ : PC + 20-40 kg'},
     {n:7,name:'Mollets assis',muscles:'Soléaire',sets:'3×15-20',recup:'1min',badge:'bi',bl:'Isolation',why:'Le soléaire est sous le gastrocnémien et le pousse vers l\'extérieur = base du mollet. Genou fléchi = il cible spécifiquement le soléaire.',exec:'Amplitude maximale. Étirement complet, contraction complète. Reps élevées car fibres endurantes.',esth:'Épaisseur latérale du mollet.',judo:null,charge:'Départ : machine + 20-30 kg'}
   ]},
-  ven:{badge:'Upper · 2e dose Pecs + Bras',dur:'70–80 min',warmup:['4 min rameur','Rotations épaules + band pull-apart : 2×20','Étirement pec au mur : 30 sec/côté','2 séries légères développé couché (40-50%)'],exos:[
+
+  jeu:{badge:'Upper · 2e dose Pecs + Bras',dur:'70–80 min',warmup:['4 min rameur','Rotations épaules + band pull-apart : 2×20','Étirement pec au mur : 30 sec/côté','2 séries légères développé couché (40-50%)'],exos:[
     {n:1,name:'Développé couché barre',muscles:'Pecs · Triceps · Épaules avant',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Pecs',why:'2e dose pecs de la semaine — c\'est ce qui crée le rattrapage. Cette fois à la barre et en force lourde pour développer la puissance de poussée et la densité. Variante différente du lundi (haltères) pour un stimulus complémentaire.',exec:'Barre touche le bas des pecs. Coudes à 45°, pas écartés à 90°. Pousse explosif, ne rebondis pas sur la poitrine.',esth:'Force et densité du pectoral, base de la masse.',judo:null,charge:'Départ : 55-65 kg · Objectif : 75-80 kg'},
     {n:2,name:'Développé incliné haltères',muscles:'Haut pecs · Deltoïde antérieur',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie · Pecs',why:'Re-cible ta zone faible (haut des pecs) en volume cette fois, après l\'avoir travaillée en force lundi. Force + volume sur la même zone = rattrapage accéléré.',exec:'30° d\'inclinaison. Amplitude complète, étirement en bas. Plus léger que lundi, focus sur la congestion.',esth:'Le haut du pec, encore et toujours ta priorité.',judo:null,charge:'Départ : 22-26 kg/main'},
     {n:3,name:'Écarté incliné haltères',muscles:'Pec haut · Étirement',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Isolation · Étirement',why:'L\'étirement sous charge est un puissant signal de croissance. L\'écarté incliné étire le haut du pec à fond — parfait pour développer la zone en retard.',exec:'Banc incliné. Bras légèrement fléchis, descends en grand arc jusqu\'à sentir l\'étirement. Remonte en serrant les pecs.',esth:'Étirement et galbe du haut du pec.',judo:null,charge:'Départ : 10-14 kg/main · Étirement contrôlé'},
@@ -494,18 +617,30 @@ const ED={
     {n:6,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×15',recup:'1min',badge:'bi',bl:'Isolation · Largeur',why:'2e dose épaules de la semaine en volume léger. Le deltoïde moyen récupère vite et répond bien à la fréquence élevée.',exec:'Penché léger, tempo lent, pas d\'élan. Brûlure recherchée sur les dernières reps.',esth:'Largeur d\'épaule, carrure.',judo:null,charge:'Départ : 8-10 kg/main'},
     {n:7,name:'Superset Curl + Triceps',muscles:'Biceps + Triceps',sets:'4×12+12',recup:'1min15',badge:'bi',bl:'Superset · Bras',why:'2e (triceps) et 3e (biceps) dose bras de la semaine. Le superset agoniste/antagoniste permet un max de volume en peu de temps avec une congestion énorme — idéal pour finir et rattraper les bras.',exec:'Curl haltères 12 reps, enchaîne immédiatement triceps poulie 12 reps. Repos 1min15 après les deux. 4 tours.',esth:'Congestion et rattrapage des deux faces du bras.',judo:null,charge:'Curl : 10-12 kg/main · Triceps : 20-30 kg poulie'}
   ]},
-  sam:{badge:'Lower léger + Bras bonus',dur:'55–65 min',warmup:['4 min vélo','90/90 hanches + pigeon : 2 min/côté','Squat poids de corps : 2×12','2 séries légères hip thrust'],exos:[
-    {n:1,name:'Hip thrust barre',muscles:'Grand fessier · Ischios',sets:'4×10-12',recup:'2min',badge:'bh',bl:'Hypertrophie · Fessiers',why:'Meilleure activation du grand fessier (mesuré en EMG). Séance jambes plus légère que jeudi pour ne pas surcharger la récup en sèche, mais on garde le développement fessier.',exec:'Dos sur banc, barre sur les hanches (avec pad). Pousse par les talons, alignement complet en haut. Contracte les fessiers 1 sec. Ne cambre pas le bas du dos.',esth:'Fessiers ronds, hauts et puissants.',judo:null,charge:'Départ : 60-80 kg · Objectif : 100 kg'},
-    {n:2,name:'Fentes bulgares',muscles:'Fessiers · Quadriceps · Équilibre',sets:'3×10/jambe',recup:'1min45',badge:'bh',bl:'Hypertrophie · Unilatéral',why:'Pied arrière surélevé = étirement fessier maximal en bas. Unilatéral = corrige les déséquilibres et travaille l\'équilibre. Excellent rapport résultat/charge.',exec:'Pied arrière sur banc. Descends à la verticale, genou avant dans l\'axe. Pousse sur le talon avant. Buste légèrement penché pour le fessier.',esth:'Fessiers galbés, séparation fessier/cuisse.',judo:null,charge:'Départ : 14-18 kg/main'},
-    {n:3,name:'Mollets debout',muscles:'Gastrocnémien',sets:'4×15',recup:'45sec',badge:'bi',bl:'Isolation',why:'Les mollets supportent (et demandent) une fréquence élevée. 2e dose de la semaine pour ce muscle têtu.',exec:'Amplitude totale, étirement et contraction complètes. Tempo contrôlé.',esth:'Volume du mollet.',judo:null,charge:'Départ : PC + 20-40 kg'},
-    {n:4,name:'Curl barre EZ (bonus)',muscles:'Biceps',sets:'3×10-12',recup:'1min15',badge:'bi',bl:'Bonus bras',why:'OPTIONNEL mais recommandé pour ton rattrapage. 4e dose biceps de la semaine. Les bras sont de petits muscles qui récupèrent vite — cette fréquence élevée est ce qui les fait exploser.',exec:'Coudes fixes, pas de balancier. Contrôle la descente. Si tu es trop fatigué de la semaine, tu peux sauter ce bonus.',esth:'Volume du biceps.',judo:null,charge:'Départ : 25-30 kg · Optionnel selon fatigue'},
-    {n:5,name:'Dips ou triceps poulie (bonus)',muscles:'Triceps',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Bonus bras',why:'OPTIONNEL. 3e dose triceps de la semaine sur ta priorité n°1 du bras. Finit le rattrapage. Saute-le si la fatigue de la semaine est trop élevée.',exec:'Dips buste droit (focus triceps) ou triceps poulie. Amplitude complète, squeeze en bas.',esth:'Épaisseur du triceps.',judo:null,charge:'Dips : PC ou lesté · Poulie : 20-30 kg · Optionnel'}
+  ven:{badge:'Lower + Épaules + Abdos',dur:'65–75 min',warmup:['4 min vélo','90/90 hanches + pigeon : 2 min/côté','Rotations épaules + band pull-apart : 2×20','Squat poids de corps : 2×12','2 séries légères hip thrust'],exos:[
+    {n:1,name:'Hip thrust barre',muscles:'Grand fessier · Ischios',sets:'4×10-12',recup:'2min',badge:'bh',bl:'Hypertrophie · Fessiers',why:'2e séance jambes de la semaine, axée fessiers et postérieur. Meilleure activation du grand fessier en EMG. Complète le squat lourd du mercredi sans re-solliciter autant les quadriceps.',exec:'Dos sur banc, barre sur les hanches (pad). Pousse par les talons, alignement complet en haut. Contracte les fessiers 1 sec. Ne cambre pas le bas du dos.',esth:'Fessiers ronds, hauts et puissants.',judo:null,charge:'Départ : 60-80 kg · Objectif : 100 kg'},
+    {n:2,name:'Fentes bulgares',muscles:'Fessiers · Quadriceps · Équilibre',sets:'3×10/jambe',recup:'1min45',badge:'bh',bl:'Hypertrophie · Unilatéral',why:'Pied arrière surélevé = étirement fessier maximal. Unilatéral = corrige les déséquilibres gauche/droite et travaille l\'équilibre, utile pour le retour au judo.',exec:'Pied arrière sur banc. Descends à la verticale, genou avant dans l\'axe. Pousse sur le talon avant. Buste légèrement penché pour cibler le fessier.',esth:'Fessiers galbés, séparation fessier/cuisse nette.',judo:null,charge:'Départ : 14-18 kg/main'},
+    {n:3,name:'Leg curl allongé',muscles:'Ischio-jambiers',sets:'3×10-12',recup:'1min15',badge:'bi',bl:'Isolation',why:'Isole les ischios en contraction. Équilibre avec le travail quadriceps du mercredi. Prévention n°1 des blessures de genou et d\'ischios, important avant la reprise judo.',exec:'Descente lente obligatoire 3 sec. Contraction forte en haut. Le tempo prime sur la charge.',esth:'Arrière de cuisse galbé.',judo:null,charge:'Départ : 35-50 kg machine'},
+    {n:4,name:'Développé militaire haltères',muscles:'Deltoïdes · Triceps',sets:'4×8-10',recup:'1min45',badge:'bh',bl:'Hypertrophie · Épaules',why:'2e dose épaules de la semaine en force cette fois. Les épaules sont ton point fort, on les maintient pleines et rondes. Placé ici car la séance jambes légère laisse de l\'énergie pour le haut du corps.',exec:'Haltères à hauteur des oreilles, coudes à 45°. Pousse en arc naturel. Gainage serré, ne cambre pas.',esth:'Épaules rondes et larges, la carrure.',judo:null,charge:'Départ : 24-26 kg/main · Objectif : 28 kg'},
+    {n:5,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×15',recup:'1min',badge:'bi',bl:'Isolation · Largeur',why:'Finit les épaules en congestion. Le deltoïde moyen donne la largeur, il récupère vite et adore la fréquence élevée.',exec:'Léger penché en avant, tempo lent, pas d\'élan. Brûlure recherchée sur les dernières reps.',esth:'Largeur d\'épaule, effet V.',judo:null,charge:'Départ : 8-10 kg/main'},
+    {n:6,name:'Relevés de jambes suspendus',muscles:'Bas abdos · Fléchisseurs de hanche',sets:'4×12-15',recup:'1min',badge:'bs',bl:'Abdos bas',why:'Le bas des abdos est la zone la plus dure à révéler et la plus visible quand tu sèches. La sèche les découvre, cet exo les construit. Zone clé pour ton objectif ventre plat.',exec:'Suspendu à la barre. Monte les genoux (ou jambes tendues en avancé) jusqu\'à soulever le bassin. Contrôle la descente, pas d\'élan.',esth:'Le bas du ventre et le V-cut qui plonge vers les hanches.',judo:null,charge:'Genoux fléchis → jambes tendues quand maîtrisé'},
+    {n:7,name:'Crunch à la poulie',muscles:'Abdos haut · Grand droit',sets:'4×15',recup:'45sec',badge:'bs',bl:'Abdos haut',why:'Charge les abdos en résistance progressive. Les abdos sont un muscle : ils grossissent avec de la charge, pas seulement au poids du corps. Combiné à la sèche = tablettes visibles.',exec:'À genoux, corde derrière la nuque. Enroule le buste vers le bas en contractant les abdos. Le mouvement vient des abdos, pas des bras.',esth:'Épaisseur et relief des tablettes du haut.',judo:null,charge:'Départ : 25-40 kg · Progression possible'}
+  ]},
+  sam:{badge:'Cardio léger ou Repos',dur:'30–40 min · optionnel',warmup:['Marche 5 min pour démarrer en douceur'],cardio:'OPTIONNEL. Si tu te sens bien : 30-40 min cardio zone 2 (vélo, marche inclinée) pour ajouter de la dépense sur la semaine. Si tu es fatigué de la semaine : repos complet ou simple marche. Écoute ton corps — en sèche, le repos fait autant progresser que l\'entraînement.',exos:[
+    {n:1,name:'Gainage planche',muscles:'Transverse · Gainage profond',sets:'3×45sec',recup:'45sec',badge:'bs',bl:'Gainage',why:'Optionnel. Le transverse est la ceinture abdominale profonde qui garde le ventre plat au repos et protège le dos. Idéal en finition de semaine légère.',exec:'Corps parfaitement aligné tête-talons. Serre les abdos et les fessiers. Ne creuse pas le bas du dos.',esth:'Ventre plat et tronc gainé.',judo:null,charge:'Poids de corps · Ajoute un lest en progression'},
+    {n:2,name:'Gainage latéral (side plank)',muscles:'Obliques · Stabilisateurs',sets:'3×30sec/côté',recup:'45sec',badge:'bs',bl:'Obliques',why:'Optionnel. Les obliques encadrent les abdos et créent le V-cut latéral. Pas de charge en rotation pour ne pas épaissir la taille.',exec:'Sur le côté, corps aligné, hanches hautes. Tiens la position. Progression : lever la jambe du dessus.',esth:'Les lignes latérales du V-cut.',judo:null,charge:'Poids de corps'}
   ]}
 };
 const KEY_EXOS=['Développé incliné haltères 30°','Développé couché barre','Dips lestés (buste penché)','Tractions pronation lestées','Barre au front (skull crusher)','Curl barre EZ','Squat barre'];
 const TARGETS={'Développé incliné haltères 30°':{reps:'6-8',sets:4},'Développé couché haltères':{reps:'8-10',sets:4},'Dips lestés (buste penché)':{reps:'8-10',sets:3},'Écarté poulie vis-à-vis':{reps:'12-15',sets:3},'Développé militaire haltères':{reps:'8-10',sets:3},'Élévations latérales':{reps:'12-15',sets:4},'Barre au front (skull crusher)':{reps:'8-10',sets:4},'Triceps corde poulie':{reps:'12-15',sets:3},'Tractions pronation lestées':{reps:'6-8',sets:4},'Rowing barre buste penché':{reps:'8-10',sets:4},'Tirage horizontal poulie':{reps:'10-12',sets:3},'Tirage vertical prise neutre':{reps:'10-12',sets:3},'Facepull corde':{reps:'15-20',sets:4},'Curl barre EZ':{reps:'8-10',sets:4},'Curl incliné haltères':{reps:'10-12',sets:3},'Curl marteau':{reps:'12',sets:3},'Squat barre':{reps:'6-8',sets:4},'Soulevé de terre roumain':{reps:'8-10',sets:4},'Presse à cuisses':{reps:'10-12',sets:3},'Leg curl allongé':{reps:'10-12',sets:3},'Leg extension':{reps:'12-15',sets:3},'Mollets debout':{reps:'12-15',sets:4},'Développé couché barre':{reps:'6-8',sets:4},'Développé incliné haltères':{reps:'10-12',sets:3},'Rowing haltère unilatéral':{reps:'10-12',sets:3},'Hip thrust barre':{reps:'10-12',sets:4},'Fentes bulgares':{reps:'10',sets:3}};
 
 const RECUP_SEC={'bf':150,'bh':105,'bi':60,'bs':45,'be':60};
+// Type de saisie par exercice : 'reps' (kg+reps), 'time' (durée+lest), 'cardio' (min+km)
+const EXO_TYPE={
+  'Gainage planche':'time','Gainage latéral (side plank)':'time','Gainage planche lestée':'time',
+  'Cardio zone 2':'cardio','Marche inclinée':'cardio','Course tapis':'cardio','Vélo':'cardio','Rameur':'cardio'
+};
+function exoType(name){return EXO_TYPE[name]||'reps';}
 let sessions=[];
 try{
   // Migration : ancienne clé → nouvelle clé
@@ -534,17 +669,41 @@ function getLP(exo){
   const prev=sessions.filter(s=>s.exo===exo);
   if(!prev.length)return null;
   const last=prev[prev.length-1];
+  const type=exoType(exo);
+  if(type==='cardio'){
+    const s=last.sets[0]||{};
+    return{date:last.date,type,min:s.min||0,km:s.km||0};
+  }
+  if(type==='time'){
+    const mSec=Math.max(...last.sets.map(s=>s.sec||0));
+    const s=last.sets.find(x=>(x.sec||0)===mSec)||{};
+    return{date:last.date,type,sets:last.sets.length,sec:mSec,kg:s.kg||0};
+  }
   const mKg=Math.max(...last.sets.map(s=>s.kg||0));
   const r=last.sets.find(s=>(s.kg||0)===mKg);
-  return{date:last.date,sets:last.sets.length,mKg,reps:r?.reps||0};
+  return{date:last.date,type,sets:last.sets.length,mKg,reps:r?.reps||0};
+}
+
+function switchFields(exo){
+  const type=exoType(exo);
+  document.getElementById('fields-reps').style.display=type==='reps'?'grid':'none';
+  document.getElementById('fields-time').style.display=type==='time'?'grid':'none';
+  document.getElementById('fields-cardio').style.display=type==='cardio'?'grid':'none';
+  const btn=document.getElementById('add-btn');
+  if(btn)btn.textContent=type==='cardio'?'+ Ajouter la session cardio':type==='time'?'+ Ajouter cette série':'+ Ajouter cette série';
 }
 
 function showLP(){
   const exo=document.getElementById('inp-exo').value;
+  switchFields(exo);
   const box=document.getElementById('lp-box');
   const p=getLP(exo);
   if(!p){box.classList.remove('show');return;}
-  box.innerHTML=`<strong>Dernière fois</strong> (${fmtShort(p.date)}) — ${p.sets} séries · max <strong>${Math.round(p.mKg)}kg × ${p.reps} reps</strong>`;
+  let txt='';
+  if(p.type==='cardio')txt=`<strong>Dernière fois</strong> (${fmtShort(p.date)}) — <strong>${p.min} min${p.km?' · '+p.km+' km':''}</strong>`;
+  else if(p.type==='time')txt=`<strong>Dernière fois</strong> (${fmtShort(p.date)}) — ${p.sets} séries · max <strong>${p.sec}s${p.kg?' +'+p.kg+'kg':''}</strong>`;
+  else txt=`<strong>Dernière fois</strong> (${fmtShort(p.date)}) — ${p.sets} séries · max <strong>${Math.round(p.mKg)}kg × ${p.reps} reps</strong>`;
+  box.innerHTML=txt;
   box.classList.add('show');
 }
 
@@ -580,6 +739,60 @@ function setTD(sec){
 }
 
 /* SESSIONS */
+/* ═══ MODIFICATIONS PERSO (par-dessus le programme de base) ═══
+   Le programme d'origine (ED) n'est JAMAIS modifié.
+   Les changements sont stockés à part et peuvent être annulés à tout moment. */
+let overrides={};
+try{overrides=JSON.parse(localStorage.getItem('sl_over')||'{}');}catch(e){overrides={};}
+function saveOver(){try{localStorage.setItem('sl_over',JSON.stringify(overrides));}catch(e){}}
+function okey(day,n){return day+'-'+n;}
+// Retourne l'exercice avec ses modifs appliquées (sans toucher à l'original)
+function getExo(day,n){
+  const base=ED[day].exos.find(e=>e.n===n);
+  const ov=overrides[okey(day,n)];
+  if(!ov)return{...base,_mod:false};
+  return{...base,...ov,_mod:true,_baseName:base.name};
+}
+function isMod(day,n){return !!overrides[okey(day,n)];}
+function restoreExo(day,n){
+  delete overrides[okey(day,n)];
+  saveOver();buildSession(day);buildDropdown();
+}
+function restoreAll(){
+  if(!Object.keys(overrides).length){alert('Aucune modification à annuler.');return;}
+  if(!confirm('Remettre TOUS les exercices du programme d\'origine ?\nTes performances enregistrées ne sont pas touchées.'))return;
+  overrides={};saveOver();
+  ['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildDropdown();
+  alert('✓ Programme d\'origine restauré.');
+}
+
+/* ═══ LISTE DÉROULANTE DYNAMIQUE (reflète tes modifications) ═══ */
+const DAY_LABELS={lun:'Lundi Push',mar:'Mardi Pull',mer:'Mercredi Legs',jeu:'Jeudi Upper',ven:'Vendredi Lower + Épaules + Abdos',sam:'Samedi (optionnel)'};
+function buildDropdown(){
+  const sel=document.getElementById('inp-exo');
+  if(!sel)return;
+  const prev=sel.value;
+  let h='';
+  const seen=new Set();
+  ['lun','mar','mer','jeu','ven','sam'].forEach(day=>{
+    h+=`<optgroup label="— ${DAY_LABELS[day]} —">`;
+    ED[day].exos.forEach(e0=>{
+      const e=getExo(day,e0.n);
+      const label=e.name+(e._mod?' ✏️':'');
+      h+=`<option value="${e.name.replace(/"/g,'&quot;')}">${label}</option>`;
+      seen.add(e.name);
+    });
+    h+='</optgroup>';
+  });
+  h+='<optgroup label="— Cardio (midi ou séance) —">';
+  ['Cardio zone 2','Marche inclinée','Course tapis','Vélo','Rameur'].forEach(n=>{
+    if(!seen.has(n))h+=`<option value="${n}">${n}</option>`;
+  });
+  h+='</optgroup>';
+  sel.innerHTML=h;
+  if(prev&&[...sel.options].some(o=>o.value===prev))sel.value=prev;
+}
+
 function buildSession(key){
   const d=ED[key];
   let h=`<div class="shead"><span class="shbadge">${d.badge}</span><span class="shdur">≈ ${d.dur}</span></div>`;
@@ -587,14 +800,20 @@ function buildSession(key){
   d.warmup.forEach(w=>{h+=`<div class="wi">· ${w}</div>`;});h+='</div>';
   if(d.explo){h+=`<div class="explo"><div class="bt">⚡ Bloc explosif</div><div class="wi">· ${d.explo}</div></div>`;}
   if(d.cardio){h+=`<div class="explo" style="background:var(--co2);border-left-color:var(--co);"><div class="bt" style="color:var(--co);">🚴 Cardio sèche</div><div class="wi" style="color:var(--co);">· ${d.cardio}</div></div>`;}
-  d.exos.forEach(e=>{
-    const cid='exo-'+key+'-'+e.n;
+  d.exos.forEach(e0=>{
+    const e=getExo(key,e0.n);
+    const cid='exo-'+key+'-'+e0.n;
     const lp=getLP(e.name);
-    const lpStr=lp?`📊 Dernière fois : ${Math.round(lp.mKg)}kg × ${lp.reps} reps (${fmtShort(lp.date)})`:'';
-    h+=`<div class="ec" id="card-${cid}"><div class="et" onclick="toggleExo('${cid}')">
-      <span class="enum">${e.n}</span>
+    let lpStr='';
+    if(lp){
+      if(lp.type==='cardio')lpStr=`📊 Dernière fois : ${lp.min} min${lp.km?' · '+lp.km+' km':''} (${fmtShort(lp.date)})`;
+      else if(lp.type==='time')lpStr=`📊 Dernière fois : ${lp.sec}s${lp.kg?' +'+lp.kg+'kg':''} (${fmtShort(lp.date)})`;
+      else lpStr=`📊 Dernière fois : ${Math.round(lp.mKg)}kg × ${lp.reps} reps (${fmtShort(lp.date)})`;
+    }
+    h+=`<div class="ec${e._mod?' modded':''}" id="card-${cid}"><div class="et" onclick="toggleExo('${cid}')">
+      <span class="enum">${e0.n}</span>
       <div class="ebody">
-        <div class="ename">${e.name}${e.est?'<span class="est-b">est.</span>':''}</div>
+        <div class="ename">${e.name}${e.est?'<span class="est-b">est.</span>':''}${e._mod?'<span class="mod-b">modifié</span>':''}</div>
         <div class="emuscles">${e.muscles}</div>
         ${lpStr?`<div class="elast">${lpStr}</div>`:''}
         <span class="badge ${e.badge}">${e.bl}</span>
@@ -602,18 +821,81 @@ function buildSession(key){
       <div class="eright"><div class="esets">${e.sets}</div><div class="erecup">⏱ ${e.recup}</div><span class="echev">▾</span></div>
     </div>
     <div class="edet" id="${cid}">
+      ${e._mod?`<div class="mod-note">✏️ Tu as remplacé <strong>${e._baseName}</strong>. Les explications ci-dessous sont celles de l'exercice d'origine.</div>`:''}
       <div class="dl">Pourquoi ?</div><div class="dt">${e.why}</div>
       <div class="dl">Exécution clé</div><div class="dt">${e.exec}</div>
       <div class="chips">
         ${e.esth?`<div class="chip chip-b"><div class="chipl">Esthétique</div>${e.esth}</div>`:''}
-        ${e.judo?`<div class="chip chip-g"><div class="chipl">Judo</div>${e.judo}</div>`:''}
         <div class="chip chip-a" style="min-width:100%;flex:none;"><div class="chipl">Charges recommandées</div>${e.charge}</div>
+      </div>
+      <div class="edit-row">
+        <button class="btn-edit" onclick="event.stopPropagation();openEdit('${key}',${e0.n})">✏️ Modifier cet exercice</button>
+        ${e._mod?`<button class="btn-restore" onclick="event.stopPropagation();restoreExo('${key}',${e0.n})">↺ Remettre l'original</button>`:''}
       </div>
     </div></div>`;
   });
   document.getElementById('sp-'+key).innerHTML=h;
 }
-function toggleExo(id){document.getElementById(id).classList.toggle('open');document.getElementById('card-'+id).classList.toggle('open');}
+/* ═══ ÉDITION D'EXERCICE ═══ */
+let editDay=null,editN=null;
+function openEdit(day,n){
+  editDay=day;editN=n;
+  const base=ED[day].exos.find(e=>e.n===n);
+  const cur=getExo(day,n);
+  document.getElementById('edit-orig').innerHTML=`<strong style="color:var(--tx2);">Exercice d'origine :</strong><br>${base.name}<br>${base.sets} · récup ${base.recup}`;
+  document.getElementById('edit-name').value=cur.name;
+  document.getElementById('edit-sets').value=cur.sets;
+  document.getElementById('edit-recup').value=cur.recup;
+  document.getElementById('edit-muscles').value=cur.muscles;
+  document.getElementById('edit-type').value=exoType(cur.name);
+  document.getElementById('eov').classList.add('show');
+}
+function closeEdit(){document.getElementById('eov').classList.remove('show');}
+function closeEditBg(e){if(e.target===document.getElementById('eov'))closeEdit();}
+function saveEdit(){
+  const name=document.getElementById('edit-name').value.trim();
+  if(!name){const el=document.getElementById('edit-name');el.style.borderColor='var(--rd)';setTimeout(()=>{el.style.borderColor='';},1400);return;}
+  const base=ED[editDay].exos.find(e=>e.n===editN);
+  const ov={
+    name,
+    sets:document.getElementById('edit-sets').value.trim()||base.sets,
+    recup:document.getElementById('edit-recup').value.trim()||base.recup,
+    muscles:document.getElementById('edit-muscles').value.trim()||base.muscles
+  };
+  const type=document.getElementById('edit-type').value;
+  if(type!=='reps')EXO_TYPE[name]=type; else delete EXO_TYPE[name];
+  ov._type=type;
+  // Si identique à l'original sur tous les points → on retire la modif
+  if(ov.name===base.name&&ov.sets===base.sets&&ov.recup===base.recup&&ov.muscles===base.muscles){
+    delete overrides[okey(editDay,editN)];
+  }else{
+    overrides[okey(editDay,editN)]=ov;
+  }
+  saveOver();buildSession(editDay);buildDropdown();closeEdit();
+}
+function restoreFromEdit(){
+  if(!confirm('Remettre l\'exercice d\'origine ?'))return;
+  restoreExo(editDay,editN);closeEdit();
+}
+// Réapplique les types personnalisés au chargement
+Object.values(overrides).forEach(o=>{if(o&&o._type&&o._type!=='reps')EXO_TYPE[o.name]=o._type;});
+
+function toggleExo(id){
+  const det=document.getElementById(id);
+  const card=document.getElementById('card-'+id);
+  const wasOpen=det.classList.contains('open');
+  det.classList.toggle('open');card.classList.toggle('open');
+  // Si on vient d'ouvrir, on s'assure que le contenu est visible (scroll doux)
+  if(!wasOpen){
+    setTimeout(()=>{
+      const rect=card.getBoundingClientRect();
+      const navH=90;
+      if(rect.bottom>window.innerHeight-navH){
+        card.scrollIntoView({behavior:'smooth',block:'center'});
+      }
+    },250);
+  }
+}
 
 /* CHARGES */
 function buildCharges(){
@@ -648,25 +930,51 @@ function buildCharges(){
     {n:'Mollets assis',f:null,h:null,i:'Machine+20-30kg',o:'Amplitude',est:true},
   ];
   function tbl(data){
-    return`<div style="overflow:hidden;border:0.5px solid var(--bd);border-radius:var(--rl);margin-bottom:12px;"><table class="cht"><thead><tr><th style="width:34%">Exercice</th><th>Force</th><th>Hypertro.</th><th>Isolation</th><th>Objectif</th></tr></thead><tbody>${data.map(r=>`<tr><td style="font-weight:700;">${r.n}${r.est?'<span class="est-b">est.</span>':''}</td><td>${r.f?`<span class="zf">${r.f}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td>${r.h?`<span class="zh">${r.h}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td>${r.i?`<span class="zi">${r.i}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td style="font-size:11px;color:var(--tx2);">${r.o}</td></tr>`).join('')}</tbody></table></div>`;
+    return`<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border:0.5px solid var(--bd);border-radius:var(--rl);margin-bottom:12px;"><table class="cht" style="min-width:460px;"><thead><tr><th style="width:34%">Exercice</th><th>Force</th><th>Hypertro.</th><th>Isolation</th><th>Objectif</th></tr></thead><tbody>${data.map(r=>`<tr><td style="font-weight:700;">${r.n}${r.est?'<span class="est-b">est.</span>':''}</td><td>${r.f?`<span class="zf">${r.f}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td>${r.h?`<span class="zh">${r.h}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td>${r.i?`<span class="zi">${r.i}</span>`:'<span style="color:var(--tx4)">—</span>'}</td><td style="font-size:11px;color:var(--tx2);">${r.o}</td></tr>`).join('')}</tbody></table></div>`;
   }
   document.getElementById('cp-haut').innerHTML=tbl(haut);
   document.getElementById('cp-bas').innerHTML=tbl(bas);
 }
 
 /* TRACKER */
+function flashErr(ids){ids.forEach(id=>{const el=document.getElementById(id);el.style.borderColor='var(--rd)';setTimeout(()=>{el.style.borderColor='';},1400);});}
+
 function addSet(){
   const exo=document.getElementById('inp-exo').value;
-  const kg=parseFloat(document.getElementById('inp-kg').value);
-  const reps=parseInt(document.getElementById('inp-reps').value);
-  if(isNaN(kg)||isNaN(reps)){['inp-kg','inp-reps'].forEach(id=>{const el=document.getElementById(id);el.style.borderColor='var(--rd)';setTimeout(()=>{el.style.borderColor='';},1400);});return;}
+  const type=exoType(exo);
+  let set=null,timerInfo='';
+  if(type==='cardio'){
+    const min=parseFloat(document.getElementById('inp-cardio-min').value);
+    const km=parseFloat(document.getElementById('inp-cardio-km').value);
+    if(isNaN(min)){flashErr(['inp-cardio-min']);return;}
+    set={min,km:isNaN(km)?0:km,id:Date.now().toString()};
+    timerInfo=`${min} min${!isNaN(km)?' · '+km+' km':''}`;
+  }else if(type==='time'){
+    const sec=parseInt(document.getElementById('inp-time').value);
+    const kg=parseFloat(document.getElementById('inp-time-kg').value);
+    if(isNaN(sec)){flashErr(['inp-time']);return;}
+    set={sec,kg:isNaN(kg)?0:kg,id:Date.now().toString()};
+    timerInfo=`Série ${(pendingExo===exo?pendingSets.length:0)+1} · ${sec}s${!isNaN(kg)&&kg>0?' +'+kg+'kg':''}`;
+  }else{
+    const kg=parseFloat(document.getElementById('inp-kg').value);
+    const reps=parseInt(document.getElementById('inp-reps').value);
+    if(isNaN(kg)||isNaN(reps)){flashErr(['inp-kg','inp-reps']);return;}
+    set={kg,reps,id:Date.now().toString()};
+    timerInfo=`Série ${(pendingExo===exo?pendingSets.length:0)+1} · ${kg}kg × ${reps} reps`;
+  }
   if(pendingExo&&pendingExo!==exo){if(!confirm(`Séries en cours pour "${pendingExo}". Valider d'abord ?`))return;pendingSets=[];pendingExo=null;}
-  pendingExo=exo;pendingSets.push({kg,reps,id:Date.now().toString()});
-  document.getElementById('inp-kg').value='';document.getElementById('inp-reps').value='';
-  renderPending();document.getElementById('inp-kg').focus();
-  const allE=Object.values(ED).flatMap(d=>d.exos);
-  const exoD=allE.find(e=>e.name===exo);
-  startTimer(exo,`Série ${pendingSets.length} · ${kg}kg × ${reps} reps`,exoD?.badge||'bh');
+  pendingExo=exo;pendingSets.push(set);
+  // clear inputs
+  ['inp-kg','inp-reps','inp-time','inp-time-kg','inp-cardio-min','inp-cardio-km'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  renderPending();
+  // Cardio : pas de timer de repos. Sinon oui.
+  if(type!=='cardio'){
+    const allE=Object.values(ED).flatMap(d=>d.exos);
+    const exoD=allE.find(e=>e.name===exo);
+    startTimer(exo,timerInfo,exoD?.badge||'bh');
+    const firstInput=type==='time'?'inp-time':'inp-kg';
+    setTimeout(()=>{const el=document.getElementById(firstInput);if(el)el.focus();},50);
+  }
 }
 
 function renderPending(){
@@ -674,15 +982,32 @@ function renderPending(){
   if(!pendingSets.length){box.style.display='none';return;}
   box.style.display='block';
   document.getElementById('pname').textContent=pendingExo;
+  const type=exoType(pendingExo);
   const t=TARGETS[pendingExo];
-  document.getElementById('pcnt').textContent=`${pendingSets.length} série${pendingSets.length>1?'s':''}${t?' sur '+t.sets+' · cible '+t.reps+' reps':''}`;
+  if(type==='cardio'){
+    const totMin=pendingSets.reduce((a,s)=>a+(s.min||0),0);
+    document.getElementById('pcnt').textContent=`Cardio · ${totMin} min total`;
+  }else{
+    document.getElementById('pcnt').textContent=`${pendingSets.length} série${pendingSets.length>1?'s':''}${t?' sur '+t.sets+' · cible '+t.reps+' reps':''}`;
+  }
   const pm=prevMaxKg(pendingExo,new Date().toISOString());
   let h='';
   pendingSets.forEach((s,i)=>{
-    const pr=pm>0&&(s.kg||0)>pm;
-    const tMin=t?parseInt(t.reps.split('-')[0]):null;
-    const fail=tMin&&(s.reps||0)<tMin;
-    h+=`<div class="srow"><span class="sn">S${i+1}</span><span class="skg">${Math.round(s.kg*2)/2}kg</span><span class="sreps">${s.reps} reps</span>${pr?'<span class="spr">🏆 PR</span>':''}${fail?'<span class="sfail">sous cible</span>':'<span class="sok">OK</span>'}<button class="del-s" onclick="removeSet('${s.id}')">✕</button></div>`;
+    let mid='',tag='';
+    if(type==='cardio'){
+      mid=`<span class="skg">${s.min}min</span><span class="sreps">${s.km?s.km+' km':'—'}</span>`;
+      tag='<span class="sok">✓</span>';
+    }else if(type==='time'){
+      mid=`<span class="skg">${s.sec}s</span><span class="sreps">${s.kg?'+'+s.kg+'kg':'poids du corps'}</span>`;
+      tag='<span class="sok">OK</span>';
+    }else{
+      const pr=pm>0&&(s.kg||0)>pm;
+      const tMin=t?parseInt(t.reps.split('-')[0]):null;
+      const fail=tMin&&(s.reps||0)<tMin;
+      mid=`<span class="skg">${Math.round(s.kg*2)/2}kg</span><span class="sreps">${s.reps} reps</span>`;
+      tag=`${pr?'<span class="spr">🏆 PR</span>':''}${fail?'<span class="sfail">sous cible</span>':'<span class="sok">OK</span>'}`;
+    }
+    h+=`<div class="srow"><span class="sn">S${i+1}</span>${mid}${tag}<button class="del-s" onclick="removeSet('${s.id}')">✕</button></div>`;
   });
   document.getElementById('psets').innerHTML=h;
 }
@@ -691,7 +1016,13 @@ function removeSet(id){pendingSets=pendingSets.filter(s=>s.id!==id);if(!pendingS
 
 function saveExo(){
   if(!pendingSets.length)return;
-  sessions.push({id:Date.now().toString(),exo:pendingExo,sets:pendingSets.map(s=>({kg:s.kg,reps:s.reps})),note:document.getElementById('inp-note').value.trim(),date:new Date().toISOString()});
+  const type=exoType(pendingExo);
+  const sets=pendingSets.map(s=>{
+    if(type==='cardio')return{min:s.min,km:s.km};
+    if(type==='time')return{sec:s.sec,kg:s.kg};
+    return{kg:s.kg,reps:s.reps};
+  });
+  sessions.push({id:Date.now().toString(),exo:pendingExo,type,sets,note:document.getElementById('inp-note').value.trim(),date:new Date().toISOString()});
   save();pendingSets=[];pendingExo=null;
   document.getElementById('pbox').style.display='none';document.getElementById('inp-note').value='';
   document.getElementById('lp-box').classList.remove('show');
@@ -764,19 +1095,37 @@ function updateLog(){
   Object.entries(byDay).forEach(([day,ds])=>{
     h+=`<div class="lday"><div class="ldh"><span class="ldt">${fmtDate(day+'T12:00:00')}</span><span class="wkb">Sem ${getWeek(day)}</span></div>`;
     ds.forEach(s=>{
-      const mKg=Math.max(...s.sets.map(st=>st.kg||0));
-      const vol=Math.round(s.sets.reduce((a,st)=>a+(st.kg||0)*(st.reps||0),0));
-      const t=TARGETS[s.exo],fi=isFirst(s.exo,s.date),hasPR=!fi&&s.sets.some(st=>isSetPR(st,s));
-      h+=`<div class="leb"><div class="leh"><div class="len">${s.exo}${hasPR?' <span class="pr-b">🏆 PR</span>':''}${fi?' <span class="pr-b" style="background:var(--bl2);color:var(--bl);">1ère fois</span>':''}</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;"><span class="lem">${s.sets.length} séries · max ${Math.round(mKg)}kg · vol. ${vol}kg${t?' · cible '+t.sets+'×'+t.reps:''}</span><button onclick="delSession('${s.id}')" style="font-size:14px;padding:3px 7px;background:none;border:none;color:var(--tx4);">🗑</button></div></div>
-      <div class="lsets">`;
-      s.sets.forEach((st,i)=>{
-        const pr=!fi&&isSetPR(st,s);
-        const tMin=t?parseInt(t.reps.split('-')[0]):null;
-        const fail=tMin&&(st.reps||0)<tMin;
-        h+=`<div class="lsr"><span class="lsn">S${i+1}</span><span class="lsk">${Math.round(st.kg||0)}kg</span><span class="lsreps">${st.reps||'—'} reps</span><span class="lsv">${Math.round((st.kg||0)*(st.reps||0))}kg</span>${pr?'<span class="pr-b">Record</span>':fail?'<span class="fail-b">sous cible</span>':'<span class="ok-b">OK</span>'}</div>`;
-      });
-      h+='</div>';
+      const type=s.type||exoType(s.exo);
+      const t=TARGETS[s.exo],fi=isFirst(s.exo,s.date);
+      let metaLine='',setsHtml='',hasPR=false;
+      if(type==='cardio'){
+        const totMin=s.sets.reduce((a,st)=>a+(st.min||0),0);
+        const totKm=s.sets.reduce((a,st)=>a+(st.km||0),0);
+        metaLine=`${totMin} min${totKm?' · '+totKm.toFixed(1)+' km':''}`;
+        s.sets.forEach((st,i)=>{
+          setsHtml+=`<div class="lsr"><span class="lsn">${s.sets.length>1?'S'+(i+1):'🚴'}</span><span class="lsk">${st.min}min</span><span class="lsreps">${st.km?st.km+' km':'—'}</span><span class="lsv"></span><span class="ok-b">✓</span></div>`;
+        });
+      }else if(type==='time'){
+        const mSec=Math.max(...s.sets.map(st=>st.sec||0));
+        metaLine=`${s.sets.length} séries · max ${mSec}s`;
+        s.sets.forEach((st,i)=>{
+          setsHtml+=`<div class="lsr"><span class="lsn">S${i+1}</span><span class="lsk">${st.sec}s</span><span class="lsreps">${st.kg?'+'+st.kg+'kg':'PdC'}</span><span class="lsv"></span><span class="ok-b">OK</span></div>`;
+        });
+      }else{
+        const mKg=Math.max(...s.sets.map(st=>st.kg||0));
+        const vol=Math.round(s.sets.reduce((a,st)=>a+(st.kg||0)*(st.reps||0),0));
+        hasPR=!fi&&s.sets.some(st=>isSetPR(st,s));
+        metaLine=`${s.sets.length} séries · max ${Math.round(mKg)}kg · vol. ${vol}kg${t?' · cible '+t.sets+'×'+t.reps:''}`;
+        s.sets.forEach((st,i)=>{
+          const pr=!fi&&isSetPR(st,s);
+          const tMin=t?parseInt(t.reps.split('-')[0]):null;
+          const fail=tMin&&(st.reps||0)<tMin;
+          setsHtml+=`<div class="lsr"><span class="lsn">S${i+1}</span><span class="lsk">${Math.round(st.kg||0)}kg</span><span class="lsreps">${st.reps||'—'} reps</span><span class="lsv">${Math.round((st.kg||0)*(st.reps||0))}kg</span>${pr?'<span class="pr-b">Record</span>':fail?'<span class="fail-b">sous cible</span>':'<span class="ok-b">OK</span>'}</div>`;
+        });
+      }
+      h+=`<div class="leb"><div class="leh"><div class="len">${s.exo}${hasPR?' <span class="pr-b">🏆 PR</span>':''}${fi&&type==='reps'?' <span class="pr-b" style="background:var(--bl2);color:var(--bl);">1ère fois</span>':''}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;"><span class="lem">${metaLine}</span><button onclick="delSession('${s.id}')" style="font-size:14px;padding:3px 7px;background:none;border:none;color:var(--tx4);">🗑</button></div></div>
+      <div class="lsets">${setsHtml}</div>`;
       if(s.note)h+=`<div class="lnote">"${s.note}"</div>`;
       h+=`</div>`;
     });h+='</div>';
@@ -786,14 +1135,23 @@ function updateLog(){
 
 function exportCSV(){
   if(!sessions.length){alert('Aucune donnée à exporter.');return;}
-  const lines=['Exercice,Série,Charge (kg),Reps,Volume,Date,Note'];
-  sessions.forEach(s=>s.sets.forEach((st,i)=>lines.push(`${s.exo},S${i+1},${st.kg||0},${st.reps||0},${Math.round((st.kg||0)*(st.reps||0))},${new Date(s.date).toLocaleDateString('fr-FR')},"${i===0?s.note||'':''}"`)));
+  const lines=['Exercice,Type,Série,Valeur1,Valeur2,Date,Note'];
+  sessions.forEach(s=>{
+    const type=s.type||exoType(s.exo);
+    s.sets.forEach((st,i)=>{
+      let v1='',v2='';
+      if(type==='cardio'){v1=(st.min||0)+' min';v2=(st.km||0)+' km';}
+      else if(type==='time'){v1=(st.sec||0)+' s';v2=(st.kg||0)+' kg';}
+      else{v1=(st.kg||0)+' kg';v2=(st.reps||0)+' reps';}
+      lines.push(`${s.exo},${type},S${i+1},${v1},${v2},${new Date(s.date).toLocaleDateString('fr-FR')},"${i===0?s.note||'':''}"`);
+    });
+  });
   const blob=new Blob(['\uFEFF'+lines.join('\n')],{type:'text/csv;charset=utf-8'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`perfs_lilian_${new Date().toLocaleDateString('fr-FR').replace(/\//g,'-')}.csv`;a.click();
 }
 
 /* SYNC */
-function genCode(){try{return btoa(unescape(encodeURIComponent(JSON.stringify({sessions,v:3,ts:Date.now()}))));}catch(e){return '';}}
+function genCode(){try{return btoa(unescape(encodeURIComponent(JSON.stringify({sessions,overrides,v:4,ts:Date.now()}))));}catch(e){return '';}}
 function openSync(){
   document.getElementById('exp-code').textContent=genCode()||'Aucune donnée.';
   document.getElementById('copy-ok').style.display='none';
@@ -822,6 +1180,11 @@ function importCode(){
     const data=JSON.parse(decodeURIComponent(escape(atob(code))));
     if(!data.sessions)throw new Error();
     sessions=data.sessions;save();
+    if(data.overrides){
+      overrides=data.overrides;saveOver();
+      Object.values(overrides).forEach(o=>{if(o&&o._type&&o._type!=='reps')EXO_TYPE[o.name]=o._type;});
+      ['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildDropdown();
+    }
     msg.style.display='block';msg.style.color='var(--gr)';
     msg.textContent=`✓ ${sessions.length} exercices importés !`;
     refresh();setTimeout(()=>closeSync(),1500);
@@ -848,9 +1211,45 @@ function switchCharge(id,el){
   document.getElementById('cp-haut').style.display=id==='haut'?'block':'none';
   document.getElementById('cp-bas').style.display=id==='bas'?'block':'none';
 }
+
+/* NUTRITION */
+const NUT_TARGET={kcal:2150,prot:150};
+let nutToday={kcal:0,prot:0,date:new Date().toDateString()};
+try{
+  const saved=JSON.parse(localStorage.getItem('sl_nut')||'null');
+  if(saved&&saved.date===new Date().toDateString())nutToday=saved;
+}catch(e){}
+function saveNut(){try{localStorage.setItem('sl_nut',JSON.stringify(nutToday));}catch(e){}}
+function renderNut(){
+  const kp=Math.min(100,Math.round(nutToday.kcal/NUT_TARGET.kcal*100));
+  const pp=Math.min(100,Math.round(nutToday.prot/NUT_TARGET.prot*100));
+  document.getElementById('nut-kcal-txt').textContent=`${nutToday.kcal} / ${NUT_TARGET.kcal}`;
+  document.getElementById('nut-prot-txt').textContent=`${nutToday.prot} / ${NUT_TARGET.prot} g`;
+  document.getElementById('nut-kcal-bar').style.width=kp+'%';
+  document.getElementById('nut-prot-bar').style.width=pp+'%';
+  document.getElementById('nut-kcal-bar').style.background=nutToday.kcal>NUT_TARGET.kcal+150?'var(--am)':'var(--bl)';
+  document.getElementById('nut-prot-bar').style.background=nutToday.prot>=NUT_TARGET.prot?'var(--gr)':'var(--gr)';
+}
+function addNut(){
+  const k=parseInt(document.getElementById('nut-kcal').value)||0;
+  const p=parseInt(document.getElementById('nut-prot').value)||0;
+  if(k===0&&p===0)return;
+  // reset if new day
+  if(nutToday.date!==new Date().toDateString())nutToday={kcal:0,prot:0,date:new Date().toDateString()};
+  nutToday.kcal+=k;nutToday.prot+=p;
+  document.getElementById('nut-kcal').value='';
+  document.getElementById('nut-prot').value='';
+  saveNut();renderNut();
+}
+function resetNut(){
+  if(!confirm('Remettre le compteur du jour à zéro ?'))return;
+  nutToday={kcal:0,prot:0,date:new Date().toDateString()};
+  saveNut();renderNut();
+}
+
 function refresh(){updateStats();updateChart();updateProgBars();updateLog();}
 
-['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildCharges();refresh();showLP();
+['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildDropdown();buildCharges();refresh();showLP();renderNut();
 </script>
 </body>
 </html>
