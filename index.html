@@ -8,6 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Sport Lilian">
 <meta name="theme-color" content="#0a0a09">
 <title>Sport — Lilian</title>
+<!-- VERSION 7 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 :root{
@@ -396,10 +397,14 @@ button:active{transform:scale(.96);opacity:.85;}
 
   <div class="sect">Compteur du jour <div class="sectline"></div></div>
   <div class="fcard">
-    <div style="font-size:12px;color:var(--tx2);margin-bottom:10px;">Ajoute au fur et à mesure de la journée. Se remet à zéro chaque jour.</div>
+    <div style="font-size:12px;color:var(--tx2);margin-bottom:10px;">Ajoute au fur et à mesure de la journée. À minuit, la journée est archivée et le compteur repart à zéro.</div>
     <div class="irow" style="margin-top:0;">
       <div><div class="fl">Calories</div><input type="number" id="nut-kcal" placeholder="ex 600" min="0" inputmode="numeric"></div>
       <div><div class="fl">Protéines (g)</div><input type="number" id="nut-prot" placeholder="ex 40" min="0" inputmode="numeric"></div>
+    </div>
+    <div class="irow">
+      <div><div class="fl">Glucides (g)</div><input type="number" id="nut-carb" placeholder="ex 70" min="0" inputmode="numeric"></div>
+      <div><div class="fl">Lipides (g)</div><input type="number" id="nut-fat" placeholder="ex 18" min="0" inputmode="numeric"></div>
     </div>
     <button class="btn-add" onclick="addNut()">+ Ajouter ce repas</button>
     <div style="margin-top:16px;">
@@ -410,8 +415,21 @@ button:active{transform:scale(.96);opacity:.85;}
       <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;"><span style="color:var(--tx2);">Protéines</span><span id="nut-prot-txt" style="font-weight:700;">0 / 150 g</span></div>
       <div class="pbt" style="height:8px;"><div class="pbf" id="nut-prot-bar" style="width:0%;background:var(--gr);"></div></div>
     </div>
+    <div style="margin-top:12px;">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;"><span style="color:var(--tx2);">Glucides</span><span id="nut-carb-txt" style="font-weight:700;">0 / 245 g</span></div>
+      <div class="pbt" style="height:8px;"><div class="pbf" id="nut-carb-bar" style="width:0%;background:var(--am);"></div></div>
+    </div>
+    <div style="margin-top:12px;">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;"><span style="color:var(--tx2);">Lipides</span><span id="nut-fat-txt" style="font-weight:700;">0 / 60 g</span></div>
+      <div class="pbt" style="height:8px;"><div class="pbf" id="nut-fat-bar" style="width:0%;background:var(--pu);"></div></div>
+    </div>
     <button class="btn-sec" style="width:100%;margin-top:14px;" onclick="resetNut()">↺ Remettre à zéro</button>
   </div>
+
+  <div class="sect">Historique nutrition <div class="sectline"></div></div>
+  <div class="srow2" id="nut-avg" style="display:none;"></div>
+  <div class="chart-wrap" id="nut-chart-wrap" style="height:170px;display:none;"><canvas id="nut-chart"></canvas></div>
+  <div id="nut-hist"></div>
 
   <div class="sect">Répartition des repas <div class="sectline"></div></div>
   <div class="ec"><div class="et" onclick="toggleExo('nut-1')">
@@ -484,6 +502,7 @@ button:active{transform:scale(.96);opacity:.85;}
   <div class="rcard"><div class="ricon">🌙</div><div><div class="rtitle">7-8h de sommeil</div><div class="rtext">Cortisol élevé = graisse stockée + muscle freiné + récup compromise. Aussi important que l'entraînement, encore plus en sèche.</div></div></div>
   <div class="rcard"><div class="ricon">☀️</div><div><div class="rtitle">Cardio le midi, muscu le soir</div><div class="rtext">Cardio zone 2 lun→ven entre midi et 2, muscu le soir. Les séparer permet au cardio de brûler du gras sans crâmer ta récup muscu. Jours Legs/Lower : vélo léger seulement le midi.</div></div></div>
   <div class="rcard"><div class="ricon">🍽️</div><div><div class="rtitle">Structure tes repas</div><div class="rtext">Ton vrai problème c'est l'irrégularité. 4 repas fixes (petit-déj, déjeuner, collation, dîner) règlent déjà la moitié du problème. Onglet Nutrition pour le détail.</div></div></div>
+  <div class="rcard" style="border-color:rgba(91,168,245,.3);background:var(--bl3);"><div class="ricon">✅</div><div><div class="rtitle">Version 7 — Nutrition 4 macros + historique</div><div class="rtext">Si tu vois ce bloc, tu es bien sur la <strong>dernière version</strong>. Nouveautés : glucides et lipides suivis, historique nutrition multi-jours avec moyennes, archivage automatique chaque jour.</div></div></div>
   <div class="rcard" style="border-color:rgba(245,185,66,.25);"><div class="ricon">✏️</div><div style="flex:1;"><div class="rtitle">Modifier un exercice</div><div class="rtext">Machine prise ou exercice qui ne passe pas ? Déplie l'exercice dans Séances puis "Modifier". Ton programme d'origine est toujours conservé.</div>
     <button class="btn-restore" style="width:100%;margin-top:10px;" onclick="restoreAll()">↺ Remettre tout le programme d'origine</button>
   </div></div>
@@ -1151,7 +1170,7 @@ function exportCSV(){
 }
 
 /* SYNC */
-function genCode(){try{return btoa(unescape(encodeURIComponent(JSON.stringify({sessions,overrides,v:4,ts:Date.now()}))));}catch(e){return '';}}
+function genCode(){try{return btoa(unescape(encodeURIComponent(JSON.stringify({sessions,overrides,nutHist,nutToday,v:5,ts:Date.now()}))));}catch(e){return '';}}
 function openSync(){
   document.getElementById('exp-code').textContent=genCode()||'Aucune donnée.';
   document.getElementById('copy-ok').style.display='none';
@@ -1185,6 +1204,9 @@ function importCode(){
       Object.values(overrides).forEach(o=>{if(o&&o._type&&o._type!=='reps')EXO_TYPE[o.name]=o._type;});
       ['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildDropdown();
     }
+    if(data.nutHist){nutHist=data.nutHist;}
+    if(data.nutToday&&data.nutToday.day===todayKey()){nutToday=data.nutToday;}
+    if(data.nutHist||data.nutToday){saveNut();renderNut();}
     msg.style.display='block';msg.style.color='var(--gr)';
     msg.textContent=`✓ ${sessions.length} exercices importés !`;
     refresh();setTimeout(()=>closeSync(),1500);
@@ -1212,44 +1234,144 @@ function switchCharge(id,el){
   document.getElementById('cp-bas').style.display=id==='bas'?'block':'none';
 }
 
-/* NUTRITION */
-const NUT_TARGET={kcal:2150,prot:150};
-let nutToday={kcal:0,prot:0,date:new Date().toDateString()};
+/* ═══ NUTRITION : 4 macros + archivage automatique ═══ */
+const NUT_TARGET={kcal:2150,prot:150,carb:245,fat:60};
+function todayKey(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+let nutToday={kcal:0,prot:0,carb:0,fat:0,day:todayKey()};
+let nutHist={};
+try{nutHist=JSON.parse(localStorage.getItem('sl_nut_hist')||'{}');}catch(e){nutHist={};}
 try{
   const saved=JSON.parse(localStorage.getItem('sl_nut')||'null');
-  if(saved&&saved.date===new Date().toDateString())nutToday=saved;
+  if(saved){
+    const sd=saved.day||saved.date;
+    if(sd===todayKey()){
+      nutToday={kcal:saved.kcal||0,prot:saved.prot||0,carb:saved.carb||0,fat:saved.fat||0,day:todayKey()};
+    }else if(saved.kcal||saved.prot||saved.carb||saved.fat){
+      // Jour terminé → on archive avant de repartir à zéro
+      let key=saved.day;
+      if(!key&&saved.date){const d=new Date(saved.date);if(!isNaN(d))key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+      if(key)nutHist[key]={kcal:saved.kcal||0,prot:saved.prot||0,carb:saved.carb||0,fat:saved.fat||0};
+    }
+  }
 }catch(e){}
-function saveNut(){try{localStorage.setItem('sl_nut',JSON.stringify(nutToday));}catch(e){}}
+function saveNut(){try{localStorage.setItem('sl_nut',JSON.stringify(nutToday));localStorage.setItem('sl_nut_hist',JSON.stringify(nutHist));}catch(e){}}
+// Sécurité : si la journée a changé pendant que l'app est ouverte
+function rollOverIfNeeded(){
+  if(nutToday.day===todayKey())return false;
+  if(nutToday.kcal||nutToday.prot||nutToday.carb||nutToday.fat){
+    nutHist[nutToday.day]={kcal:nutToday.kcal,prot:nutToday.prot,carb:nutToday.carb,fat:nutToday.fat};
+  }
+  nutToday={kcal:0,prot:0,carb:0,fat:0,day:todayKey()};
+  saveNut();return true;
+}
+function setBar(id,val,target,color){
+  const pct=Math.min(100,Math.round(val/target*100));
+  const bar=document.getElementById(id+'-bar');
+  if(bar){bar.style.width=pct+'%';bar.style.background=val>target*1.12?'var(--rd)':color;}
+}
 function renderNut(){
-  const kp=Math.min(100,Math.round(nutToday.kcal/NUT_TARGET.kcal*100));
-  const pp=Math.min(100,Math.round(nutToday.prot/NUT_TARGET.prot*100));
+  rollOverIfNeeded();
   document.getElementById('nut-kcal-txt').textContent=`${nutToday.kcal} / ${NUT_TARGET.kcal}`;
   document.getElementById('nut-prot-txt').textContent=`${nutToday.prot} / ${NUT_TARGET.prot} g`;
-  document.getElementById('nut-kcal-bar').style.width=kp+'%';
-  document.getElementById('nut-prot-bar').style.width=pp+'%';
-  document.getElementById('nut-kcal-bar').style.background=nutToday.kcal>NUT_TARGET.kcal+150?'var(--am)':'var(--bl)';
-  document.getElementById('nut-prot-bar').style.background=nutToday.prot>=NUT_TARGET.prot?'var(--gr)':'var(--gr)';
+  document.getElementById('nut-carb-txt').textContent=`${nutToday.carb} / ${NUT_TARGET.carb} g`;
+  document.getElementById('nut-fat-txt').textContent=`${nutToday.fat} / ${NUT_TARGET.fat} g`;
+  setBar('nut-kcal',nutToday.kcal,NUT_TARGET.kcal,'var(--bl)');
+  setBar('nut-prot',nutToday.prot,NUT_TARGET.prot,'var(--gr)');
+  setBar('nut-carb',nutToday.carb,NUT_TARGET.carb,'var(--am)');
+  setBar('nut-fat',nutToday.fat,NUT_TARGET.fat,'var(--pu)');
+  renderNutHist();
 }
 function addNut(){
+  rollOverIfNeeded();
   const k=parseInt(document.getElementById('nut-kcal').value)||0;
   const p=parseInt(document.getElementById('nut-prot').value)||0;
-  if(k===0&&p===0)return;
-  // reset if new day
-  if(nutToday.date!==new Date().toDateString())nutToday={kcal:0,prot:0,date:new Date().toDateString()};
-  nutToday.kcal+=k;nutToday.prot+=p;
-  document.getElementById('nut-kcal').value='';
-  document.getElementById('nut-prot').value='';
+  const c=parseInt(document.getElementById('nut-carb').value)||0;
+  const f=parseInt(document.getElementById('nut-fat').value)||0;
+  if(!k&&!p&&!c&&!f)return;
+  nutToday.kcal+=k;nutToday.prot+=p;nutToday.carb+=c;nutToday.fat+=f;
+  ['nut-kcal','nut-prot','nut-carb','nut-fat'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   saveNut();renderNut();
 }
 function resetNut(){
-  if(!confirm('Remettre le compteur du jour à zéro ?'))return;
-  nutToday={kcal:0,prot:0,date:new Date().toDateString()};
+  if(!confirm('Remettre le compteur d\'aujourd\'hui à zéro ?\nL\'historique des jours précédents est conservé.'))return;
+  nutToday={kcal:0,prot:0,carb:0,fat:0,day:todayKey()};
   saveNut();renderNut();
+}
+function delNutDay(day){
+  if(!confirm('Supprimer la journée du '+day+' de l\'historique ?'))return;
+  delete nutHist[day];saveNut();renderNut();
+}
+function fmtDay(key){
+  const [y,m,d]=key.split('-').map(Number);
+  return new Date(y,m-1,d).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
+}
+let nutChart=null;
+function renderNutHist(){
+  // Aujourd'hui + historique, du plus récent au plus ancien
+  const all={...nutHist};
+  if(nutToday.kcal||nutToday.prot||nutToday.carb||nutToday.fat)all[nutToday.day]={...nutToday,_today:true};
+  const keys=Object.keys(all).sort().reverse();
+  const wrap=document.getElementById('nut-hist');
+  const avgBox=document.getElementById('nut-avg');
+  if(!keys.length){
+    wrap.innerHTML='<div class="emptybl" style="padding:1.5rem 1rem;"><span class="ei">🥗</span><p>Aucune journée enregistrée.<br>Ajoute ton premier repas ci-dessus.</p></div>';
+    avgBox.style.display='none';
+    const cw=document.getElementById('nut-chart-wrap');if(cw)cw.style.display='none';
+    if(nutChart){nutChart.destroy();nutChart=null;}
+    return;
+  }
+  // Moyennes sur les 7 derniers jours
+  const last7=keys.slice(0,7);
+  const avg=k=>Math.round(last7.reduce((a,d)=>a+(all[d][k]||0),0)/last7.length);
+  avgBox.style.display='grid';
+  avgBox.innerHTML=`
+    <div class="sc"><div class="sl">Moyenne calories</div><div class="sv">${avg('kcal')}</div><div class="ss">sur ${last7.length} jour${last7.length>1?'s':''} · cible ${NUT_TARGET.kcal}</div></div>
+    <div class="sc"><div class="sl">Moyenne protéines</div><div class="sv" style="color:var(--gr);">${avg('prot')}</div><div class="ss">g · cible ${NUT_TARGET.prot}</div></div>`;
+  // Graphique 14 derniers jours (ordre chronologique)
+  const chartKeys=keys.slice(0,14).reverse();
+  const ctx=document.getElementById('nut-chart');
+  const cwrap=document.getElementById('nut-chart-wrap');
+  if(ctx&&cwrap&&typeof Chart!=='undefined'){
+    cwrap.style.display='block';
+    if(nutChart)nutChart.destroy();
+    nutChart=new Chart(ctx.getContext('2d'),{
+      type:'bar',
+      data:{labels:chartKeys.map(k=>fmtDay(k).replace(/^\w+\.?\s/,'')),datasets:[
+        {label:'Calories',data:chartKeys.map(k=>all[k].kcal||0),backgroundColor:'rgba(91,168,245,.55)',borderRadius:4,order:2},
+        {label:'Cible',type:'line',data:chartKeys.map(()=>NUT_TARGET.kcal),borderColor:'rgba(114,214,114,.8)',borderDash:[5,4],borderWidth:1.5,pointRadius:0,fill:false,order:1}
+      ]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(20,20,19,.95)',titleColor:'#f0efe9',bodyColor:'#a8a7a1',borderColor:'rgba(255,255,255,.1)',borderWidth:.5,callbacks:{label:c=>c.datasetIndex===0?`${c.raw} kcal`:`cible ${c.raw}`}}},scales:{x:{ticks:{font:{size:10},color:'#6b6a65'},grid:{display:false}},y:{beginAtZero:true,ticks:{font:{size:10},color:'#6b6a65'},grid:{color:'rgba(255,255,255,.04)'}}}}
+    });
+  }
+  // Liste détaillée
+  let h='';
+  keys.slice(0,30).forEach(k=>{
+    const v=all[k];
+    const pct=Math.round((v.kcal||0)/NUT_TARGET.kcal*100);
+    const col=pct>=90&&pct<=110?'var(--gr)':pct<90?'var(--am)':'var(--rd)';
+    h+=`<div class="leb"><div class="leh" style="border-bottom:none;padding:11px 14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="len" style="margin:0;">${fmtDay(k)}${v._today?' <span class="pr-b" style="background:var(--bl2);color:var(--bl);">aujourd\'hui</span>':''}</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-weight:700;color:${col};font-size:13px;">${v.kcal||0} kcal</span>
+          ${v._today?'':`<button onclick="delNutDay('${k}')" style="font-size:13px;padding:2px 6px;background:none;border:none;color:var(--tx4);">🗑</button>`}
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:6px;font-size:12px;color:var(--tx2);">
+        <span>P <strong style="color:var(--gr);">${v.prot||0}</strong>g</span>
+        <span>G <strong style="color:var(--am);">${v.carb||0}</strong>g</span>
+        <span>L <strong style="color:var(--pu);">${v.fat||0}</strong>g</span>
+      </div>
+    </div></div>`;
+  });
+  wrap.innerHTML=h;
 }
 
 function refresh(){updateStats();updateChart();updateProgBars();updateLog();}
 
 ['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildDropdown();buildCharges();refresh();showLP();renderNut();
+// Vérifie le changement de jour toutes les minutes
+setInterval(()=>{if(rollOverIfNeeded())renderNut();},60000);
 </script>
 </body>
 </html>
