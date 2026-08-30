@@ -10,8 +10,8 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>Sport — Lilian</title>
-<!-- VERSION 7 -->
+<title>Programme Sport</title>
+<!-- VERSION 15 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 :root{
@@ -82,6 +82,8 @@ body{min-height:100%;background:var(--bg);font-family:-apple-system,BlinkMacSyst
 .explo .wi{color:var(--pu);}
 .ec.modded{border-color:rgba(245,185,66,.35);}
 .mod-b{font-size:9px;padding:2px 7px;border-radius:6px;background:var(--am2);color:var(--am);margin-left:6px;font-weight:700;vertical-align:middle;}
+.err-box{font-size:12.5px;color:var(--am);background:var(--am3);border:0.5px solid rgba(245,185,66,.2);border-radius:var(--r);padding:10px 12px;margin-top:12px;line-height:1.6;}
+.err-t{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;opacity:.85;}
 .mod-note{font-size:12px;color:var(--am);background:var(--am3);border:0.5px solid rgba(245,185,66,.2);border-radius:var(--r);padding:9px 11px;margin-top:12px;line-height:1.5;}
 .edit-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
 .btn-edit{flex:1;min-width:150px;padding:10px;border-radius:var(--r);background:var(--bg3);border:0.5px solid var(--bd2);color:var(--tx2);font-size:13px;font-weight:600;cursor:pointer;}
@@ -90,6 +92,26 @@ body{min-height:100%;background:var(--bg);font-family:-apple-system,BlinkMacSyst
 .eov.show{opacity:1;pointer-events:all;}
 .esheet{background:var(--bg2);border:0.5px solid var(--bd);border-radius:24px 24px 0 0;width:100%;max-width:580px;padding:24px 20px calc(var(--safe) + 20px);animation:slu .3s ease;max-height:90vh;overflow-y:auto;}
 .orig-box{background:var(--bg3);border-radius:var(--r);padding:10px 12px;margin-bottom:14px;font-size:12px;color:var(--tx3);line-height:1.6;border-left:2px solid var(--bd3);}
+/* ═══ ONBOARDING ═══ */
+.onb{position:fixed;inset:0;background:var(--bg);z-index:300;overflow-y:auto;display:none;}
+.onb.show{display:block;}
+.onb-inner{max-width:520px;margin:0 auto;padding:calc(var(--top) + 32px) 20px calc(var(--safe) + 40px);}
+.onb-logo{font-size:46px;text-align:center;margin-bottom:10px;}
+.onb-title{font-size:26px;font-weight:800;color:var(--tx);text-align:center;letter-spacing:-.5px;}
+.onb-sub{font-size:13px;color:var(--tx2);text-align:center;margin:8px 0 26px;line-height:1.6;}
+.seg{display:flex;background:var(--bg3);border-radius:var(--r);padding:3px;gap:3px;}
+.seg-b{flex:1;padding:10px;border-radius:8px;border:none;background:none;color:var(--tx2);font-size:14px;font-weight:600;cursor:pointer;}
+.seg-b.active{background:var(--bl);color:#fff;}
+.opt-list{display:flex;flex-direction:column;gap:7px;}
+.opt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 14px;border-radius:var(--r);border:0.5px solid var(--bd2);background:var(--bg3);cursor:pointer;text-align:left;transition:all .15s;}
+.opt strong{font-size:14px;font-weight:700;color:var(--tx);}
+.opt span{font-size:12px;color:var(--tx3);font-weight:400;}
+.opt.active{border-color:var(--bl);background:var(--bl3);}
+.opt.active strong{color:var(--bl);}
+.prof-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:0.5px solid var(--bd);font-size:14px;}
+.prof-row:last-child{border-bottom:none;}
+.prof-row span:first-child{color:var(--tx2);}
+.prof-row span:last-child{font-weight:700;color:var(--tx);}
 .ec{background:var(--bg2);border:0.5px solid var(--bd);border-radius:var(--rl);margin-bottom:8px;overflow:hidden;transition:border-color .15s;}
 .ec.open{border-color:rgba(91,168,245,.3);}
 .et{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;cursor:pointer;user-select:none;}
@@ -109,7 +131,7 @@ body{min-height:100%;background:var(--bg);font-family:-apple-system,BlinkMacSyst
 .dl{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin:11px 0 3px;}
 .dt{font-size:13px;color:var(--tx2);line-height:1.65;}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-.chip{padding:7px 10px;border-radius:var(--r);font-size:12px;line-height:1.5;flex:1;min-width:calc(50% - 3px);}
+.chip{padding:7px 10px;border-radius:var(--r);font-size:12px;line-height:1.5;flex:1;min-width:calc(50% - 3px);overflow-wrap:anywhere;word-break:break-word;}
 .chip-b{background:var(--bl3);color:var(--bl);border:0.5px solid rgba(91,168,245,.15);}
 .chip-g{background:var(--gr3);color:var(--gr);border:0.5px solid rgba(114,214,114,.15);}
 .chip-a{background:var(--am3);color:var(--am);border:0.5px solid rgba(245,185,66,.15);}
@@ -253,11 +275,11 @@ button:active{transform:scale(.96);opacity:.85;}
 <div class="header">
   <div class="header-inner">
     <div style="display:flex;align-items:center;gap:10px;">
-      <div class="hav">L</div>
-      <div><div class="htitle">Programme Sport</div><div class="hsub">69 kg · 1m69 · Sèche</div></div>
+      <div class="hav" id="hav">?</div>
+      <div><div class="htitle">Programme Sport</div><div class="hsub" id="hsub">—</div></div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
-      <div class="hbadge">Cible 66kg</div>
+      <div class="hbadge" id="hbadge">—</div>
       <button class="sync-btn" onclick="openSync()">🔄 Sync</button>
     </div>
   </div>
@@ -265,26 +287,69 @@ button:active{transform:scale(.96);opacity:.85;}
 <div class="content">
 <!-- PLANNING -->
 <div id="mp-planning" class="mpanel active">
-  <div class="wk">
-    <div class="wb gym"><div class="wbn">Lun</div><div class="wbl">Push</div><div class="wd" style="background:var(--bl);"></div></div>
-    <div class="wb gym"><div class="wbn">Mar</div><div class="wbl">Pull</div><div class="wd" style="background:var(--gr);"></div></div>
-    <div class="wb gym"><div class="wbn">Mer</div><div class="wbl">Legs</div><div class="wd" style="background:var(--am);"></div></div>
-    <div class="wb gym"><div class="wbn">Jeu</div><div class="wbl">Upper</div><div class="wd" style="background:var(--bl);"></div></div>
-    <div class="wb gym"><div class="wbn">Ven</div><div class="wbl">Lower Abdos</div><div class="wd" style="background:var(--pu);"></div></div>
-    <div class="wb mob"><div class="wbn">Sam</div><div class="wbl">Cardio opt.</div><div class="wd" style="background:var(--co);"></div></div>
-    <div class="wb judo"><div class="wbn">Dim</div><div class="wbl">Repos</div><div class="wd" style="background:var(--tx4);"></div></div>
-  </div>
-  <div class="infonote">☀️ <strong>Cardio le midi (lun→ven)</strong> · 🌙 <strong>Muscu le soir</strong> — les deux séparés pour que le cardio ne touche pas ta récup muscu.</div>
-  <div class="card"><div class="ct">☀️ Cardio midi — zone 2 · 30-40 min</div>
+  <div class="wk" id="week-grid"></div>
+  <div class="infonote" id="plan-note"></div>
+  <div class="card" id="plan-card"></div>
+  <div id="z2-section"><div class="sect">🎯 Suis-je en zone 2 ? <div class="sectline"></div></div>
+  <div class="infonote">Le <strong>test de la parole</strong> marche sur toutes les machines : tu dois pouvoir dire une phrase complète avec un léger essoufflement. Si tu peux chanter → trop facile. Si tu ne sors que 3-4 mots → trop dur, tu tapes dans ta récup.</div>
+  <div class="card">
+    <div class="ct">Ta fourchette cardiaque</div>
     <table class="rt2"><tbody>
-      <tr><td>Lun · Mar · Jeu</td><td>Marche inclinée 10-15%</td></tr>
-      <tr><td>Mer (jour Legs)</td><td>Vélo léger seulement</td></tr>
-      <tr><td>Ven (jour Lower)</td><td>Vélo léger seulement</td></tr>
-      <tr><td>Intensité</td><td>Tu peux parler</td></tr>
-      <tr><td>Règle d'or</td><td>Jamais crâmer les jambes</td></tr>
+      <tr><td>FC max estimée</td><td id="fc-max">—</td></tr>
+      <tr><td>Zone 2 (60-70%)</td><td id="fc-z2">—</td></tr>
+      <tr><td>Test sans cardio</td><td>Respirer par le nez</td></tr>
     </tbody></table>
+    <div style="font-size:12px;color:var(--tx3);margin-top:10px;line-height:1.55;">Les capteurs dans les poignées des machines sont peu fiables. Montre ou ceinture pectorale sinon fie-toi au test de la parole.</div>
   </div>
-  <div class="card"><div class="ct">Temps de récup</div>
+  <div class="ec"><div class="et" onclick="toggleExo('z2-1')">
+    <span class="enum">🚶</span>
+    <div class="ebody"><div class="ename">Tapis — marche inclinée</div><div class="emuscles">Le meilleur choix pour toi</div><span class="badge bh">5,5-6,5 km/h · 10-15%</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="z2-1">
+    <div class="dl">Réglage</div><div class="dt">Vitesse 5,5 à 6,5 km/h, inclinaison 10 à 15%. Tu montes <strong>l'inclinaison</strong> plutôt que la vitesse.</div>
+    <div class="dl">Pourquoi c'est le meilleur</div><div class="dt">Autant de dépense que la course, mais zéro impact sur les articulations et sur tes jambes avant la séance du soir. Idéal en sèche.</div>
+    <div class="dl">Erreur à éviter</div><div class="dt">Ne t'accroche pas aux barres : ça allège ton poids et fausse complètement l'effort.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('z2-2')">
+    <span class="enum">🏃</span>
+    <div class="ebody"><div class="ename">Tapis — course</div><div class="emuscles">Alternative</div><span class="badge bi">8-10 km/h · 1%</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="z2-2">
+    <div class="dl">Réglage</div><div class="dt">8 à 10 km/h avec 1% d'inclinaison (le 1% compense l'absence de vent par rapport à l'extérieur).</div>
+    <div class="dl">Attention</div><div class="dt">Plus fatigant pour les jambes que la marche inclinée. À éviter le mercredi et le vendredi (jours Legs et Lower).</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('z2-3')">
+    <span class="enum">🚴</span>
+    <div class="ebody"><div class="ename">Vélo</div><div class="emuscles">Jours Legs et Lower</div><span class="badge bf">80-90 tr/min · 100-150W</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="z2-3">
+    <div class="dl">Réglage</div><div class="dt">Cadence 80 à 90 tours/minute, résistance modérée. Si l'écran affiche les watts : vise 100 à 150 W.</div>
+    <div class="dl">Point clé</div><div class="dt">La cadence compte autant que la résistance. Pédaler lourd et lentement, c'est du travail de force — ça fatigue les cuisses au lieu de travailler le cardio.</div>
+    <div class="dl">Quand l'utiliser</div><div class="dt">C'est ton choix les mercredis et vendredis : le moins agressif pour les jambes avant la séance du soir.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('z2-4')">
+    <span class="enum">🚣</span>
+    <div class="ebody"><div class="ename">Rameur</div><div class="emuscles">Corps entier</div><span class="badge be">20-24 coups/min</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="z2-4">
+    <div class="dl">Réglage</div><div class="dt">Cadence 20 à 24 coups/minute, allure autour de 2:20 à 2:40 aux 500 m.</div>
+    <div class="dl">Surveille bien</div><div class="dt">Le rameur monte très vite en intensité. Au-delà de 26 coups/minute tu sors de la zone 2 sans t'en rendre compte.</div>
+    <div class="dl">Bonus</div><div class="dt">Sollicite aussi le haut du corps — garde-le léger les jours Pull et Upper pour ne pas fatiguer le dos.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('z2-5')">
+    <span class="enum">⚙️</span>
+    <div class="ebody"><div class="ename">Elliptique</div><div class="emuscles">Sans impact</div><span class="badge bs">Résistance modérée</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="z2-5">
+    <div class="dl">Réglage</div><div class="dt">Résistance modérée, mouvement fluide et régulier, sans à-coups.</div>
+    <div class="dl">Erreur à éviter</div><div class="dt">Ne t'appuie pas sur les poignées fixes : tu décharges les jambes et l'effort réel devient bien plus faible que ce qu'affiche la machine.</div>
+  </div></div>
+  <div class="card" style="border-color:rgba(245,185,66,.25);background:var(--am3);">
+    <div class="ct" style="color:var(--am);">⚠️ Le piège des programmes machine</div>
+    <div style="font-size:13px;color:var(--am);line-height:1.6;">Les programmes "Fat Burn" ou "Perte de poids" des machines ne sont <strong>pas</strong> de la vraie zone 2 : ils alternent les intensités. Reste en <strong>mode manuel</strong> avec un réglage constant du début à la fin.</div>
+  </div>
+  </div><!-- fin z2-section -->
+  <div class="card"><div class="ct">⏱️ Temps de récup entre séries</div>
     <table class="rt2"><tbody>
       <tr><td>Exos lourds — force</td><td>2min30 — 3min</td></tr>
       <tr><td>Exos hypertrophie</td><td>1min15 — 1min45</td></tr>
@@ -292,24 +357,12 @@ button:active{transform:scale(.96);opacity:.85;}
       <tr><td>Abdos / gainage</td><td>45sec</td></tr>
     </tbody></table>
   </div>
-  <div class="card"><div class="ct">🔥 Stratégie sèche — 13% → 10%</div>
-    <table class="rt2"><tbody>
-      <tr><td>Déficit calorique</td><td>300-400 kcal/jour</td></tr>
-      <tr><td>Protéines</td><td>135-150 g/jour</td></tr>
-      <tr><td>Charges muscu</td><td>Maintenir au max</td></tr>
-      <tr><td>Cardio zone 2</td><td>Mer + Sam</td></tr>
-      <tr><td>Durée estimée</td><td>6 à 8 semaines</td></tr>
-    </tbody></table>
+  <div class="card"><div class="ct" id="strat-title">🔥 Ta stratégie</div>
+    <table class="rt2"><tbody id="strat-body"></tbody></table>
+    <div id="strat-note" style="font-size:12px;color:var(--tx3);margin-top:10px;line-height:1.55;"></div>
   </div>
-  <div class="card"><div class="ct">📈 Volume hebdo par muscle</div>
-    <div class="mitem"><span class="mname">Pecs (prioritaire)</span><span class="mdur">2×/sem · 14-16 séries</span></div>
-    <div class="mitem"><span class="mname">Bras tri+bi (prioritaire)</span><span class="mdur">3-4×/sem</span></div>
-    <div class="mitem"><span class="mname">Dos</span><span class="mdur">2×/sem · 12-14 séries</span></div>
-    <div class="mitem"><span class="mname">Épaules</span><span class="mdur">2×/sem · maintien</span></div>
-    <div class="mitem"><span class="mname">Jambes</span><span class="mdur">2×/sem (Legs + Lower)</span></div>
-    <div class="mitem"><span class="mname">Abdos</span><span class="mdur">Mercredi dédié</span></div>
-  </div>
-  <div class="card"><div class="ct">🧘 Mobilité dimanche (repos actif) — 15 min</div>
+  <div class="card"><div class="ct">📈 Ton volume hebdomadaire</div><div id="vol-box"></div></div>
+  <div class="card"><div class="ct">🧘 Mobilité — jour de repos · 15 min</div>
     <div class="mitem"><span class="mname">Étirement pec (coin de mur)</span><span class="mdur">1min30/côté</span></div>
     <div class="mitem"><span class="mname">Cat-cow + ouverture thoracique</span><span class="mdur">2min</span></div>
     <div class="mitem"><span class="mname">90/90 hanches</span><span class="mdur">2min/côté</span></div>
@@ -319,20 +372,8 @@ button:active{transform:scale(.96);opacity:.85;}
 </div>
 <!-- SEANCES -->
 <div id="mp-seances" class="mpanel">
-  <div class="stabs">
-    <button class="stab active" onclick="switchS('lun',this)">Lun · Push</button>
-    <button class="stab" onclick="switchS('mar',this)">Mar · Pull</button>
-    <button class="stab" onclick="switchS('mer',this)">Mer · Legs</button>
-    <button class="stab" onclick="switchS('jeu',this)">Jeu · Upper</button>
-    <button class="stab" onclick="switchS('ven',this)">Ven · Lower</button>
-    <button class="stab" onclick="switchS('sam',this)">Sam · Cardio</button>
-  </div>
-  <div id="sp-lun" class="sp active"></div>
-  <div id="sp-mar" class="sp"></div>
-  <div id="sp-mer" class="sp"></div>
-  <div id="sp-jeu" class="sp"></div>
-  <div id="sp-ven" class="sp"></div>
-  <div id="sp-sam" class="sp"></div>
+  <div class="stabs" id="day-tabs"></div>
+  <div id="sp-wrap"></div>
 </div>
 <!-- TRACKER -->
 <div id="mp-tracker" class="mpanel">
@@ -388,14 +429,14 @@ button:active{transform:scale(.96);opacity:.85;}
 </div>
 <!-- NUTRITION -->
 <div id="mp-nutrition" class="mpanel">
-  <div class="infonote">🥗 Tes cibles pour la sèche (retour ~66kg avant reprise judo). Recalculées quand le judo reprend.</div>
+  <div class="infonote">🥗 Tes cibles sont calculées depuis ton profil. Mets ton poids à jour dans Règles → Mon profil pour les recalculer.</div>
 
   <div class="sect">Objectifs du jour <div class="sectline"></div></div>
   <div class="srow2">
-    <div class="sc"><div class="sl">Calories</div><div class="sv">2150</div><div class="ss">kcal / jour</div></div>
-    <div class="sc"><div class="sl">Protéines</div><div class="sv" style="color:var(--gr);">150</div><div class="ss">g · priorité n°1</div></div>
-    <div class="sc"><div class="sl">Glucides</div><div class="sv" style="color:var(--bl);">245</div><div class="ss">g · énergie</div></div>
-    <div class="sc"><div class="sl">Lipides</div><div class="sv" style="color:var(--am);">60</div><div class="ss">g · hormones</div></div>
+    <div class="sc"><div class="sl">Calories</div><div class="sv" id="t-kcal">—</div><div class="ss">kcal / jour</div></div>
+    <div class="sc"><div class="sl">Protéines</div><div class="sv" style="color:var(--gr);" id="t-prot">—</div><div class="ss">g · priorité n°1</div></div>
+    <div class="sc"><div class="sl">Glucides</div><div class="sv" style="color:var(--am);" id="t-carb">—</div><div class="ss">g · énergie</div></div>
+    <div class="sc"><div class="sl">Lipides</div><div class="sv" style="color:var(--pu);" id="t-fat">—</div><div class="ss">g · hormones</div></div>
   </div>
 
   <div class="sect">Compteur du jour <div class="sectline"></div></div>
@@ -473,15 +514,10 @@ button:active{transform:scale(.96);opacity:.85;}
   <div class="rcard"><div class="ricon">💊</div><div><div class="rtitle">Créatine — 3-5g/jour</div><div class="rtext">Tous les jours, peu importe l'heure. Soutient ta force pendant la sèche. Rien à voir avec le gras, aucune raison d'arrêter.</div></div></div>
   <div class="rcard"><div class="ricon">💧</div><div><div class="rtitle">Eau — 2,5 à 3L/jour</div><div class="rtext">En sèche, l'eau aide à éliminer et coupe la fausse faim. Une partie de ton "ventre gonflé" est de la rétention — bien s'hydrater la réduit.</div></div></div>
 
-  <div class="sect">Après reprise judo (septembre) <div class="sectline"></div></div>
-  <div class="card"><div class="ct">Nouvelles cibles — maintien 66kg</div>
-    <table class="rt2"><tbody>
-      <tr><td>Calories</td><td>~2870 kcal</td></tr>
-      <tr><td>Protéines</td><td>132 g</td></tr>
-      <tr><td>Glucides</td><td>438 g</td></tr>
-      <tr><td>Lipides</td><td>66 g</td></tr>
-    </tbody></table>
-    <div style="font-size:12px;color:var(--tx3);margin-top:10px;line-height:1.5;">Quand le judo reprend, ta dépense grimpe. On remonte les calories pour soutenir la performance en combat. Reviens me voir pour ajuster.</div>
+  <div class="sect">Quand ton activité change <div class="sectline"></div></div>
+  <div class="card"><div class="ct">Adapter tes cibles</div>
+    <div style="font-size:13px;color:var(--tx2);line-height:1.65;">Si tu ajoutes un sport, changes de rythme ou atteins ton poids cible, mets à jour ton profil : niveau d'activité, poids et objectif. Tes cibles sont recalculées instantanément.</div>
+    <button class="btn-p" style="margin-top:12px;" onclick="openProfile()">👤 Mettre à jour mon profil</button>
   </div>
 </div>
 <!-- CHARGES -->
@@ -496,16 +532,98 @@ button:active{transform:scale(.96);opacity:.85;}
 </div>
 <!-- REGLES -->
 <div id="mp-regles" class="mpanel">
-  <div class="rcard"><div class="ricon">📓</div><div><div class="rtitle">Note tes charges à chaque séance</div><div class="rtext">Charge + reps sur tous les gros exos. C'est le seul moyen de savoir si tu progresses vraiment.</div></div></div>
-  <div class="rcard"><div class="ricon">📈</div><div><div class="rtitle">Surcharge progressive</div><div class="rtext">Haut de la plage de reps sur toutes les séries → +1 à 2,5 kg la séance suivante. En sèche, viser le maintien des charges est déjà une victoire.</div></div></div>
-  <div class="rcard"><div class="ricon">🎯</div><div><div class="rtitle">Pecs et bras en priorité</div><div class="rtext">Premier exo de chaque séance = ta zone faible quand tu es le plus frais. Pecs 2×/sem, bras 3-4×/sem. C'est ça qui crée le rattrapage.</div></div></div>
-  <div class="rcard"><div class="ricon">🔥</div><div><div class="rtitle">Sèche : déficit léger</div><div class="rtext">300-400 kcal sous ta maintenance, pas plus. Trop agressif = tu perds du muscle. Le but est de fondre le gras en gardant le muscle.</div></div></div>
-  <div class="rcard"><div class="ricon">🥩</div><div><div class="rtitle">135-150g protéines/jour</div><div class="rtext">2g par kg minimum, encore plus important en sèche pour protéger le muscle. Non négociable.</div></div></div>
-  <div class="rcard"><div class="ricon">🏋️</div><div><div class="rtitle">Garde les charges lourdes</div><div class="rtext">En déficit, soulever lourd est le signal qui dit à ton corps de garder le muscle. Ne baisse jamais les charges sous prétexte de sèche.</div></div></div>
-  <div class="rcard"><div class="ricon">🌙</div><div><div class="rtitle">7-8h de sommeil</div><div class="rtext">Cortisol élevé = graisse stockée + muscle freiné + récup compromise. Aussi important que l'entraînement, encore plus en sèche.</div></div></div>
-  <div class="rcard"><div class="ricon">☀️</div><div><div class="rtitle">Cardio le midi, muscu le soir</div><div class="rtext">Cardio zone 2 lun→ven entre midi et 2, muscu le soir. Les séparer permet au cardio de brûler du gras sans crâmer ta récup muscu. Jours Legs/Lower : vélo léger seulement le midi.</div></div></div>
-  <div class="rcard"><div class="ricon">🍽️</div><div><div class="rtitle">Structure tes repas</div><div class="rtext">Ton vrai problème c'est l'irrégularité. 4 repas fixes (petit-déj, déjeuner, collation, dîner) règlent déjà la moitié du problème. Onglet Nutrition pour le détail.</div></div></div>
-  <div class="rcard" style="border-color:rgba(91,168,245,.3);background:var(--bl3);"><div class="ricon">✅</div><div><div class="rtitle">Version 7 — Nutrition 4 macros + historique</div><div class="rtext">Si tu vois ce bloc, tu es bien sur la <strong>dernière version</strong>. Nouveautés : glucides et lipides suivis, historique nutrition multi-jours avec moyennes, archivage automatique chaque jour.</div></div></div>
+    <div class="rcard"><div class="ricon">📓</div><div><div class="rtitle">Note tes charges à chaque séance</div><div class="rtext">Charge et répétitions sur tous les gros exercices. Sans historique, impossible de savoir si tu progresses vraiment ou si tu stagnes.</div></div></div>
+  <div class="rcard"><div class="ricon">📈</div><div><div class="rtitle">Surcharge progressive</div><div class="rtext">Quand tu atteins le haut de ta fourchette de répétitions sur toutes les séries avec une technique propre, ajoute 2,5 kg la séance suivante.</div></div></div>
+  <div class="rcard"><div class="ricon">⚡</div><div><div class="rtitle">Explosivité avant volume</div><div class="rtext">Les blocs explosifs (tractions rapides, squat jump) se font en DÉBUT de séance, système nerveux frais. Placés en fin de séance fatigué, ils ne servent à rien.</div></div></div>
+  <div class="rcard"><div class="ricon">🥋</div><div><div class="rtitle">La salle sert le judo, pas l'inverse</div><div class="rtext">En saison, on cherche la force et l'explosivité, pas le volume. Arrête tes séries une à deux répétitions avant l'échec : c'est ce qui préserve ton système nerveux pour le tatami.</div></div></div>
+  <div class="rcard"><div class="ricon">🛌</div><div><div class="rtitle">Jeudi et dimanche : repos complet</div><div class="rtext">Le jeudi est le jour tampon avant le judo du vendredi. Ne le remplis pas : c'est lui qui te permet d'arriver frais sur le tatami.</div></div></div>
+  <div class="rcard"><div class="ricon">⚖️</div><div><div class="rtitle">Descendre à 66 kg progressivement</div><div class="rtext">Vise 0,3 à 0,5 kg par semaine, soit environ 8 semaines pour passer de 69 à 66 kg. Assez lent pour ne rien perdre en force ni en explosivité. Les coupes de poids rapides par déshydratation dégradent la performance et la lucidité, et présentent de vrais risques : à éviter, surtout sans encadrement.</div></div></div>
+  <div class="rcard"><div class="ricon">🥩</div><div><div class="rtitle">150 g de protéines par jour</div><div class="rtext">2,2 g par kilo. En déficit calorique, c'est ce qui protège ta masse musculaire pendant que tu perds du gras.</div></div></div>
+  <div class="rcard"><div class="ricon">🏋️</div><div><div class="rtitle">Garde les charges lourdes en sèche</div><div class="rtext">Ne baisse pas les charges sous prétexte que tu perds du poids. Soulever lourd est le signal qui dit à ton corps de conserver le muscle.</div></div></div>
+  <div class="rcard"><div class="ricon">🌙</div><div><div class="rtitle">7 à 9 h de sommeil</div><div class="rtext">Avec 2 judos et 2-3 séances de salle, la récupération devient le facteur limitant. Le manque de sommeil dégrade la vitesse de réaction et la coordination.</div></div></div>
+  <div class="rcard"><div class="ricon">🩹</div><div><div class="rtitle">Écoute les signaux de fatigue</div><div class="rtext">Si tes charges chutent deux séances de suite, si tu dors mal ou si tu traînes une douleur articulaire, saute la séance du samedi. Arriver frais au judo prime toujours.</div></div></div>
+  <div class="rcard"><div class="ricon">🍽️</div><div><div class="rtitle">Structure tes repas</div><div class="rtext">Quatre repas réguliers plutôt que des prises anarchiques. L'irrégularité pousse à se rattraper le soir, au pire moment. Onglet Nutrition pour le détail.</div></div></div>
+  <div class="card" style="border-color:rgba(245,185,66,.25);"><div class="ct">✏️ Modifier un exercice</div>
+    <div style="font-size:13px;color:var(--tx2);line-height:1.6;">Machine prise ou exercice qui ne passe pas ? Déplie l'exercice dans Séances puis « Modifier ». Ton programme d'origine reste conservé.</div>
+    <button class="btn-restore" style="width:100%;margin-top:10px;" onclick="restoreAll()">↺ Remettre tout le programme d'origine</button>
+  </div>
+<div class="sect">📚 Comprendre l'entraînement <div class="sectline"></div></div>
+  <div class="infonote">Ces principes valent quel que soit ton programme. Les comprendre te rend autonome : tu sauras adapter au lieu de suivre à l'aveugle.</div>
+  <div class="ec"><div class="et" onclick="toggleExo('sci-1')">
+    <span class="enum">1</span>
+    <div class="ebody"><div class="ename">La surcharge progressive</div><div class="emuscles">Le principe qui prime sur tous les autres</div><span class="badge bf">Fondamental</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="sci-1">
+    <div class="dt">Un muscle ne grossit que s'il reçoit une contrainte supérieure à celle à laquelle il est habitué. Sans augmentation progressive, le corps n'a aucune raison de changer : il s'adapte au niveau demandé, puis stagne.</div>
+    <div class="dl">En pratique</div><div class="dt">Ajoute du poids, des répétitions ou des séries au fil des semaines. Le repère simple : quand tu atteins le haut de ta fourchette de répétitions sur toutes tes séries avec une technique propre, augmente la charge à la séance suivante. C'est précisément pour ça que noter ses performances est indispensable — sans historique, impossible de savoir si tu progresses vraiment.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('sci-2')">
+    <span class="enum">2</span>
+    <div class="ebody"><div class="ename">Le volume : combien de séries par muscle</div><div class="emuscles">Le principal levier de croissance</div><span class="badge bh">Volume</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="sci-2">
+    <div class="dt">Le volume se compte en séries dures par muscle et par semaine. C'est le facteur le plus étroitement lié à la prise de muscle.</div>
+    <div class="dl">Ce que montre la recherche</div><div class="dt">Une revue systématique portant sur des pratiquants entraînés conclut qu'une fourchette de 12 à 20 séries hebdomadaires par groupe musculaire constitue une recommandation standard pertinente pour maximiser l'hypertrophie. Les méta-analyses de dose-réponse observent un gain supplémentaire par série ajoutée, mais avec un rendement décroissant : chaque série additionnelle rapporte de moins en moins.</div>
+    <div class="dl">Ce qu'il faut en retenir</div><div class="dt">Plus n'est pas linéairement mieux. Au-delà d'un certain point, tu accumules surtout de la fatigue. Vise la fourchette utile et progresse en qualité plutôt qu'en quantité — c'est aussi pour cela que le programme adapte le volume à ton niveau et à ton temps.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('sci-3')">
+    <span class="enum">3</span>
+    <div class="ebody"><div class="ename">Répétitions lourdes ou légères ?</div><div class="emuscles">Ce qui compte vraiment</div><span class="badge bi">Intensité</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="sci-3">
+    <div class="dt">On oppose souvent « lourd pour la force » et « léger pour le volume ». La réalité est plus nuancée.</div>
+    <div class="dl">Ce que montre la recherche</div><div class="dt">Les travaux sur les schémas de charge indiquent que des charges modérées et lourdes produisent une hypertrophie comparable lorsque le volume est équivalent, et que l'hypertrophie dépend surtout de l'effort fourni et du recrutement des fibres lorsque les séries approchent de l'échec. Les charges lourdes conservent en revanche l'avantage pour la force maximale.</div>
+    <div class="dl">Ce qu'il faut en retenir</div><div class="dt">Pour prendre du muscle, la fourchette de répétitions importe moins que le fait d'aller suffisamment près de l'échec. Pour gagner en force pure, le lourd reste nécessaire. C'est pourquoi le programme ajuste les répétitions selon ton objectif.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('sci-4')">
+    <span class="enum">4</span>
+    <div class="ebody"><div class="ename">L'amplitude complète</div><div class="emuscles">Surtout la position d'étirement</div><span class="badge be">Technique</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="sci-4">
+    <div class="dt">Travailler un muscle en position allongée, plutôt qu'en fin de contraction, semble produire davantage de croissance.</div>
+    <div class="dl">Ce que montre la recherche</div><div class="dt">Les travaux comparant amplitude partielle et complète montrent des résultats globalement similaires en moyenne, mais l'avantage bascule en faveur des répétitions partielles lorsqu'elles sont réalisées dans la portion allongée du mouvement. À l'inverse, travailler uniquement en position raccourcie donne les moins bons résultats. Les mécanismes exacts restent débattus, mais les formes d'entraînement en position allongée favorisent globalement davantage d'hypertrophie.</div>
+    <div class="dl">Ce qu'il faut en retenir</div><div class="dt">Ne coupe pas le bas de tes mouvements pour charger plus lourd. Descends complètement au développé, au squat, au curl incliné. C'est là que se joue une grande partie du résultat.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('sci-5')">
+    <span class="enum">5</span>
+    <div class="ebody"><div class="ename">Le temps de récupération</div><div class="emuscles">Ni trop court, ni inutilement long</div><span class="badge bs">Récup</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="sci-5">
+    <div class="dt">Écourter les récupérations pour « intensifier » est une erreur répandue : tu réduis surtout la charge que tu peux soulever à la série suivante.</div>
+    <div class="dl">Ce que montre la recherche</div><div class="dt">Une méta-analyse bayésienne sur la durée des récupérations conclut à un léger bénéfice à dépasser 60 secondes entre les séries, probablement lié au maintien du volume de charge. Au-delà de 90 secondes, aucune différence notable n'est observée sur l'hypertrophie.</div>
+    <div class="dl">Ce qu'il faut en retenir</div><div class="dt">Pour l'hypertrophie, 1 min 30 à 2 min suffisent sur la plupart des exercices. Pour la force pure, garde 3 minutes : ici, l'objectif est de récupérer complètement pour soulever lourd. Le chronomètre de l'application applique automatiquement ces durées.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('sci-6')">
+    <span class="enum">6</span>
+    <div class="ebody"><div class="ename">Muscle et graisse : deux choses distinctes</div><div class="emuscles">Comprendre pour ne pas se décourager</div><span class="badge bh">Nutrition</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="sci-6">
+    <div class="dt">On ne « transforme » pas de la graisse en muscle : ce sont deux tissus différents. Perdre du gras dépend d'un déficit calorique ; construire du muscle dépend de l'entraînement et d'un apport suffisant en protéines.</div>
+    <div class="dl">En pratique</div><div class="dt">En déficit, l'entraînement en résistance a un rôle précis : signaler au corps de conserver sa masse musculaire pendant qu'il puise dans les réserves de graisse. C'est pour cela qu'il ne faut pas baisser les charges quand on sèche.</div>
+    <div class="dl">Le piège de la balance</div><div class="dt">Le poids seul renseigne mal : il varie avec l'eau, le contenu digestif, le glycogène. Un tour de taille stable et des charges qui montent valent mieux qu'un chiffre qui descend vite. Juge sur trois à quatre semaines, pas au jour le jour.</div>
+  </div></div>
+  <div class="ec"><div class="et" onclick="toggleExo('sci-7')">
+    <span class="enum">7</span>
+    <div class="ebody"><div class="ename">Le sommeil et la régularité</div><div class="emuscles">Là où tout se joue vraiment</div><span class="badge bf">Récupération</span></div>
+    <div class="eright"><span class="echev">▾</span></div>
+  </div><div class="edet" id="sci-7">
+    <div class="dt">Le muscle ne se construit pas pendant la séance, mais pendant la récupération qui suit. L'entraînement crée le signal ; le repos et l'alimentation réalisent la construction.</div>
+    <div class="dl">En pratique</div><div class="dt">Un manque de sommeil chronique dégrade la récupération, la force et la régulation de l'appétit. Sept à neuf heures constituent une base raisonnable pour la plupart des adultes.</div>
+    <div class="dl">Le vrai facteur décisif</div><div class="dt">Sur un an, un programme moyen suivi régulièrement bat très largement un programme parfait suivi trois semaines. La constance est le facteur le plus déterminant — bien avant le choix des exercices.</div>
+  </div></div>
+  <div class="card" style="margin-top:12px;">
+    <div class="ct">Sources</div>
+    <div style="font-size:12px;color:var(--tx2);line-height:1.7;">Contenu appuyé sur des revues systématiques et méta-analyses en physiologie de l'exercice (volume et dose-réponse, durée des récupérations, amplitude de mouvement, charges et hypertrophie), publiées notamment dans <em>Journal of Human Kinetics</em>, <em>Sports Medicine</em>, <em>Frontiers in Sports and Active Living</em> et <em>European Journal of Sport Science</em>.</div>
+    <div style="font-size:12px;color:var(--tx3);line-height:1.6;margin-top:10px;">Ces informations sont éducatives et ne remplacent pas un avis médical. En cas de douleur, de pathologie connue, de grossesse ou de reprise après blessure, demande conseil à un professionnel de santé avant de suivre un programme.</div>
+  </div>
+  <div class="card" style="border-color:rgba(91,168,245,.3);">
+    <div class="ct">👤 Mon profil</div>
+    <div id="prof-box"></div>
+    <button class="btn-p" style="margin-top:12px;" onclick="openProfile()">✏️ Modifier mon profil</button>
+    <button class="btn-restore" id="regen-btn" style="width:100%;margin-top:8px;display:none;" onclick="askRegen()">🔄 Régénérer mon programme</button>
+    <div style="font-size:12px;color:var(--tx3);margin-top:10px;line-height:1.55;">Mets à jour ton poids régulièrement : tes besoins caloriques sont recalculés automatiquement.</div>
+  </div>
+  <div class="rcard" style="border-color:rgba(91,168,245,.3);background:var(--bl3);"><div class="ricon">✅</div><div><div class="rtitle">Version 15 — Judo + esthétique</div><div class="rtext">Si tu vois ce bloc, tu es bien sur la <strong>dernière version</strong>. Nouveautés : le programme combine performance judo et développement esthétique. Le lourd en début de séance sert le tatami, l&rsquo;isolation en fin sert le physique sans coûter en récupération. Samedi devient une vraie séance épaules, bras et poitrine.</div></div></div>
   <div class="rcard" style="border-color:rgba(245,185,66,.25);"><div class="ricon">✏️</div><div style="flex:1;"><div class="rtitle">Modifier un exercice</div><div class="rtext">Machine prise ou exercice qui ne passe pas ? Déplie l'exercice dans Séances puis "Modifier". Ton programme d'origine est toujours conservé.</div>
     <button class="btn-restore" style="width:100%;margin-top:10px;" onclick="restoreAll()">↺ Remettre tout le programme d'origine</button>
   </div></div>
@@ -519,6 +637,117 @@ button:active{transform:scale(.96);opacity:.85;}
   <div class="ni" onclick="switchMain('charges',this)"><div class="ni-icon">⚖️</div><div class="ni-label">Charges</div><div class="ni-bar"></div></div>
   <div class="ni" onclick="switchMain('regles',this)"><div class="ni-icon">📋</div><div class="ni-label">Règles</div><div class="ni-bar"></div></div>
 </nav>
+<!-- ONBOARDING / PROFIL -->
+<div class="onb" id="onb">
+  <div class="onb-inner">
+    <div class="onb-logo">💪</div>
+    <div class="onb-title">Bienvenue</div>
+    <div class="onb-sub">Quelques infos pour calculer tes besoins précis. Tout reste sur ton appareil, rien n'est envoyé nulle part.</div>
+
+    <div class="fl">Ton prénom</div>
+    <input type="text" id="p-name" placeholder="ex : Lilian" maxlength="20">
+
+    <div class="fl" style="margin-top:12px;">Sexe <span style="color:var(--tx4);font-weight:400;">· change le calcul du métabolisme</span></div>
+    <div class="seg" id="p-sex">
+      <button class="seg-b active" onclick="segPick('p-sex',this,'h')">Homme</button>
+      <button class="seg-b" onclick="segPick('p-sex',this,'f')">Femme</button>
+    </div>
+
+    <div class="irow" style="margin-top:12px;">
+      <div><div class="fl">Âge</div><input type="number" id="p-age" placeholder="22" min="12" max="90" inputmode="numeric"></div>
+      <div><div class="fl">Taille (cm)</div><input type="number" id="p-height" placeholder="169" min="120" max="230" inputmode="numeric"></div>
+    </div>
+    <div class="irow">
+      <div><div class="fl">Poids actuel (kg)</div><input type="number" id="p-weight" placeholder="69" min="30" max="200" step="0.1" inputmode="decimal"></div>
+      <div><div class="fl">Poids cible (kg)</div><input type="number" id="p-target" placeholder="66" min="30" max="200" step="0.1" inputmode="decimal"></div>
+    </div>
+
+    <div class="fl" style="margin-top:14px;">Ton objectif</div>
+    <div class="opt-list" id="p-goal">
+      <button class="opt active" onclick="segPick('p-goal',this,'cut')"><strong>Sécher</strong><span>Perdre du gras, garder le muscle</span></button>
+      <button class="opt" onclick="segPick('p-goal',this,'maintain')"><strong>Maintenir</strong><span>Recomposition, poids stable</span></button>
+      <button class="opt" onclick="segPick('p-goal',this,'bulk')"><strong>Prendre du muscle</strong><span>Prise de masse contrôlée</span></button>
+    </div>
+
+    <div class="fl" style="margin-top:14px;">Ton niveau d'activité</div>
+    <div class="opt-list" id="p-act">
+      <button class="opt" onclick="segPick('p-act',this,'1.375')"><strong>Léger</strong><span>Travail assis, 1-3 séances/sem</span></button>
+      <button class="opt active" onclick="segPick('p-act',this,'1.55')"><strong>Modéré</strong><span>3-5 séances/sem</span></button>
+      <button class="opt" onclick="segPick('p-act',this,'1.725')"><strong>Élevé</strong><span>6+ séances ou travail physique</span></button>
+      <button class="opt" onclick="segPick('p-act',this,'1.9')"><strong>Très élevé</strong><span>Sport quotidien + métier physique</span></button>
+    </div>
+
+    <div style="height:1px;background:var(--bd);margin:24px 0 20px;"></div>
+    <div style="font-size:15px;font-weight:700;color:var(--tx);margin-bottom:4px;">🏋️ Ton entraînement</div>
+    <div style="font-size:12px;color:var(--tx3);margin-bottom:14px;line-height:1.5;">Ces réponses construisent ton programme sur mesure.</div>
+
+    <div class="fl">Quel programme veux-tu ?</div>
+    <div class="opt-list" id="p-mode">
+      <button class="opt active" onclick="segPick('p-mode',this,'auto')"><strong>Généré pour moi</strong><span>Adapté à mon objectif et mes contraintes</span></button>
+      <button class="opt" onclick="segPick('p-mode',this,'coach')"><strong>Programme du coach</strong><span>Push/Pull/Legs 6 jours, orienté force et esthétique</span></button>
+    </div>
+
+    <div id="auto-block">
+      <div class="fl" style="margin-top:14px;">Ton objectif d'entraînement</div>
+      <div class="opt-list" id="p-tgoal">
+        <button class="opt" onclick="segPick('p-tgoal',this,'perte')"><strong>Perdre du gras</strong><span>Circuits courts, plus de cardio</span></button>
+        <button class="opt active" onclick="segPick('p-tgoal',this,'muscle')"><strong>Prendre du muscle</strong><span>Hypertrophie, 8-12 répétitions</span></button>
+        <button class="opt" onclick="segPick('p-tgoal',this,'force')"><strong>Gagner en force</strong><span>Charges lourdes, 4-6 répétitions</span></button>
+        <button class="opt" onclick="segPick('p-tgoal',this,'recomp')"><strong>Muscle + sécher</strong><span>Recomposition corporelle</span></button>
+        <button class="opt" onclick="segPick('p-tgoal',this,'forme')"><strong>Remise en forme</strong><span>Reprendre en douceur, santé</span></button>
+      </div>
+
+      <div class="fl" style="margin-top:14px;">Combien de séances par semaine ?</div>
+      <div class="seg" id="p-days">
+        <button class="seg-b" onclick="segPick('p-days',this,'2')">2</button>
+        <button class="seg-b" onclick="segPick('p-days',this,'3')">3</button>
+        <button class="seg-b active" onclick="segPick('p-days',this,'4')">4</button>
+        <button class="seg-b" onclick="segPick('p-days',this,'5')">5</button>
+        <button class="seg-b" onclick="segPick('p-days',this,'6')">6</button>
+      </div>
+
+      <div class="fl" style="margin-top:14px;">Combien de temps par séance ?</div>
+      <div class="opt-list" id="p-time">
+        <button class="opt" onclick="segPick('p-time',this,'30')"><strong>30 minutes</strong><span>Séance express, l'essentiel</span></button>
+        <button class="opt" onclick="segPick('p-time',this,'45')"><strong>45 minutes</strong><span>Format efficace et réaliste</span></button>
+        <button class="opt active" onclick="segPick('p-time',this,'60')"><strong>1 heure</strong><span>Le meilleur compromis</span></button>
+        <button class="opt" onclick="segPick('p-time',this,'90')"><strong>1h30 ou plus</strong><span>Séance complète, sans contrainte</span></button>
+      </div>
+
+      <div class="fl" style="margin-top:14px;">Ton niveau en musculation</div>
+      <div class="opt-list" id="p-level">
+        <button class="opt" onclick="segPick('p-level',this,'1')"><strong>Débutant</strong><span>Moins d'un an, ou reprise</span></button>
+        <button class="opt active" onclick="segPick('p-level',this,'2')"><strong>Intermédiaire</strong><span>1 à 3 ans réguliers</span></button>
+        <button class="opt" onclick="segPick('p-level',this,'3')"><strong>Avancé</strong><span>3 ans et plus, technique maîtrisée</span></button>
+      </div>
+
+      <div class="fl" style="margin-top:14px;">Quel matériel as-tu ?</div>
+      <div class="opt-list" id="p-equip">
+        <button class="opt active" onclick="segPick('p-equip',this,'gym')"><strong>Salle de sport</strong><span>Machines, barres, haltères</span></button>
+        <button class="opt" onclick="segPick('p-equip',this,'home')"><strong>Maison équipée</strong><span>Élastiques, haltères, barre de traction</span></button>
+        <button class="opt" onclick="segPick('p-equip',this,'bw')"><strong>Rien du tout</strong><span>Poids du corps uniquement</span></button>
+      </div>
+
+      <div class="fl" style="margin-top:14px;">Zones à faire progresser en priorité ?<span style="color:var(--tx4);font-weight:400;"> · 2 max</span></div>
+      <div style="font-size:12px;color:var(--tx3);margin-bottom:8px;line-height:1.5;">Le reste du corps continue d'être travaillé normalement : la priorité ajoute simplement du volume sur la zone choisie.</div>
+      <div class="opt-list" id="p-prio">
+        <button class="opt active" onclick="multiPick('p-prio',this,'none')"><strong>Équilibré</strong><span>Tout le corps de façon égale</span></button>
+        <button class="opt" onclick="multiPick('p-prio',this,'pecs')"><strong>Pectoraux</strong><span></span></button>
+        <button class="opt" onclick="multiPick('p-prio',this,'dos')"><strong>Dos</strong><span></span></button>
+        <button class="opt" onclick="multiPick('p-prio',this,'epaules')"><strong>Épaules</strong><span></span></button>
+        <button class="opt" onclick="multiPick('p-prio',this,'biceps')"><strong>Bras</strong><span></span></button>
+        <button class="opt" onclick="multiPick('p-prio',this,'quads')"><strong>Jambes</strong><span></span></button>
+        <button class="opt" onclick="multiPick('p-prio',this,'fessiers')"><strong>Fessiers</strong><span></span></button>
+        <button class="opt" onclick="multiPick('p-prio',this,'mollets')"><strong>Mollets</strong><span></span></button>
+        <button class="opt" onclick="multiPick('p-prio',this,'abdos')"><strong>Abdos</strong><span></span></button>
+      </div>
+    </div>
+
+    <button class="btn-p" style="margin-top:20px;" onclick="saveProfile()">Créer mon programme →</button>
+    <div id="onb-err" style="text-align:center;font-size:13px;color:var(--rd);margin-top:8px;display:none;"></div>
+    <div style="font-size:11px;color:var(--tx4);text-align:center;margin-top:14px;line-height:1.5;">Ces valeurs servent à estimer tes besoins. Ce ne sont pas des recommandations médicales — en cas de doute, consulte un professionnel de santé.</div>
+  </div>
+</div>
 <!-- EDIT EXO -->
 <div class="eov" id="eov" onclick="closeEditBg(event)">
   <div class="esheet">
@@ -596,63 +825,469 @@ button:active{transform:scale(.96);opacity:.85;}
 </div>
 
 <script>
-const ED={
-
-  lun:{badge:'Push · Pecs prioritaire',dur:'70–80 min',warmup:['4 min rameur ou vélo','Rotations épaules + cercles bras : 1 min','Band pull-apart élastique : 2×20','Étirement pec au mur : 30 sec/côté','2 séries légères développé incliné (40-50%)'],exos:[
-    {n:1,name:'Développé incliné haltères 30°',muscles:'Haut pecs · Deltoïde antérieur · Triceps',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Pecs',why:'En PREMIER car le haut des pecs est ta zone faible. Tu attaques ton point faible quand tu es le plus frais et le plus fort. C\'est la règle d\'or de la priorisation : le premier exercice reçoit ton énergie maximale.',exec:'Inclinaison 30° max. Descends lentement (2-3 sec), étirement complet en bas. Pousse explosif. 8 reps propres sur les 4 séries → +1kg.',esth:'Le haut des pecs = le "shelf" sous la clavicule, la zone qui donne le pec plein et bombé que tu cherches.',judo:null,charge:'Départ : 26-28 kg/main · Objectif : 32 kg'},
-    {n:2,name:'Développé couché haltères',muscles:'Pecs global · Triceps · Épaules avant',sets:'4×8-10',recup:'2min',badge:'bh',bl:'Hypertrophie · Pecs',why:'Construit l\'épaisseur globale du pec. Les haltères donnent une amplitude supérieure à la barre — étirement plus profond = plus de fibres recrutées sur ta zone faible.',exec:'Descente contrôlée 2 sec, étirement complet. Squeeze les pecs en haut. Ne verrouille pas les coudes.',esth:'Épaisseur et densité du pectoral entier.',judo:null,charge:'Départ : 28-30 kg/main · Objectif : 34 kg'},
-    {n:3,name:'Dips lestés (buste penché)',muscles:'Pecs bas · Triceps',sets:'3×8-10',recup:'2min',badge:'bf',bl:'Force · Pec bas',why:'TA ZONE FAIBLE prioritaire. Le pec bas donne la ligne nette sous le pectoral. Penche le buste en avant pour cibler le pec plutôt que le triceps.',exec:'Buste penché à 30° vers l\'avant, descends jusqu\'à l\'étirement (épaules sous les coudes). Remonte sans verrouiller.',esth:'La ligne inférieure du pec, le galbe qui sépare nettement pec et abdos.',judo:null,charge:'Départ : +15-20 kg · Objectif : +30 kg'},
-    {n:4,name:'Écarté poulie vis-à-vis',muscles:'Pec interne · Pec global',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Isolation · Étirement',why:'La poulie maintient une tension constante que les haltères perdent en haut. De haut vers bas pour cibler le pec interne et bas — exactement tes zones en retard.',exec:'Poulies hautes. Amène les mains vers le bas et le centre, croise légèrement. Squeeze 1 sec. Étirement contrôlé.',esth:'Le pec interne crée la séparation centrale entre les deux pectoraux.',judo:null,charge:'Départ : 10-15 kg/côté · Qualité de contraction > charge'},
-    {n:5,name:'Développé militaire haltères',muscles:'Deltoïdes · Triceps',sets:'3×8-10',recup:'1min45',badge:'bh',bl:'Hypertrophie · Épaules',why:'Tes épaules sont déjà ton point fort — on les maintient avec un volume suffisant sans en faire trop. Trajectoire haltères = moins de stress articulaire.',exec:'Haltères à hauteur des oreilles, coudes à 45°. Pousse en arc naturel. Ne cambre pas le dos.',esth:'Maintien des épaules rondes et larges.',judo:null,charge:'Départ : 24-26 kg/main · Objectif : 28 kg'},
-    {n:6,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×12-15',recup:'1min',badge:'bi',bl:'Isolation · Largeur',why:'Le deltoïde moyen = la largeur d\'épaule qui fait la carrure. Léger penché en avant pour mieux cibler le faisceau moyen.',exec:'Légèrement penché, coudes légèrement devant le corps. Monte à l\'horizontale, contrôle la descente 2 sec. Pas d\'élan.',esth:'Largeur d\'épaule = effet V immédiat.',judo:null,charge:'Départ : 8-10 kg/main · Tempo lent'},
-    {n:7,name:'Barre au front (skull crusher)',muscles:'Triceps (longue portion)',sets:'4×8-10',recup:'1min45',badge:'bf',bl:'Force · Triceps',why:'TA PRIORITÉ bras. Le triceps fait 60% du volume du bras — c\'est lui qui donne le bras épais, pas le biceps. La barre au front cible la longue portion, la plus volumineuse.',exec:'Allongé, barre EZ. Descends vers le front en gardant les coudes fixes et serrés. Étirement complet derrière la tête possible.',esth:'Le triceps en fer à cheval, l\'arrière du bras qui donne l\'épaisseur de profil.',judo:null,charge:'Départ : 20-30 kg barre EZ · Objectif : progression constante'},
-    {n:8,name:'Triceps corde poulie',muscles:'Triceps (finition)',sets:'3×12-15',recup:'1min',badge:'bi',bl:'Isolation · Triceps',why:'Finit le triceps en congestion. Écarte la corde en bas pour contracter la longue portion à fond. Volume supplémentaire sur ta zone prioritaire.',exec:'Coudes fixes collés au corps. Descends et écarte la corde en bas. Squeeze 1 sec. Contrôle la remontée.',esth:'Définition et stries du triceps.',judo:null,charge:'Départ : 20-30 kg poulie · Congestion recherchée'}
+/* Programme fait main (mode 'coach') */
+/* Programme fait main — saison judo */
+/* Programme fait main — saison judo + esthétique */
+const COACH_PROGRAM={
+  lun:{badge:'Force Haut · Tirage & Épaules',dur:'65–75 min',
+    warmup:['4 min rameur — prépare le dos et les tirages','Rotations épaules + band pull-apart : 2×20','Étirement pec au mur : 30 sec/côté','Suspension à la barre : 2×20 sec','2 séries légères de tractions'],
+    explo:'Tractions explosives : 4×3 · récup 90 sec · monte le plus vite possible, descends contrôlé. Développe la vitesse de tirage, exactement ce qui décide d\'un kumi-kata gagné.',
+    exos:[
+    {n:1,name:'Tractions pronation lestées',muscles:'Grand dorsal · Biceps · Avant-bras',sets:'4×5-6',recup:'2min30',badge:'bf',bl:'Force',why:'Le tirage vertical lourd est le transfert le plus direct au judo, et le grand dorsal est aussi le muscle qui crée la forme en V. Un exercice qui sert à la fois la performance et l\'esthétique. On travaille en 5-6 reps pour développer la force sans créer les courbatures qui gêneraient le judo du lendemain.',exec:'Lest modéré. Monte fort, descends en 2 secondes. Arrête chaque série une répétition avant l\'échec : en saison, on ne va pas à l\'échec, c\'est ce qui préserve le système nerveux pour le tatami.',esth:'Largeur du dos et forme en V, l\'effet qui affine visuellement la taille.',judo:'Kumi-kata plus solide, meilleure résistance à la fatigue de préhension en fin de combat.',charge:'Départ : +8 à +12 kg · +2,5 kg quand 6 reps passent proprement'},
+    {n:2,name:'Développé couché haltères',muscles:'Pecs · Triceps · Épaules avant',sets:'4×5-6',recup:'2min30',badge:'bf',bl:'Force',why:'La poussée lourde construit l\'épaisseur du pectoral et équilibre tout le volume de tirage du judo. Sans elle, les épaules s\'enroulent vers l\'avant et le risque de blessure augmente.',exec:'Charge lourde, 5-6 reps, jamais à l\'échec. Descente contrôlée, étirement complet, pousse fort.',esth:'Épaisseur et densité du pectoral, la base de la poitrine.',judo:'Force de poussée pour repousser, contrôler la distance et se dégager au sol.',charge:'Départ : 30-32 kg/main · Objectif : 36 kg'},
+    {n:3,name:'Rowing barre buste penché',muscles:'Dos épaisseur · Rhomboïdes · Lombaires',sets:'4×6-8',recup:'2min',badge:'bf',bl:'Force',why:'Le tirage horizontal donne l\'épaisseur du dos, celle qui se voit de profil et de dos. C\'est aussi le geste de ramener l\'adversaire à soi, et le maintien du buste penché renforce les lombaires en isométrie.',exec:'Buste à 45°, dos plat et gainé. Tire vers le nombril, serre les omoplates. Si le dos s\'arrondit, réduis la charge immédiatement.',esth:'Relief et épaisseur du dos, complément indispensable de la largeur.',judo:'Puissance de traction et gainage du tronc en position penchée.',charge:'Départ : 55-65 kg · Progression lente et propre'},
+    {n:4,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×12-15',recup:'1min',badge:'bi',bl:'Esthétique',why:'Le deltoïde moyen crée la largeur d\'épaule, et donc la carrure. C\'est LE muscle qui donne l\'illusion d\'une taille fine et d\'un torse en V. Peu sollicité par le judo, il ne coûte quasiment rien en récupération : c\'est le meilleur rapport esthétique/fatigue du programme.',exec:'Charge légère, léger penché en avant, tempo lent sur la descente. Monte à l\'horizontale, pas plus haut. Aucun élan.',esth:'Largeur d\'épaule — l\'effet le plus visible sur une silhouette, habillé comme torse nu.',judo:null,charge:'8-10 kg/main · La technique prime totalement sur la charge'},
+    {n:5,name:'Facepull corde',muscles:'Deltoïde arrière · Rotateurs · Trapèze moyen',sets:'3×15-20',recup:'1min',badge:'bi',bl:'Prévention',why:'Le judo tire énormément et enroule les épaules vers l\'avant. Le facepull rééquilibre en renforçant l\'arrière de l\'épaule. Double bénéfice : il prévient les tendinites et redresse la posture, ce qui fait immédiatement paraître la poitrine plus ouverte.',exec:'Charge légère, coudes hauts, tire vers le visage en écartant. Lent et contrôlé, jamais en force.',esth:'Posture droite et épaules ouvertes : le meilleur moyen de paraître plus large sans gagner un gramme.',judo:'Prévention des tendinites d\'épaule, très fréquentes chez les judokas.',charge:'15-25 kg poulie · La qualité prime totalement sur la charge'},
+    {n:6,name:'Pallof press (anti-rotation)',muscles:'Obliques · Transverse · Gainage profond',sets:'3×10/côté',recup:'1min',badge:'bs',bl:'Gainage',why:'Le tronc du judoka doit surtout RÉSISTER à la rotation quand l\'adversaire tente de le déséquilibrer. Le Pallof press entraîne précisément cette qualité, et le transverse qu\'il renforce est le muscle qui garde le ventre plat au repos.',exec:'De profil à la poulie, tends les bras devant toi sans laisser le buste tourner. Tiens 2 secondes.',esth:'Sangle abdominale dense, taille solide et resserrée.',judo:'Résistance au kuzushi, meilleure stabilité quand l\'adversaire tire.',charge:'Charge légère à modérée · Zéro rotation du buste'}
   ]},
-
-  mar:{badge:'Pull · Dos + Biceps',dur:'70–75 min',warmup:['4 min rameur','Rotations épaules + band pull-apart : 2×20','Suspension à la barre : 2×20 sec','Tractions légères : 1×5','2 séries légères rowing'],exos:[
-    {n:1,name:'Tractions pronation lestées',muscles:'Grand dorsal · Biceps · Haut du dos',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Largeur',why:'Le meilleur exo pour la largeur du dos et la forme en V. Lesté en force pour développer la densité. Ton dos est déjà bon (judo), on le rend exceptionnel.',exec:'Prise un peu plus large que les épaules. Coudes vers le bas et l\'arrière. Menton au-dessus de la barre. Descente contrôlée complète.',esth:'Largeur du dos = taille qui paraît plus fine, effet V.',judo:null,charge:'Départ : +5-10 kg · Objectif : +15 kg'},
-    {n:2,name:'Rowing barre buste penché',muscles:'Dos épaisseur · Rhomboïdes · Trapèzes',sets:'4×8-10',recup:'2min',badge:'bf',bl:'Force · Épaisseur',why:'Largeur (tractions) + épaisseur (rowing) = dos complet en 3D. Le rowing barre permet la charge la plus lourde pour l\'épaisseur centrale du dos.',exec:'Buste penché à 45°, dos droit gainé. Tire la barre vers le nombril. Serre les omoplates en fin. Contrôle la descente.',esth:'Épaisseur et relief du dos, visible de profil.',judo:null,charge:'Départ : 50-60 kg · Objectif : progression'},
-    {n:3,name:'Tirage horizontal poulie',muscles:'Milieu du dos · Rhomboïdes',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Cible le milieu du dos en tension constante. Complète le rowing barre avec un angle différent et plus de contrôle.',exec:'Buste droit, tire vers le bas du ventre. Serre les omoplates, tiens 1 sec. Étirement complet en avant sans arrondir le dos.',esth:'Densité du milieu du dos, le sillon central.',judo:null,charge:'Départ : 50-60 kg · Objectif : progression'},
-    {n:4,name:'Tirage vertical prise neutre',muscles:'Grand dorsal · Biceps',sets:'3×10-12',recup:'1min30',badge:'bh',bl:'Hypertrophie',why:'Prise neutre recrute le dorsal inférieur différemment des tractions pronation. Stimulation complémentaire pour un dos complet.',exec:'Tire vers le haut de la poitrine, coudes vers les hanches. Squeeze en bas. Étirement complet en haut.',esth:'Finition et largeur basse du dorsal.',judo:null,charge:'Départ : 50-55 kg · Objectif : progression'},
-    {n:5,name:'Facepull corde',muscles:'Deltoïde arrière · Rotateurs · Trapèze moyen',sets:'4×15-20',recup:'1min',badge:'bi',bl:'POSTURE · Santé',why:'CORRIGE TES ÉPAULES ENROULÉES vues sur la photo. Le deltoïde postérieur et les rotateurs ouvrent la poitrine — ça fait paraître tes pecs plus pleins et redresse ta posture judo. Indispensable.',exec:'Corde à hauteur du visage. Tire en écartant vers les oreilles, coudes hauts. Pouces vers l\'arrière en fin. Lent et contrôlé.',esth:'Posture droite + épaules ouvertes = pecs qui ressortent davantage.',judo:null,charge:'Départ : 15-25 kg · Qualité > charge, toujours'},
-    {n:6,name:'Curl barre EZ',muscles:'Biceps (force)',sets:'4×8-10',recup:'1min45',badge:'bf',bl:'Force · Biceps',why:'L\'exo de base pour la masse du biceps. La barre permet de charger lourd pour développer l\'épaisseur globale. Priorité bras secondaire après le triceps.',exec:'Coudes fixes collés au corps. Monte sans balancer le dos. Contrôle la descente 2 sec. Étirement complet en bas.',esth:'Masse et épaisseur du biceps.',judo:null,charge:'Départ : 25-35 kg · Objectif : progression'},
-    {n:7,name:'Curl incliné haltères',muscles:'Biceps (longue portion · pic)',sets:'3×10-12',recup:'1min15',badge:'bh',bl:'Étirement · Pic',why:'CRÉE LE PIC qui te manque. Bras derrière le corps sur banc incliné = étirement maximal de la longue portion du biceps, celle qui forme le pic quand tu contractes.',exec:'Banc incliné 45-60°. Bras pendants derrière le plan du corps. Curl sans bouger les coudes. Étirement complet en bas.',esth:'Le pic du biceps, la bosse haute quand tu contractes.',judo:null,charge:'Départ : 10-12 kg/main · Étirement prioritaire'},
-    {n:8,name:'Curl marteau',muscles:'Brachial · Avant-bras',sets:'3×12',recup:'1min',badge:'bi',bl:'Isolation',why:'Le brachial passe SOUS le biceps et le pousse vers le haut — il augmente le pic et l\'épaisseur du bras vu de profil. Travaille aussi l\'avant-bras.',exec:'Prise marteau (paumes face à face). Coudes fixes. Monte et contrôle. Alterné ou simultané.',esth:'Épaisseur latérale du bras + avant-bras développé.',judo:null,charge:'Départ : 12-14 kg/main'}
+  mer:{badge:'Force Bas · Puissance de projection',dur:'70–80 min',
+    warmup:['4 min vélo','Cercles de hanches : 30 sec chaque sens','Fente basse + rotation thoracique : 45 sec/côté','Squat poids de corps : 2×10','2 séries légères de squat (40-50%)'],
+    explo:'Squat jump : 5×3 · récup 90 sec · poids de corps, intention maximale, atterrissage souple. Placé avant tout le reste, quand le système nerveux est frais : c\'est ce qui développe la vitesse d\'extension de hanche, le moteur de toute projection.',
+    exos:[
+    {n:1,name:'Squat barre',muscles:'Quadriceps · Fessiers · Gainage',sets:'4×5',recup:'3min',badge:'bf',bl:'Force',why:'La force de jambe est la base de toute projection debout, et le squat déclenche la plus forte réponse hormonale de tous les exercices — un bénéfice qui profite à la construction musculaire du corps entier, y compris le haut.',exec:'Descends au moins parallèle, genoux dans l\'axe. Remontée explosive, même avec une charge lourde. Garde toujours 2 répétitions en réserve.',esth:'Cuisses denses et fessiers hauts. C\'est aussi l\'exercice qui donne le plus de densité générale au physique.',judo:'Puissance d\'extension de jambe : uchi-mata, seoi-nage, toutes les projections debout.',charge:'Départ : 85-90 kg · +2,5 kg quand les 4 séries passent bien'},
+    {n:2,name:'Soulevé de terre roumain',muscles:'Ischios · Fessiers · Chaîne postérieure',sets:'4×6',recup:'2min30',badge:'bf',bl:'Force',why:'L\'extension de hanche est LE mouvement du judo. Le soulevé roumain renforce toute la chaîne postérieure sous étirement, ce qui protège aussi les ischios — la blessure la plus fréquente dans les sports explosifs.',exec:'Hanches vers l\'arrière, jambes quasi tendues, dos plat. Descends jusqu\'à l\'étirement, remonte en serrant les fessiers.',esth:'Fessiers hauts et arrière de cuisse dessiné : la jonction fesse/cuisse qui fait la différence de profil.',judo:'Puissance de hanche pour o-goshi, harai-goshi, uchi-mata.',charge:'Départ : 80-90 kg · La sensation d\'étirement prime sur la charge'},
+    {n:3,name:'Fentes bulgares',muscles:'Fessiers · Quadriceps · Équilibre',sets:'3×8/jambe',recup:'1min45',badge:'bh',bl:'Unilatéral',why:'Le judo se joue souvent en appui sur une jambe. Le travail unilatéral corrige les déséquilibres droite/gauche et développe le fessier avec des charges modérées, sans fatiguer le dos.',exec:'Pied arrière sur banc, descente verticale, pousse sur le talon avant. Contrôle l\'équilibre plutôt que de charger lourd.',esth:'Fessiers galbés et jambes symétriques — les asymétries se voient beaucoup sur un physique sec.',judo:'Stabilité sur un appui, résistance quand l\'adversaire attaque une jambe.',charge:'Départ : 16-20 kg/main'},
+    {n:4,name:'Hip thrust barre',muscles:'Grand fessier · Ischios',sets:'3×8-10',recup:'1min45',badge:'bh',bl:'Puissance',why:'C\'est l\'exercice qui active le plus le grand fessier, le muscle le plus puissant du corps et le moteur direct de l\'extension de hanche en projection.',exec:'Dos sur banc, pousse par les talons, contracte fort 1 seconde en haut. Ne cambre pas le bas du dos pour aller plus haut.',esth:'Fessiers ronds et relevés, ce qui structure toute la silhouette de profil.',judo:'Explosivité de hanche au moment du kuzushi et de la projection.',charge:'Départ : 80-100 kg'},
+    {n:5,name:'Leg curl allongé',muscles:'Ischio-jambiers',sets:'3×10-12',recup:'1min15',badge:'bi',bl:'Prévention',why:'L\'équilibre entre quadriceps et ischios est un facteur reconnu de prévention des blessures. En sport explosif, les ischios sont la zone la plus exposée : ce travail direct est une assurance pour la saison.',exec:'Descente lente sur 3 secondes. Le contrôle excentrique est ce qui protège le muscle.',esth:'Arrière de cuisse développé, pour des jambes complètes sous tous les angles.',judo:'Prévention des claquages sur les accélérations et les déplacements.',charge:'Départ : 40-50 kg'},
+    {n:6,name:'Mollets debout',muscles:'Gastrocnémien · Soléaire',sets:'3×12-15',recup:'1min',badge:'bi',bl:'Esthétique',why:'Le mollet est un détail qui trahit un physique complet : des jambes développées avec des mollets fins se voient immédiatement. Il travaille aussi la cheville, sollicitée en permanence sur les déplacements en judo.',exec:'Amplitude totale : étirement complet en bas, contraction tenue 2 secondes en haut. Lent, jamais en rebond.',esth:'Mollets dessinés, la finition d\'une jambe athlétique.',judo:'Cheville robuste, meilleure propulsion sur les déplacements.',charge:'Poids de corps + 20-40 kg'},
+    {n:7,name:'Relevés de jambes suspendus',muscles:'Bas abdos · Fléchisseurs de hanche',sets:'3×12-15',recup:'1min',badge:'bs',bl:'Abdos',why:'Le bas des abdominaux est la zone la plus difficile à faire ressortir et la plus visible quand on est sec. Cet exercice la cible directement, tout en travaillant la préhension en suspension.',exec:'Suspendu, monte les genoux jusqu\'à soulever le bassin. Contrôle la descente, pas d\'élan.',esth:'Bas du ventre et V-cut abdominal, la zone qui apparaît en dernier quand on sèche.',judo:'Contrôle du bassin au sol, remontées de garde en ne-waza.',charge:'Genoux fléchis → jambes tendues quand maîtrisé'}
   ]},
-
-  mer:{badge:'Legs · Jambes complètes',dur:'70–75 min',warmup:['4 min vélo','Cercles de hanches + fente basse rotation : 2 min','Squat poids de corps : 2×12','Hip flexor stretch : 1 min/côté','2 séries légères squat (40-50%)'],explo:'Squat jump : 3×5 · récup 60 sec · poids de corps · intention maximale · garde l\'explosivité acquise au judo.',exos:[
-    {n:1,name:'Squat barre',muscles:'Quadriceps · Fessiers · Gainage',sets:'4×6-8',recup:'3min',badge:'bf',bl:'Force',why:'Le roi des exercices de jambe. Déclenche le plus de testostérone et d\'hormone de croissance — bénéfice sur TOUT le corps, y compris tes pecs et bras. À garder lourd même en sèche pour protéger le muscle.',exec:'Barre sur les trapèzes. Descends au moins parallèle, genoux dans l\'axe des orteils. Pousse fort dans le sol à la remontée.',esth:'Cuisses volumineuses, fessiers hauts, densité générale.',judo:null,charge:'Départ : 80-90 kg · Maintien en sèche prioritaire'},
-    {n:2,name:'Soulevé de terre roumain',muscles:'Ischios · Fessiers · Lombaires',sets:'4×8-10',recup:'2min30',badge:'bf',bl:'Force-Hypertrophie',why:'Meilleur exo pour ischios et fessiers ensemble, sous étirement maximal. Équilibre l\'avant (quadri) et l\'arrière de la cuisse pour des jambes complètes.',exec:'Hanches vers l\'arrière, jambes quasi-tendues. Barre proche des jambes. Fort étirement ischios en bas. Remonte par les hanches.',esth:'Fessiers hauts et ronds, arrière de cuisse développé.',judo:null,charge:'Départ : 70-90 kg · La sensation prime sur la charge'},
-    {n:3,name:'Presse à cuisses',muscles:'Quadriceps · Fessiers',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Après le squat lourd, continue le volume sans fatigue nerveuse. Dos supporté = tu peux pousser fort en sécurité.',exec:'Pieds milieu de plateforme pour les quads. Amplitude complète, genoux vers la poitrine. Ne verrouille pas en haut.',esth:'Volume des cuisses.',judo:null,charge:'Départ : 100-140 kg · Progression'},
-    {n:4,name:'Leg curl allongé',muscles:'Ischio-jambiers',sets:'3×10-12',recup:'1min15',badge:'bi',bl:'Isolation',why:'Isole les ischios en contraction. Équilibre quadri/ischio = prévention de la blessure n°1 du genou. RDL (étirement) + leg curl (contraction) = ischios complets.',exec:'Descente lente obligatoire 3 sec. Contraction forte en haut. Le tempo prime sur la charge.',esth:'Arrière de cuisse galbé.',judo:null,charge:'Départ : 35-50 kg machine'},
-    {n:5,name:'Leg extension',muscles:'Quadriceps (isolation)',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Isolation',why:'Seul exo qui isole le quadriceps en contraction pure. Finit les quads après le travail lourd, cible la goutte au-dessus du genou.',exec:'Tiens 1 sec en haut, contraction maximale. Descente lente. Approche l\'échec sur la dernière série.',esth:'Quadriceps définis et striés de face.',judo:null,charge:'Départ : 32-40 kg · Progression'},
-    {n:6,name:'Mollets debout',muscles:'Gastrocnémien',sets:'4×12-15',recup:'1min',badge:'bi',bl:'Isolation',why:'Le gastrocnémien = la partie visible et bombée du mollet. Amplitude totale impérative, c\'est un muscle têtu qui demande de la rigueur.',exec:'Étirement maximal en bas (talon sous le niveau), contraction forte en haut tenue 2 sec. Lent.',esth:'Volume et galbe du mollet.',judo:null,charge:'Départ : PC + 20-40 kg'},
-    {n:7,name:'Mollets assis',muscles:'Soléaire',sets:'3×15-20',recup:'1min',badge:'bi',bl:'Isolation',why:'Le soléaire est sous le gastrocnémien et le pousse vers l\'extérieur = base du mollet. Genou fléchi = il cible spécifiquement le soléaire.',exec:'Amplitude maximale. Étirement complet, contraction complète. Reps élevées car fibres endurantes.',esth:'Épaisseur latérale du mollet.',judo:null,charge:'Départ : machine + 20-30 kg'}
-  ]},
-
-  jeu:{badge:'Upper · 2e dose Pecs + Bras',dur:'70–80 min',warmup:['4 min rameur','Rotations épaules + band pull-apart : 2×20','Étirement pec au mur : 30 sec/côté','2 séries légères développé couché (40-50%)'],exos:[
-    {n:1,name:'Développé couché barre',muscles:'Pecs · Triceps · Épaules avant',sets:'4×6-8',recup:'2min30',badge:'bf',bl:'Force · Pecs',why:'2e dose pecs de la semaine — c\'est ce qui crée le rattrapage. Cette fois à la barre et en force lourde pour développer la puissance de poussée et la densité. Variante différente du lundi (haltères) pour un stimulus complémentaire.',exec:'Barre touche le bas des pecs. Coudes à 45°, pas écartés à 90°. Pousse explosif, ne rebondis pas sur la poitrine.',esth:'Force et densité du pectoral, base de la masse.',judo:null,charge:'Départ : 55-65 kg · Objectif : 75-80 kg'},
-    {n:2,name:'Développé incliné haltères',muscles:'Haut pecs · Deltoïde antérieur',sets:'3×10-12',recup:'1min45',badge:'bh',bl:'Hypertrophie · Pecs',why:'Re-cible ta zone faible (haut des pecs) en volume cette fois, après l\'avoir travaillée en force lundi. Force + volume sur la même zone = rattrapage accéléré.',exec:'30° d\'inclinaison. Amplitude complète, étirement en bas. Plus léger que lundi, focus sur la congestion.',esth:'Le haut du pec, encore et toujours ta priorité.',judo:null,charge:'Départ : 22-26 kg/main'},
-    {n:3,name:'Écarté incliné haltères',muscles:'Pec haut · Étirement',sets:'3×12-15',recup:'1min15',badge:'bi',bl:'Isolation · Étirement',why:'L\'étirement sous charge est un puissant signal de croissance. L\'écarté incliné étire le haut du pec à fond — parfait pour développer la zone en retard.',exec:'Banc incliné. Bras légèrement fléchis, descends en grand arc jusqu\'à sentir l\'étirement. Remonte en serrant les pecs.',esth:'Étirement et galbe du haut du pec.',judo:null,charge:'Départ : 10-14 kg/main · Étirement contrôlé'},
-    {n:4,name:'Tractions ou tirage vertical',muscles:'Grand dorsal · Biceps',sets:'4×8-10',recup:'2min',badge:'bh',bl:'Hypertrophie · Dos',why:'Maintient le volume dos sur la 2e moitié de semaine. Tractions si tu as de l\'énergie, tirage vertical si fatigué — les deux travaillent la largeur.',exec:'Amplitude complète. Coudes vers le bas. Squeeze le dos en bas du mouvement.',esth:'Largeur du dos maintenue.',judo:null,charge:'Tractions : PC ou lesté · Tirage : 50-55 kg'},
-    {n:5,name:'Rowing haltère unilatéral',muscles:'Dos épaisseur · Biceps',sets:'3×10-12/bras',recup:'1min30',badge:'bh',bl:'Hypertrophie',why:'Unilatéral = corrige les petits déséquilibres gauche/droite. Épaisseur du dos en complément de la largeur des tractions.',exec:'Un genou et une main sur le banc. Tire l\'haltère vers la hanche, coude haut. Contrôle la descente, étirement complet.',esth:'Épaisseur et relief du dos.',judo:null,charge:'Départ : 28-32 kg/main'},
-    {n:6,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×15',recup:'1min',badge:'bi',bl:'Isolation · Largeur',why:'2e dose épaules de la semaine en volume léger. Le deltoïde moyen récupère vite et répond bien à la fréquence élevée.',exec:'Penché léger, tempo lent, pas d\'élan. Brûlure recherchée sur les dernières reps.',esth:'Largeur d\'épaule, carrure.',judo:null,charge:'Départ : 8-10 kg/main'},
-    {n:7,name:'Superset Curl + Triceps',muscles:'Biceps + Triceps',sets:'4×12+12',recup:'1min15',badge:'bi',bl:'Superset · Bras',why:'2e (triceps) et 3e (biceps) dose bras de la semaine. Le superset agoniste/antagoniste permet un max de volume en peu de temps avec une congestion énorme — idéal pour finir et rattraper les bras.',exec:'Curl haltères 12 reps, enchaîne immédiatement triceps poulie 12 reps. Repos 1min15 après les deux. 4 tours.',esth:'Congestion et rattrapage des deux faces du bras.',judo:null,charge:'Curl : 10-12 kg/main · Triceps : 20-30 kg poulie'}
-  ]},
-  ven:{badge:'Lower + Épaules + Abdos',dur:'65–75 min',warmup:['4 min vélo','90/90 hanches + pigeon : 2 min/côté','Rotations épaules + band pull-apart : 2×20','Squat poids de corps : 2×12','2 séries légères hip thrust'],exos:[
-    {n:1,name:'Hip thrust barre',muscles:'Grand fessier · Ischios',sets:'4×10-12',recup:'2min',badge:'bh',bl:'Hypertrophie · Fessiers',why:'2e séance jambes de la semaine, axée fessiers et postérieur. Meilleure activation du grand fessier en EMG. Complète le squat lourd du mercredi sans re-solliciter autant les quadriceps.',exec:'Dos sur banc, barre sur les hanches (pad). Pousse par les talons, alignement complet en haut. Contracte les fessiers 1 sec. Ne cambre pas le bas du dos.',esth:'Fessiers ronds, hauts et puissants.',judo:null,charge:'Départ : 60-80 kg · Objectif : 100 kg'},
-    {n:2,name:'Fentes bulgares',muscles:'Fessiers · Quadriceps · Équilibre',sets:'3×10/jambe',recup:'1min45',badge:'bh',bl:'Hypertrophie · Unilatéral',why:'Pied arrière surélevé = étirement fessier maximal. Unilatéral = corrige les déséquilibres gauche/droite et travaille l\'équilibre, utile pour le retour au judo.',exec:'Pied arrière sur banc. Descends à la verticale, genou avant dans l\'axe. Pousse sur le talon avant. Buste légèrement penché pour cibler le fessier.',esth:'Fessiers galbés, séparation fessier/cuisse nette.',judo:null,charge:'Départ : 14-18 kg/main'},
-    {n:3,name:'Leg curl allongé',muscles:'Ischio-jambiers',sets:'3×10-12',recup:'1min15',badge:'bi',bl:'Isolation',why:'Isole les ischios en contraction. Équilibre avec le travail quadriceps du mercredi. Prévention n°1 des blessures de genou et d\'ischios, important avant la reprise judo.',exec:'Descente lente obligatoire 3 sec. Contraction forte en haut. Le tempo prime sur la charge.',esth:'Arrière de cuisse galbé.',judo:null,charge:'Départ : 35-50 kg machine'},
-    {n:4,name:'Développé militaire haltères',muscles:'Deltoïdes · Triceps',sets:'4×8-10',recup:'1min45',badge:'bh',bl:'Hypertrophie · Épaules',why:'2e dose épaules de la semaine en force cette fois. Les épaules sont ton point fort, on les maintient pleines et rondes. Placé ici car la séance jambes légère laisse de l\'énergie pour le haut du corps.',exec:'Haltères à hauteur des oreilles, coudes à 45°. Pousse en arc naturel. Gainage serré, ne cambre pas.',esth:'Épaules rondes et larges, la carrure.',judo:null,charge:'Départ : 24-26 kg/main · Objectif : 28 kg'},
-    {n:5,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×15',recup:'1min',badge:'bi',bl:'Isolation · Largeur',why:'Finit les épaules en congestion. Le deltoïde moyen donne la largeur, il récupère vite et adore la fréquence élevée.',exec:'Léger penché en avant, tempo lent, pas d\'élan. Brûlure recherchée sur les dernières reps.',esth:'Largeur d\'épaule, effet V.',judo:null,charge:'Départ : 8-10 kg/main'},
-    {n:6,name:'Relevés de jambes suspendus',muscles:'Bas abdos · Fléchisseurs de hanche',sets:'4×12-15',recup:'1min',badge:'bs',bl:'Abdos bas',why:'Le bas des abdos est la zone la plus dure à révéler et la plus visible quand tu sèches. La sèche les découvre, cet exo les construit. Zone clé pour ton objectif ventre plat.',exec:'Suspendu à la barre. Monte les genoux (ou jambes tendues en avancé) jusqu\'à soulever le bassin. Contrôle la descente, pas d\'élan.',esth:'Le bas du ventre et le V-cut qui plonge vers les hanches.',judo:null,charge:'Genoux fléchis → jambes tendues quand maîtrisé'},
-    {n:7,name:'Crunch à la poulie',muscles:'Abdos haut · Grand droit',sets:'4×15',recup:'45sec',badge:'bs',bl:'Abdos haut',why:'Charge les abdos en résistance progressive. Les abdos sont un muscle : ils grossissent avec de la charge, pas seulement au poids du corps. Combiné à la sèche = tablettes visibles.',exec:'À genoux, corde derrière la nuque. Enroule le buste vers le bas en contractant les abdos. Le mouvement vient des abdos, pas des bras.',esth:'Épaisseur et relief des tablettes du haut.',judo:null,charge:'Départ : 25-40 kg · Progression possible'}
-  ]},
-  sam:{badge:'Cardio léger ou Repos',dur:'30–40 min · optionnel',warmup:['Marche 5 min pour démarrer en douceur'],cardio:'OPTIONNEL. Si tu te sens bien : 30-40 min cardio zone 2 (vélo, marche inclinée) pour ajouter de la dépense sur la semaine. Si tu es fatigué de la semaine : repos complet ou simple marche. Écoute ton corps — en sèche, le repos fait autant progresser que l\'entraînement.',exos:[
-    {n:1,name:'Gainage planche',muscles:'Transverse · Gainage profond',sets:'3×45sec',recup:'45sec',badge:'bs',bl:'Gainage',why:'Optionnel. Le transverse est la ceinture abdominale profonde qui garde le ventre plat au repos et protège le dos. Idéal en finition de semaine légère.',exec:'Corps parfaitement aligné tête-talons. Serre les abdos et les fessiers. Ne creuse pas le bas du dos.',esth:'Ventre plat et tronc gainé.',judo:null,charge:'Poids de corps · Ajoute un lest en progression'},
-    {n:2,name:'Gainage latéral (side plank)',muscles:'Obliques · Stabilisateurs',sets:'3×30sec/côté',recup:'45sec',badge:'bs',bl:'Obliques',why:'Optionnel. Les obliques encadrent les abdos et créent le V-cut latéral. Pas de charge en rotation pour ne pas épaissir la taille.',exec:'Sur le côté, corps aligné, hanches hautes. Tiens la position. Progression : lever la jambe du dessus.',esth:'Les lignes latérales du V-cut.',judo:null,charge:'Poids de corps'}
+  sam:{badge:'Esthétique · Épaules, bras, poitrine',dur:'50–60 min',
+    warmup:['4 min cardio léger','Rotations épaules + band pull-apart : 2×20','Étirement pec au mur : 30 sec/côté','2 séries légères de développé incliné'],
+    cardio:'Optionnel en fin de séance : 15-20 min de cardio zone 2 (vélo ou marche inclinée) pour accélérer le retour vers 66 kg. Intensité modérée, tu dois pouvoir parler. À sauter si la semaine a été lourde.',
+    exos:[
+    {n:1,name:'Développé incliné haltères',muscles:'Haut pecs · Deltoïde antérieur',sets:'4×8-12',recup:'1min45',badge:'bh',bl:'Esthétique',why:'C\'est la séance dédiée au physique : on passe en 8-12 répétitions, la zone qui construit le plus de volume musculaire. Le haut des pectoraux est la zone la plus esthétique et celle qui reste plate quand on ne travaille qu\'à plat.',exec:'Inclinaison 30° maximum, amplitude complète, étirement en bas. Charge modérée : ici on cherche la sensation et le volume, pas la performance.',esth:'Le "shelf" sous la clavicule qui donne une poitrine pleine et bombée.',judo:null,charge:'Départ : 24-28 kg/main'},
+    {n:2,name:'Développé militaire haltères',muscles:'Deltoïdes · Triceps · Gainage',sets:'3×8-10',recup:'1min45',badge:'bh',bl:'Hypertrophie',why:'Le développé au-dessus de la tête construit le volume global de l\'épaule et renforce sa stabilité, utile pour encaisser les chutes. Placé le samedi, il n\'entame pas la fraîcheur nécessaire au judo.',exec:'Debout, gainage serré, fessiers contractés. Pousse en arc naturel, ne cambre pas le bas du dos.',esth:'Épaules rondes et pleines vues de face.',judo:'Stabilité de l\'épaule en chute et en contrôle bras tendus.',charge:'Départ : 22-26 kg/main'},
+    {n:3,name:'Dips lestés (buste penché)',muscles:'Pecs bas · Triceps',sets:'3×8-12',recup:'1min45',badge:'bh',bl:'Esthétique',why:'Complète le développé incliné : l\'un travaille le haut du pectoral, l\'autre le bas. Ensemble ils couvrent toute la hauteur de la poitrine. Le triceps est fortement sollicité en prime.',exec:'Buste penché à 30° vers l\'avant pour cibler le pec. Descends jusqu\'à l\'étirement confortable, remonte sans verrouiller.',esth:'La ligne inférieure du pectoral, celle qui sépare nettement pec et abdos.',judo:null,charge:'Départ : +10 à +20 kg selon sensation'},
+    {n:4,name:'Tirage vertical prise neutre',muscles:'Grand dorsal · Biceps',sets:'3×10-12',recup:'1min30',badge:'bh',bl:'Hypertrophie',why:'Deuxième dose de largeur de dos dans la semaine, cette fois en volume plutôt qu\'en force. La prise neutre sollicite le dorsal sous un angle différent des tractions du lundi et ménage l\'épaule.',exec:'Tire vers le haut de la poitrine, coudes vers les hanches. Squeeze en bas, étirement complet en haut.',esth:'Largeur et finition basse du dorsal, la base du V.',judo:'Volume de tirage supplémentaire sans fatigue nerveuse.',charge:'Départ : 50-60 kg'},
+    {n:5,name:'Élévations latérales',muscles:'Deltoïde moyen',sets:'4×12-15',recup:'1min',badge:'bi',bl:'Esthétique',why:'Deuxième dose d\'épaules de la semaine. Le deltoïde moyen récupère très vite et répond exceptionnellement bien à une fréquence élevée : c\'est le muscle sur lequel il faut insister pour la carrure.',exec:'Charge légère, tempo lent, aucun élan. Cherche la brûlure sur les dernières répétitions.',esth:'Largeur d\'épaule, l\'élément numéro un d\'une silhouette athlétique.',judo:null,charge:'8-10 kg/main'},
+    {n:6,name:'Superset Curl incliné + Barre au front',muscles:'Biceps · Triceps',sets:'3×10-12 + 10-12',recup:'1min15',badge:'bi',bl:'Superset bras',why:'Les deux faces du bras enchaînées. Le curl incliné place le biceps en étirement, ce qui développe le pic ; la barre au front cible la longue portion du triceps, qui représente environ deux tiers du volume du bras. Le superset permet de finir vite avec une forte congestion.',exec:'Curl incliné 10-12 reps, enchaîne immédiatement la barre au front 10-12 reps, puis repos. 3 tours. Coudes fixes sur les deux mouvements.',esth:'Bras complets : pic du biceps et fer à cheval du triceps.',judo:null,charge:'Curl : 10-12 kg/main · Barre EZ : 20-30 kg'},
+    {n:7,name:'Gainage latéral (side plank)',muscles:'Obliques · Stabilisateurs',sets:'3×30sec/côté',recup:'45sec',badge:'bs',bl:'Gainage',why:'Renforce la résistance latérale du tronc, sollicitée en permanence quand l\'adversaire tire sur un côté. Travail isométrique doux, sans fatigue résiduelle.',exec:'Corps aligné, hanches hautes. Arrête la série dès que la position s\'affaisse.',esth:'Lignes latérales du ventre, le contour du V-cut.',judo:'Résistance aux déséquilibres latéraux.',charge:'Poids de corps'}
   ]}
 };
+
+const EXO_INFO={
+/* PECS */
+'Développé couché haltères':{anat:'Moteur principal : grand pectoral (faisceau sternal). Assistants : triceps brachial, deltoïde antérieur, dentelé antérieur qui stabilise l\'omoplate.',apport:'C\'est le mouvement de « pousser devant soi » : déplacer un meuble, refermer une porte lourde, se relever du sol. Développe la force de poussée horizontale, la plus utilisée au quotidien.',err:'Écarter les coudes à 90° : ça met l\'épaule en rotation externe forcée et écrase l\'articulation. Garde environ 45°.'},
+'Développé couché barre':{anat:'Moteur principal : grand pectoral. Assistants : triceps, deltoïde antérieur. Le gainage et les fessiers stabilisent le corps sur le banc.',apport:'L\'exercice qui permet de charger le plus lourd sur le haut du corps : c\'est lui qui construit la force de poussée maximale et la densité du pectoral.',err:'Faire rebondir la barre sur la poitrine. Tu perds la tension musculaire et tu risques le sternum. Contrôle la descente, marque un temps d\'arrêt.'},
+'Développé incliné haltères':{anat:'Moteur principal : faisceau claviculaire (haut) du grand pectoral. Assistants : deltoïde antérieur, triceps.',apport:'Comble le haut de la poitrine, la zone qui donne l\'aspect « plein » sous la clavicule et qui reste plate quand on ne travaille qu\'à plat.',err:'Incliner le banc au-delà de 45° : au-delà, ce sont les épaules qui prennent le travail à la place des pectoraux. Reste autour de 30°.'},
+'Développé incliné haltères 30°':{anat:'Moteur principal : faisceau claviculaire (haut) du grand pectoral. Assistants : deltoïde antérieur, triceps.',apport:'Comble le haut de la poitrine, la zone qui donne l\'aspect « plein » sous la clavicule et qui reste plate quand on ne travaille qu\'à plat.',err:'Incliner le banc au-delà de 45° : au-delà, ce sont les épaules qui prennent le travail. Reste autour de 30°.'},
+'Dips (buste penché)':{anat:'Moteur principal : faisceau inférieur du grand pectoral. Assistants : triceps, petit pectoral. Sollicite fortement les stabilisateurs de l\'épaule.',apport:'Développe la force de poussée vers le bas et la capacité à supporter son propre poids sur les bras — utile pour sortir d\'une piscine ou se hisser.',err:'Descendre trop bas si tu manques de mobilité d\'épaule. Descends jusqu\'à l\'étirement confortable, pas au-delà.'},
+'Dips lestés (buste penché)':{anat:'Moteur principal : faisceau inférieur du grand pectoral. Assistants : triceps, petit pectoral, stabilisateurs de l\'épaule.',apport:'Force de poussée vers le bas et capacité à supporter son poids sur les bras. Le lest permet de progresser une fois le poids du corps maîtrisé.',err:'Descendre trop bas en manquant de mobilité d\'épaule, ou se balancer pour s\'aider. Reste contrôlé.'},
+'Écarté poulie vis-à-vis':{anat:'Isole le grand pectoral sur sa fonction d\'adduction (ramener le bras vers le centre). Les triceps sont volontairement mis hors-jeu, coudes fixes.',apport:'Travaille le pectoral sans que les triceps ne limitent l\'effort : utile quand les bras fatiguent avant la poitrine. Améliore la connexion muscle-cerveau.',err:'Plier et tendre les coudes : ça transforme l\'écarté en développé et déplace le travail sur les triceps. Coudes légèrement fléchis et figés.'},
+'Écarté incliné haltères':{anat:'Isole le haut du grand pectoral en position d\'étirement maximal, là où la tension mécanique est la plus élevée.',apport:'La recherche montre que l\'entraînement en position allongée du muscle produit davantage de croissance. Cet exercice exploite précisément ce mécanisme.',err:'Descendre avec les bras tendus : ça met toute la contrainte sur l\'articulation de l\'épaule. Garde une flexion de coude constante.'},
+'Pompes':{anat:'Grand pectoral, triceps, deltoïde antérieur. Le gainage (transverse, grand droit) travaille en isométrie pour garder le corps aligné.',apport:'Un des rares exercices qui entraîne simultanément la poussée et le gainage. Excellent indicateur de forme générale et réalisable partout.',err:'Laisser le bassin s\'affaisser : le bas du dos se creuse et le gainage ne travaille plus. Serre abdos et fessiers pendant tout le mouvement.'},
+'Pompes déclinées (pieds surélevés)':{anat:'Bascule le travail vers le faisceau claviculaire (haut) du pectoral et le deltoïde antérieur.',apport:'Permet de cibler le haut de la poitrine sans matériel : c\'est l\'équivalent du développé incliné au poids du corps.',err:'Monter les pieds trop haut : au-delà d\'environ 45°, ça devient un exercice d\'épaules et le pectoral décroche.'},
+'Développé élastique':{anat:'Grand pectoral, triceps, deltoïde antérieur, avec une résistance qui augmente en fin de mouvement.',apport:'Solution de poussée sans charge lourde, douce pour les articulations. Utile en reprise ou en déplacement.',err:'Laisser l\'élastique te ramener brutalement. La phase de retour freinée est celle qui construit le plus de muscle.'},
+/* DOS */
+'Tractions pronation':{anat:'Moteur principal : grand dorsal. Assistants : grand rond, biceps brachial, brachial antérieur, trapèze inférieur qui abaisse l\'omoplate.',apport:'Construit la largeur du dos et la capacité à se hisser. Excellent pour contrebalancer les positions penchées en avant du quotidien.',err:'Ne descendre qu\'à moitié. L\'amplitude complète, bras tendus en bas, est ce qui développe réellement le dorsal.'},
+'Pallof press (anti-rotation)':{anat:'Obliques interne et externe, transverse de l\'abdomen, carré des lombes. Le tronc travaille en isométrie pour résister à la rotation.',apport:'Entraîne la capacité à ne PAS bouger sous une force extérieure. C\'est la fonction réelle des abdominaux au quotidien : stabiliser la colonne quand on porte, pousse ou se rattrape.',err:'Laisser le buste pivoter vers la poulie. Si tu tournes, la charge est trop lourde — tout l\'intérêt est de résister.'},
+'Tractions pronation lestées':{anat:'Grand dorsal, grand rond, biceps, trapèze inférieur. Le lest augmente la tension mécanique, moteur principal de la croissance.',apport:'Largeur du dos et force de traction verticale. Le lest permet de continuer à progresser quand le poids du corps devient facile.',err:'Ajouter du lest avant de maîtriser 10 tractions propres au poids du corps. La technique passe avant la charge.'},
+'Tirage vertical poulie':{anat:'Grand dorsal, grand rond, biceps, trapèze inférieur. Même schéma moteur que la traction, avec une charge ajustable.',apport:'Permet de travailler la largeur du dos quand les tractions sont encore trop dures, ou d\'ajouter du volume sans épuiser la prise.',err:'Tirer la barre derrière la nuque : position contraignante pour l\'épaule, sans bénéfice supplémentaire. Tire devant, vers la poitrine.'},
+'Tirage vertical prise neutre':{anat:'Grand dorsal (portion inférieure sollicitée différemment), brachial antérieur, biceps. La prise neutre est la plus confortable pour l\'épaule.',apport:'Alternative douce pour les épaules sensibles, tout en travaillant la largeur du dos.',err:'Se pencher fortement en arrière pour tirer plus lourd : le mouvement devient un rowing et perd son intérêt.'},
+'Tractions ou tirage vertical':{anat:'Grand dorsal, grand rond, biceps, trapèze inférieur.',apport:'Largeur du dos et force de traction. Choisis les tractions si tu as de l\'énergie, la poulie si tu es fatigué en fin de semaine.',err:'Écourter l\'amplitude. Bras tendus en bas, menton au-dessus en haut.'},
+'Rowing barre buste penché':{anat:'Moteur principal : grand dorsal et rhomboïdes. Assistants : trapèze moyen, deltoïde postérieur, biceps. Les lombaires travaillent en isométrie pour tenir la position.',apport:'Construit l\'épaisseur du dos et renforce la posture. C\'est le mouvement de « tirer vers soi » : ouvrir une porte lourde, tirer un objet.',err:'Arrondir le bas du dos. Si tu ne peux pas garder le dos plat, réduis la charge — c\'est la première cause de lombalgie en salle.'},
+'Rowing haltère unilatéral':{anat:'Grand dorsal, rhomboïdes, trapèze moyen, biceps. Le côté opposé travaille en anti-rotation pour stabiliser le tronc.',apport:'Corrige les asymétries entre les deux côtés, très fréquentes. Plus sûr pour le bas du dos que le rowing barre car le tronc est soutenu.',err:'Tourner le buste pour monter plus haut. Le bassin et les épaules doivent rester parallèles au sol.'},
+'Tirage horizontal poulie':{anat:'Rhomboïdes, trapèze moyen, grand dorsal, deltoïde postérieur, biceps.',apport:'Le meilleur exercice anti-posture voûtée : il renforce exactement les muscles qui ramènent les épaules en arrière et ouvrent la poitrine.',err:'Se balancer d\'avant en arrière avec le buste. Le mouvement vient des bras et des omoplates, pas du dos qui se balance.'},
+'Facepull corde':{anat:'Deltoïde postérieur, trapèze moyen et inférieur, rotateurs externes (infra-épineux, petit rond).',apport:'Le meilleur investissement pour la santé de l\'épaule à long terme. Compense les heures passées penché en avant et prévient les douleurs d\'épaule.',err:'Charger trop lourd et tirer avec les biceps. Ce sont les coudes qui mènent, hauts, et la charge doit rester légère.'},
+'Rowing élastique':{anat:'Rhomboïdes, trapèze moyen, grand dorsal, deltoïde postérieur.',apport:'Reproduit le tirage horizontal sans machine : idéal pour travailler la posture à la maison ou en déplacement.',err:'Laisser les épaules monter vers les oreilles. Garde-les basses, serre les omoplates vers le bas et l\'arrière.'},
+'Rowing australien (barre basse)':{anat:'Grand dorsal, rhomboïdes, trapèzes, biceps, avec un gainage important du tronc pour rester aligné.',apport:'Le tirage horizontal au poids du corps. Progression infinie : plus les pieds avancent, plus c\'est difficile.',err:'Casser la ligne du corps au niveau des hanches. Reste gainé, du talon à la tête.'},
+'Superman au sol':{anat:'Érecteurs du rachis (spinaux), fessiers, deltoïdes postérieurs.',apport:'Renforce les muscles qui maintiennent la colonne droite. Recommandé en prévention et en accompagnement des douleurs lombaires chroniques.',err:'Monter trop haut en hyperextension. Une élévation modérée, contrôlée, suffit largement.'},
+/* ÉPAULES */
+'Développé militaire haltères':{anat:'Moteur principal : deltoïde antérieur et moyen. Assistants : triceps, trapèze supérieur, dentelé antérieur. Le gainage stabilise la colonne.',apport:'C\'est le geste de « pousser au-dessus de la tête » : ranger une valise en hauteur, soulever un enfant. Développe la force et la stabilité de l\'épaule.',err:'Cambrer le bas du dos pour compenser un manque de mobilité. Serre les abdos et les fessiers, ou réduis la charge.'},
+'Élévations latérales':{anat:'Isole le faisceau moyen du deltoïde, celui qui crée la largeur d\'épaule. Le supra-épineux initie les 15 premiers degrés.',apport:'C\'est ce muscle qui donne visuellement la carrure et fait paraître la taille plus fine. Peu sollicité par les autres mouvements.',err:'Utiliser l\'élan du corps et monter au-dessus de l\'horizontale. Charge légère, tempo lent, arrêt à hauteur d\'épaule.'},
+'Élévations latérales élastique':{anat:'Faisceau moyen du deltoïde, avec une résistance maximale en fin de mouvement.',apport:'Développe la largeur d\'épaule sans matériel lourd, avec une contrainte articulaire très faible.',err:'Laisser l\'élastique ramener le bras brusquement. Freine la descente.'},
+'Pompes piquées (pike push-ups)':{anat:'Deltoïde antérieur et moyen, triceps, trapèze supérieur.',apport:'La version poids du corps du développé militaire. Prépare aussi progressivement aux mouvements en appui sur les mains.',err:'Garder les hanches trop basses : la position redevient une pompe classique et les épaules ne travaillent plus.'},
+/* BICEPS */
+'Curl barre EZ':{anat:'Biceps brachial (courte et longue portion), brachial antérieur. La barre coudée réduit la contrainte sur les poignets.',apport:'Développe la force de flexion du coude — porter des sacs, soulever un enfant. C\'est aussi le muscle le plus visible du bras de face.',err:'Balancer le buste pour lancer la charge. Si tu dois t\'aider du dos, la charge est trop lourde.'},
+'Curl incliné haltères':{anat:'Cible la longue portion du biceps, placée en étirement car le bras part derrière le tronc.',apport:'C\'est la portion qui forme le pic du biceps. Les études sur l\'entraînement en position allongée montrent un gain de croissance supérieur dans cette configuration.',err:'Remonter les coudes vers l\'avant pendant le mouvement, ce qui annule l\'étirement recherché.'},
+'Curl marteau':{anat:'Brachial antérieur et brachio-radial, plus que le biceps lui-même.',apport:'Le brachial se situe sous le biceps : en grossissant, il pousse le biceps vers le haut et augmente le volume du bras vu de profil. Renforce aussi la prise.',err:'Tourner les poignets pendant la montée. La prise reste neutre, paumes face à face, du début à la fin.'},
+'Curl élastique':{anat:'Biceps brachial et brachial antérieur, avec tension continue.',apport:'Permet de travailler les bras sans charge, avec très peu de contrainte articulaire. Pratique en voyage.',err:'Bouger les coudes vers l\'avant. Ils restent collés au corps.'},
+'Tractions supination (chin-ups)':{anat:'Biceps brachial fortement sollicité (position de force en supination), plus grand dorsal et grand rond.',apport:'Le meilleur exercice biceps sans matériel, avec en prime un travail complet du dos. Un excellent rapport temps/résultat.',err:'Se balancer pour prendre de l\'élan. Le mouvement doit être contrôlé, sans à-coups.'},
+'Curl serviette isométrique':{anat:'Biceps et brachial en contraction isométrique auto-résistée.',apport:'Permet de solliciter le biceps sans aucun matériel. La tension isométrique prolongée reste un stimulus valable.',err:'Ne pas produire une résistance suffisante. La tension doit être forte et maintenue, pas symbolique.'},
+/* TRICEPS */
+'Barre au front (skull crusher)':{anat:'Les trois chefs du triceps, avec un accent sur la longue portion, la seule qui traverse l\'épaule et représente la plus grosse part du volume.',apport:'Le triceps forme environ deux tiers du volume du bras : c\'est lui, plus que le biceps, qui donne un bras épais. Améliore aussi la force de poussée.',err:'Laisser les coudes s\'écarter vers l\'extérieur. Ils restent serrés et pointés vers le plafond.'},
+'Triceps à la corde':{anat:'Les trois chefs du triceps, avec une contraction maximale en fin de mouvement quand on écarte la corde.',apport:'Finit le triceps en congestion et renforce le verrouillage du coude, utile sur tous les mouvements de poussée.',err:'Décoller les coudes du buste et transformer le mouvement en poussée du corps entier.'},
+'Triceps corde poulie':{anat:'Les trois chefs du triceps, contraction maximale en écartant la corde en fin de mouvement.',apport:'Travail de finition du triceps et renforcement du verrouillage du coude.',err:'Écarter les coudes du corps : le dos et les épaules prennent le relais.'},
+'Dips entre deux bancs':{anat:'Triceps principalement, avec une participation du faisceau inférieur du pectoral et du deltoïde antérieur.',apport:'Un exercice triceps efficace réalisable partout, avec une charge naturellement élevée.',err:'Descendre trop bas, ce qui met l\'épaule en rotation interne contrainte. Arrête-toi quand le bras est à 90°.'},
+'Extension triceps élastique':{anat:'Les trois chefs du triceps, résistance maximale en extension complète.',apport:'Isole le triceps sans charge lourde, avec une contrainte minimale sur le coude.',err:'Bouger les épaules pendant le mouvement. Seuls les avant-bras se déplacent.'},
+/* QUADRICEPS */
+'Squat barre':{anat:'Quadriceps (4 chefs), grand fessier, adducteurs. Les érecteurs du rachis et le gainage travaillent en isométrie pour tenir le buste.',apport:'Le mouvement fondamental de se lever et s\'asseoir. Renforce la densité osseuse, un facteur clé de prévention à long terme. Sollicite la plus grande masse musculaire du corps.',err:'Laisser les genoux rentrer vers l\'intérieur à la remontée. Pousse activement les genoux vers l\'extérieur, dans l\'axe des pieds.'},
+'Presse à cuisses':{anat:'Quadriceps et grand fessier. Le dos est soutenu par le dossier, ce qui retire le travail de gainage.',apport:'Permet de charger les jambes en sécurité, sans contrainte sur la colonne. Adapté aux personnes ayant des antécédents lombaires.',err:'Verrouiller les genoux en fin de poussée : la charge passe alors dans l\'articulation et non plus dans le muscle.'},
+'Goblet squat':{anat:'Quadriceps, fessiers, avec un gainage antérieur important dû à la charge tenue devant.',apport:'La meilleure porte d\'entrée vers le squat : le contrepoids devant corrige automatiquement la posture et permet de descendre plus bas.',err:'Éloigner l\'haltère du corps, ce qui déséquilibre vers l\'avant. Garde-le collé contre la poitrine.'},
+'Fentes marchées':{anat:'Quadriceps et grand fessier de la jambe avant, ischio-jambiers stabilisateurs, moyen fessier pour l\'équilibre latéral.',apport:'Travaille l\'équilibre et la stabilité sur une jambe, ce qui se transfère directement à la marche, aux escaliers et à la prévention des chutes.',err:'Faire un pas trop court, ce qui met tout le stress sur le genou avant. Allonge le pas et descends verticalement.'},
+'Fentes bulgares':{anat:'Grand fessier et quadriceps de la jambe avant, en amplitude accrue grâce au pied arrière surélevé. Moyen fessier très sollicité pour la stabilité.',apport:'Un des meilleurs exercices pour les fessiers, avec des charges modérées. Corrige aussi fortement les déséquilibres entre jambes.',err:'Descendre en avançant le genou au-delà du pied. La descente doit être verticale, le tibia relativement droit.'},
+'Leg extension':{anat:'Isole les quatre chefs du quadriceps, notamment le vaste médial (la « goutte » au-dessus du genou interne).',apport:'Renforce le quadriceps sans charge sur la colonne. Souvent utilisé en rééducation du genou pour cette raison.',err:'Utiliser l\'élan et lâcher la descente. Le contrôle excentrique est la partie la plus utile du mouvement.'},
+'Squat au poids du corps':{anat:'Quadriceps, fessiers, gainage. Même schéma moteur que le squat chargé.',apport:'Le mouvement de base à maîtriser avant toute charge. Suffisant pour progresser en début de parcours et entretenir la mobilité de hanche.',err:'Ne descendre qu\'à mi-course. Vise au moins la cuisse parallèle au sol, si la mobilité le permet.'},
+'Fentes au poids du corps':{anat:'Quadriceps, fessiers, avec un fort travail d\'équilibre et de stabilisation de la hanche.',apport:'Améliore l\'équilibre unilatéral, directement transférable à la marche et à la montée d\'escaliers.',err:'Regarder ses pieds, ce qui déséquilibre. Fixe un point devant toi à hauteur des yeux.'},
+/* ISCHIOS / FESSIERS */
+'Soulevé de terre roumain haltères':{anat:'Ischio-jambiers et grand fessier en étirement, érecteurs du rachis en isométrie.',apport:'Apprend la charnière de hanche, le geste qui protège le dos quand on ramasse quelque chose. Renforce toute la chaîne postérieure, négligée en position assise.',err:'Plier les genoux comme un squat. Les jambes restent quasi tendues, ce sont les hanches qui reculent.'},
+'Soulevé de terre roumain':{anat:'Ischio-jambiers et grand fessier en étirement, érecteurs du rachis en isométrie. Le mouvement vient de la hanche, pas du dos.',apport:'Renforce toute la chaîne postérieure, la plus négligée chez les personnes assises la journée. Protège le bas du dos et améliore la posture.',err:'Plier les genoux comme un squat. Les jambes restent quasi tendues, ce sont les hanches qui reculent.'},
+'Hip thrust barre':{anat:'Grand fessier en contraction maximale, ischio-jambiers assistants. Le moyen fessier stabilise le bassin.',apport:'L\'exercice qui active le plus le grand fessier selon les mesures électromyographiques. Des fessiers forts soulagent directement le bas du dos.',err:'Cambrer le bas du dos en fin de poussée au lieu de contracter les fessiers. L\'alignement s\'arrête quand le tronc est parallèle au sol.'},
+'Leg curl allongé':{anat:'Isole les ischio-jambiers sur leur fonction de flexion du genou.',apport:'L\'équilibre entre quadriceps et ischio-jambiers est un facteur reconnu de prévention des blessures du genou et de la cuisse.',err:'Décoller le bassin du banc pour finir le mouvement. Reste plaqué, quitte à réduire la charge.'},
+'Pont fessier au sol':{anat:'Grand fessier, ischio-jambiers, avec un gainage du tronc pour éviter la cambrure.',apport:'Réveille des fessiers souvent inhibés par la position assise prolongée. Premier pas vers un bas du dos plus solide.',err:'Pousser avec les lombaires plutôt qu\'avec les fessiers. Contracte volontairement les fesses avant de monter.'},
+'Good morning élastique':{anat:'Ischio-jambiers, fessiers, érecteurs du rachis. Enseigne la charnière de hanche.',apport:'Apprend le geste fondamental de se pencher en gardant le dos droit — celui qui protège des lombalgies quand on ramasse quelque chose.',err:'Arrondir le dos. Le mouvement doit venir uniquement du basculement du bassin.'},
+/* MOLLETS */
+'Mollets debout':{anat:'Gastrocnémien (les deux chefs), genou tendu, plus le soléaire en profondeur.',apport:'Le mollet est un amortisseur essentiel à la marche, à la course et à l\'équilibre. Sa force est associée à une meilleure stabilité en vieillissant.',err:'Faire de petits rebonds sans amplitude. Descends jusqu\'à l\'étirement complet, monte jusqu\'à la contraction maximale.'},
+'Mollets assis':{anat:'Soléaire principalement, car le genou fléchi met le gastrocnémien en position raccourcie et le neutralise.',apport:'Le soléaire est le muscle le plus sollicité lors de la marche prolongée et de la station debout. Il élargit aussi visuellement le mollet.',err:'Réduire l\'amplitude quand la charge est lourde. Mieux vaut moins de poids et une amplitude complète.'},
+'Mollets sur une marche':{anat:'Gastrocnémien et soléaire, avec une amplitude supérieure grâce au talon qui descend sous le niveau du pied.',apport:'Permet une amplitude complète sans machine. Renforce aussi la cheville et le tendon d\'Achille.',err:'Se tenir fermement pour s\'aider à monter. La main sert seulement à l\'équilibre.'},
+/* ABDOS */
+'Relevés de jambes suspendus':{anat:'Partie basse du grand droit de l\'abdomen, obliques, et fléchisseurs de hanche (psoas-iliaque).',apport:'Renforce la partie basse de la sangle abdominale, celle qui soutient les viscères et participe au maintien du bassin.',err:'Se balancer pour monter les jambes. Sans contrôle, ce sont les hanches qui travaillent et non les abdominaux.'},
+'Crunch à la poulie':{anat:'Grand droit de l\'abdomen, principalement sa portion haute, avec les obliques en stabilisation.',apport:'Les abdominaux sont un muscle comme les autres : ils répondent à la charge progressive. C\'est ce qui les épaissit et les rend visibles une fois le gras réduit.',err:'Tirer avec les bras et la nuque. Le mouvement est un enroulement du buste, initié par les abdominaux.'},
+'Gainage planche':{anat:'Transverse de l\'abdomen (le muscle profond qui ceinture le ventre), grand droit, obliques, et stabilisateurs de l\'épaule.',apport:'Le transverse agit comme une ceinture naturelle : il maintient le ventre plat au repos et protège la colonne pendant les efforts.',err:'Tenir longtemps en laissant le dos se creuser. Trente secondes parfaitement gainées valent mieux que deux minutes affaissées.'},
+'Gainage latéral':{anat:'Obliques interne et externe, carré des lombes, moyen fessier du côté au sol.',apport:'Renforce la résistance aux forces latérales : porter un sac lourd d\'un seul côté, se rattraper d\'un déséquilibre.',err:'Laisser la hanche descendre progressivement. Si la position s\'affaisse, arrête la série.'},
+'Gainage latéral (side plank)':{anat:'Obliques interne et externe, carré des lombes, moyen fessier.',apport:'Résistance aux déséquilibres latéraux et protection du bas du dos sur les mouvements de rotation.',err:'Hanches qui s\'affaissent. Mieux vaut arrêter net que tenir en position dégradée.'},
+'Mountain climbers':{anat:'Grand droit, obliques et fléchisseurs de hanche, avec une composante cardiovasculaire marquée.',apport:'Combine renforcement du tronc et élévation du rythme cardiaque : efficace quand le temps manque.',err:'Laisser le bassin monter et descendre. Il doit rester stable, seules les jambes bougent.'},
+'Crunch au sol':{anat:'Portion haute du grand droit de l\'abdomen.',apport:'Mouvement simple et accessible pour initier le renforcement abdominal, sans matériel ni contrainte.',err:'Tirer sur la nuque avec les mains. Pose les doigts sur les tempes sans forcer, le regard vers le plafond.'},
+'Gainage planche lestée':{anat:'Transverse, grand droit, obliques, stabilisateurs de l\'épaule, avec une charge additionnelle sur le dos.',apport:'Le lest permet de continuer à progresser quand la planche classique devient facile, plutôt que d\'allonger indéfiniment la durée.',err:'Ajouter du lest avant de tenir 45 secondes parfaitement alignées.'},
+/* CARDIO */
+'Marche inclinée':{anat:'Quadriceps, fessiers, mollets, avec une sollicitation cardiovasculaire modérée et continue.',apport:'Brûle des calories sans générer la fatigue musculaire ni l\'impact articulaire de la course. C\'est le cardio qui interfère le moins avec la musculation.',err:'S\'accrocher aux barres : cela allège le poids du corps et réduit fortement la dépense réelle.'},
+'Vélo':{anat:'Quadriceps, ischio-jambiers, mollets, sans impact au sol.',apport:'Le cardio le plus doux pour les articulations et les jambes. Idéal les jours où l\'on entraîne le bas du corps par ailleurs.',err:'Régler la selle trop bas, ce qui écrase le genou. Jambe presque tendue en bas de la pédale.'},
+'Rameur':{anat:'Jambes (60% de l\'effort), dos, bras. L\'un des rares appareils à solliciter le corps entier.',apport:'Forte dépense calorique avec un travail du dos en prime, sans impact. Excellent pour la posture si la technique est correcte.',err:'Tirer avec les bras en premier. L\'ordre est : jambes, puis buste, puis bras — et l\'inverse au retour.'},
+'Marche rapide':{anat:'Chaîne postérieure et mollets, sollicitation cardiovasculaire légère à modérée.',apport:'L\'activité la plus accessible et la mieux tolérée sur le long terme. Une pratique régulière est associée à de nombreux bénéfices de santé.',err:'Aller trop lentement pour que ce soit un vrai stimulus. Vise une allure où parler devient légèrement essoufflant.'},
+'Corde à sauter':{anat:'Mollets, quadriceps, épaules et avant-bras, avec une forte demande cardiovasculaire et de coordination.',apport:'Très forte dépense en peu de temps, et amélioration de la coordination et de la réactivité des appuis.',err:'Sauter trop haut. Quelques centimètres suffisent, ce sont les poignets qui font tourner la corde.'},
+/* SUPERSET COACH */
+'Superset Curl incliné + Barre au front':{anat:'Biceps brachial (longue portion, en étirement sur le banc incliné) et les trois chefs du triceps, avec un accent sur la longue portion.',apport:'Travaille les deux faces du bras en un minimum de temps. Le triceps représentant environ deux tiers du volume du bras, c\'est lui qui donne l\'épaisseur vue de profil ; le curl incliné développe le pic du biceps.',err:'Prendre du repos entre les deux exercices, ce qui annule l\'intérêt du superset. Enchaîne immédiatement.'},
+'Superset Curl + Triceps':{anat:'Biceps et brachial d\'une part, les trois chefs du triceps d\'autre part. Les deux muscles sont antagonistes.',apport:'Enchaîner deux muscles opposés permet de doubler le volume de travail dans le même temps. La contraction de l\'un facilite légèrement le relâchement de l\'autre.',err:'Prendre du repos entre les deux exercices. L\'intérêt du superset est justement l\'enchaînement immédiat.'}
+};
+
+const LIB=[
+/* ── PECS ── */
+{id:'dc_hal',n:'Développé couché haltères',g:'pecs',pat:'push_h',eq:'gym',lvl:1,m:'Pecs · Triceps · Épaules avant',why:'Le mouvement de base pour l\'épaisseur du pectoral. Les haltères offrent une amplitude supérieure à la barre : plus d\'étirement en bas, donc plus de fibres recrutées.',ex:'Descente contrôlée 2 sec, étirement complet. Serre les pecs en haut sans verrouiller les coudes.',es:'Épaisseur et densité du pectoral entier.'},
+{id:'di_hal',n:'Développé incliné haltères',g:'pecs',pat:'push_h',eq:'gym',lvl:1,m:'Haut pecs · Deltoïde antérieur',why:'Cible le haut des pectoraux, la zone la plus esthétique et le point faible le plus fréquent. C\'est elle qui donne le pec plein sous la clavicule.',ex:'Inclinaison 30° maximum. Amplitude complète, étirement en bas.',es:'Le "shelf" sous la clavicule, pec bombé.'},
+{id:'dc_bar',n:'Développé couché barre',g:'pecs',pat:'push_h',eq:'gym',lvl:2,m:'Pecs · Triceps · Épaules avant',why:'Permet les charges les plus lourdes : c\'est l\'exercice roi pour la force de poussée et la densité du pectoral.',ex:'Barre au bas des pecs, coudes à 45° (pas écartés à 90°). Pousse explosif, ne rebondis pas sur la poitrine.',es:'Force et densité, base de la masse pectorale.'},
+{id:'dips',n:'Dips (buste penché)',g:'pecs',pat:'push_h',eq:'gym',lvl:2,m:'Pecs bas · Triceps',why:'Cible le bas du pectoral, qui donne la ligne nette de séparation entre pec et abdos. Très fonctionnel pour les triceps aussi.',ex:'Buste penché 30° vers l\'avant pour le pec. Descends jusqu\'à l\'étirement, remonte sans verrouiller.',es:'La ligne inférieure du pec, le galbe net.'},
+{id:'ecarte_p',n:'Écarté poulie vis-à-vis',g:'pecs',pat:'iso',eq:'gym',lvl:1,m:'Pec interne · Pec global',why:'La poulie maintient une tension constante que les haltères perdent en haut du mouvement. Idéal pour la connexion et le pec interne.',ex:'Amène les mains vers le bas et le centre, croise légèrement. Squeeze 1 sec, étirement contrôlé.',es:'La séparation centrale entre les deux pectoraux.'},
+{id:'ecarte_h',n:'Écarté incliné haltères',g:'pecs',pat:'iso',eq:'gym',lvl:1,m:'Haut pecs · Étirement',why:'L\'étirement sous charge est un puissant signal de croissance. L\'écarté incliné étire le haut du pec à fond.',ex:'Bras légèrement fléchis, descends en grand arc jusqu\'à sentir l\'étirement. Remonte en serrant.',es:'Galbe et étirement du haut du pec.'},
+{id:'pompes',n:'Pompes',g:'pecs',pat:'push_h',eq:'bw',lvl:1,m:'Pecs · Triceps · Gainage',why:'L\'exercice de poussée universel, sans matériel. Travaille aussi le gainage en profondeur.',ex:'Corps aligné tête-talons, coudes à 45°. Poitrine proche du sol. Mains surélevées si trop dur, pieds surélevés si trop facile.',es:'Pecs et triceps, tronc gainé.'},
+{id:'pompes_incl',n:'Pompes déclinées (pieds surélevés)',g:'pecs',pat:'push_h',eq:'bw',lvl:2,m:'Haut pecs · Épaules',why:'Pieds surélevés = l\'angle cible le haut des pectoraux, difficile à atteindre au poids du corps.',ex:'Pieds sur une chaise ou un banc. Corps parfaitement aligné, descente contrôlée.',es:'Haut des pecs sans matériel.'},
+{id:'dc_elast',n:'Développé élastique',g:'pecs',pat:'push_h',eq:'home',lvl:1,m:'Pecs · Triceps',why:'L\'élastique offre une résistance croissante : plus dur en fin de mouvement, là où le pec se contracte le plus.',ex:'Élastique dans le dos, pousse vers l\'avant et rapproche les mains en fin. Contrôle le retour.',es:'Contraction du pectoral.'},
+/* ── DOS ── */
+{id:'tract',n:'Tractions pronation',g:'dos',pat:'pull_v',eq:'gym',lvl:2,m:'Grand dorsal · Biceps',why:'Le meilleur exercice pour la largeur du dos et la forme en V, celle qui fait paraître la taille plus fine.',ex:'Prise un peu plus large que les épaules. Coudes vers le bas et l\'arrière, menton au-dessus. Descente complète.',es:'Largeur du dos, effet V immédiat.'},
+{id:'tirage_v',n:'Tirage vertical poulie',g:'dos',pat:'pull_v',eq:'gym',lvl:1,m:'Grand dorsal · Biceps',why:'Même travail que les tractions mais avec une charge ajustable : parfait pour progresser vers les tractions ou pour le volume.',ex:'Tire vers le haut de la poitrine, coudes vers les hanches. Squeeze en bas, étirement complet en haut.',es:'Largeur et finition du dorsal.'},
+{id:'row_bar',n:'Rowing barre buste penché',g:'dos',pat:'pull_h',eq:'gym',lvl:2,m:'Dos épaisseur · Rhomboïdes',why:'Largeur (tractions) + épaisseur (rowing) = dos complet en 3D. Le rowing barre permet les charges les plus lourdes.',ex:'Buste penché 45°, dos droit gainé. Tire vers le nombril, serre les omoplates en fin.',es:'Épaisseur et relief du dos, visible de profil.'},
+{id:'row_hal',n:'Rowing haltère unilatéral',g:'dos',pat:'pull_h',eq:'gym',lvl:1,m:'Dos épaisseur · Biceps',why:'Unilatéral : corrige les déséquilibres entre gauche et droite, très fréquents. Plus sûr pour le bas du dos que le rowing barre.',ex:'Un genou et une main sur le banc. Tire vers la hanche, coude haut. Étirement complet en bas.',es:'Épaisseur et relief du dos.'},
+{id:'tirage_h',n:'Tirage horizontal poulie',g:'dos',pat:'pull_h',eq:'gym',lvl:1,m:'Milieu du dos · Rhomboïdes',why:'Cible le milieu du dos en tension constante. Excellent pour la posture et le maintien des épaules.',ex:'Buste droit, tire vers le bas du ventre. Serre les omoplates 1 sec. Ne te balance pas.',es:'Densité du milieu du dos, le sillon central.'},
+{id:'facepull',n:'Facepull corde',g:'dos',pat:'iso',eq:'gym',lvl:1,m:'Deltoïde arrière · Rotateurs',why:'Le meilleur exercice pour la santé des épaules et la posture. Ouvre la poitrine et compense les heures assises.',ex:'Corde à hauteur du visage, tire en écartant vers les oreilles, coudes hauts. Lent et contrôlé.',es:'Posture droite, épaules ouvertes.'},
+{id:'row_elast',n:'Rowing élastique',g:'dos',pat:'pull_h',eq:'home',lvl:1,m:'Dos · Biceps',why:'Reproduit le tirage horizontal sans machine. La résistance croissante convient bien au dos.',ex:'Élastique ancré devant toi, tire vers le ventre en serrant les omoplates. Contrôle le retour.',es:'Épaisseur du dos, posture.'},
+{id:'superman',n:'Superman au sol',g:'dos',pat:'iso',eq:'bw',lvl:1,m:'Lombaires · Dos',why:'Renforce la chaîne postérieure et les lombaires sans aucun matériel. Excellent contre le mal de dos.',ex:'Allongé sur le ventre, lève bras et jambes simultanément. Tiens 2 sec en haut.',es:'Bas du dos solide, posture.'},
+/* ── ÉPAULES ── */
+{id:'dev_mil',n:'Développé militaire haltères',g:'epaules',pat:'push_v',eq:'gym',lvl:1,m:'Deltoïdes · Triceps',why:'Des épaules larges et rondes sont ce qui donne la carrure. La trajectoire haltères est plus naturelle que la barre.',ex:'Haltères à hauteur des oreilles, coudes 45°. Pousse en arc naturel, gainage serré, ne cambre pas.',es:'Épaules rondes qui élargissent la silhouette.'},
+{id:'elev_lat',n:'Élévations latérales',g:'epaules',pat:'iso',eq:'gym',lvl:1,m:'Deltoïde moyen',why:'Le deltoïde moyen donne la largeur d\'épaule, donc l\'effet V. C\'est un petit muscle qui répond très bien au volume.',ex:'Léger penché en avant, monte à l\'horizontale, descente lente 2 sec. Pas d\'élan.',es:'Largeur d\'épaule, carrure.'},
+{id:'elev_lat_e',n:'Élévations latérales élastique',g:'epaules',pat:'iso',eq:'home',lvl:1,m:'Deltoïde moyen',why:'Même ciblage que les haltères, la résistance croissante rend la fin du mouvement plus intense.',ex:'Pied sur l\'élastique, monte les bras à l\'horizontale, contrôle la descente.',es:'Largeur d\'épaule.'},
+{id:'pike',n:'Pompes piquées (pike push-ups)',g:'epaules',pat:'push_v',eq:'bw',lvl:2,m:'Deltoïdes · Triceps',why:'La version poids du corps du développé épaules. Bascule le travail des pecs vers les deltoïdes.',ex:'En V inversé, fesses hautes. Descends le sommet du crâne vers le sol, coudes vers l\'avant.',es:'Épaules développées sans matériel.'},
+/* ── BICEPS ── */
+{id:'curl_bar',n:'Curl barre EZ',g:'biceps',pat:'iso',eq:'gym',lvl:1,m:'Biceps',why:'L\'exercice de base pour la masse du biceps. La barre permet de charger plus lourd que les haltères.',ex:'Coudes fixes collés au corps, pas de balancier du dos. Descente contrôlée 2 sec.',es:'Masse et épaisseur du biceps.'},
+{id:'curl_incl',n:'Curl incliné haltères',g:'biceps',pat:'iso',eq:'gym',lvl:1,m:'Biceps (longue portion)',why:'Bras derrière le plan du corps = étirement maximal de la longue portion, celle qui forme le pic du biceps.',ex:'Banc incliné 45-60°, bras pendants. Curl sans bouger les coudes, étirement complet en bas.',es:'Le pic du biceps.'},
+{id:'curl_mart',n:'Curl marteau',g:'biceps',pat:'iso',eq:'gym',lvl:1,m:'Brachial · Avant-bras',why:'Le brachial passe sous le biceps et le pousse vers le haut : il augmente le pic et l\'épaisseur vue de profil.',ex:'Prise neutre (paumes face à face), coudes fixes. Monte et contrôle.',es:'Épaisseur latérale du bras, avant-bras.'},
+{id:'curl_elast',n:'Curl élastique',g:'biceps',pat:'iso',eq:'home',lvl:1,m:'Biceps',why:'Tension continue sur tout le mouvement, avec un pic de résistance en contraction.',ex:'Pieds sur l\'élastique, coudes fixes. Monte lentement, résiste à la descente.',es:'Volume du biceps.'},
+{id:'chin_bw',n:'Tractions supination (chin-ups)',g:'biceps',pat:'pull_v',eq:'bw',lvl:2,m:'Biceps · Dorsaux',why:'La prise supination place le biceps en position de force : c\'est le meilleur exercice biceps au poids du corps.',ex:'Paumes vers toi, largeur d\'épaules. Monte le menton au-dessus de la barre, descente contrôlée.',es:'Biceps et dos épais.'},
+{id:'row_aus',n:'Rowing australien (barre basse)',g:'dos',pat:'pull_h',eq:'bw',lvl:1,m:'Dos · Biceps',why:'Le tirage horizontal au poids du corps. Plus les pieds sont avancés, plus c\'est difficile : progression infinie.',ex:'Sous une barre basse ou une table solide, corps gainé. Tire la poitrine vers la barre, serre les omoplates.',es:'Épaisseur du dos, posture.'},
+{id:'curl_bw',n:'Curl serviette isométrique',g:'biceps',pat:'iso',eq:'bw',lvl:1,m:'Biceps',type:'time',why:'Sans matériel, la tension isométrique auto-résistée reste un moyen efficace de solliciter le biceps.',ex:'Tire sur une serviette avec un bras pendant que l\'autre résiste. Tension forte et continue.',es:'Tonicité du biceps.'},
+/* ── TRICEPS ── */
+{id:'skull',n:'Barre au front (skull crusher)',g:'triceps',pat:'iso',eq:'gym',lvl:2,m:'Triceps (longue portion)',why:'Le triceps représente environ 60% du volume du bras : c\'est lui qui donne le bras épais, plus que le biceps. Cet exercice cible la longue portion.',ex:'Allongé, barre EZ. Descends vers le front, coudes fixes et serrés. Étirement derrière la tête possible.',es:'Le triceps en fer à cheval, épaisseur de profil.'},
+{id:'tri_corde',n:'Triceps à la corde',g:'triceps',pat:'iso',eq:'gym',lvl:1,m:'Triceps',why:'Excellent pour la congestion et la finition. Écarter la corde en bas contracte la longue portion à fond.',ex:'Coudes fixes collés au corps. Descends et écarte la corde en bas, squeeze 1 sec.',es:'Définition et stries du triceps.'},
+{id:'dips_banc',n:'Dips entre deux bancs',g:'triceps',pat:'push_h',eq:'bw',lvl:1,m:'Triceps · Pecs bas',why:'Un excellent exercice triceps réalisable partout, avec une charge naturelle importante.',ex:'Mains sur un banc derrière toi, buste droit pour cibler le triceps. Descends coudes à 90°.',es:'Volume du triceps.'},
+{id:'tri_elast',n:'Extension triceps élastique',g:'triceps',pat:'iso',eq:'home',lvl:1,m:'Triceps',why:'Isole le triceps avec une résistance maximale en fin de contraction.',ex:'Élastique au-dessus, coudes fixes, tends les bras vers le bas. Contrôle le retour.',es:'Définition du triceps.'},
+/* ── QUADRICEPS ── */
+{id:'squat',n:'Squat barre',g:'quads',pat:'squat',eq:'gym',lvl:2,m:'Quadriceps · Fessiers · Gainage',why:'Le roi des exercices de jambe. Déclenche la plus forte réponse hormonale de tous les mouvements, bénéfique pour le corps entier.',ex:'Descends au moins parallèle, genoux dans l\'axe des orteils. Pousse fort dans le sol à la remontée.',es:'Cuisses volumineuses, fessiers hauts, densité générale.'},
+{id:'presse',n:'Presse à cuisses',g:'quads',pat:'squat',eq:'gym',lvl:1,m:'Quadriceps · Fessiers',why:'Permet de charger les jambes en sécurité, dos supporté. Idéal pour le volume ou pour débuter.',ex:'Pieds au milieu de la plateforme. Amplitude complète, genoux vers la poitrine. Ne verrouille pas en haut.',es:'Volume des cuisses.'},
+{id:'goblet',n:'Goblet squat',g:'quads',pat:'squat',eq:'gym',lvl:1,m:'Quadriceps · Fessiers · Gainage',why:'La meilleure porte d\'entrée vers le squat : le poids devant équilibre le mouvement et corrige naturellement la posture.',ex:'Haltère tenu contre la poitrine. Descends entre les genoux, buste droit.',es:'Cuisses et fessiers, technique propre.'},
+{id:'fente',n:'Fentes marchées',g:'quads',pat:'squat',eq:'gym',lvl:1,m:'Quadriceps · Fessiers · Équilibre',why:'Unilatéral : corrige les déséquilibres et travaille la stabilité, très transférable au quotidien et au sport.',ex:'Grand pas, genou arrière proche du sol, buste droit. Pousse sur le talon avant.',es:'Cuisses et fessiers, jambes équilibrées.'},
+{id:'bulg',n:'Fentes bulgares',g:'quads',pat:'squat',eq:'gym',lvl:2,m:'Fessiers · Quadriceps',why:'Pied arrière surélevé = étirement fessier maximal en bas. Excellent rapport résultat/charge utilisée.',ex:'Pied arrière sur un banc. Descends à la verticale, genou avant dans l\'axe, pousse sur le talon.',es:'Fessiers galbés, séparation fesse/cuisse.'},
+{id:'leg_ext',n:'Leg extension',g:'quads',pat:'iso',eq:'gym',lvl:1,m:'Quadriceps',why:'Le seul exercice qui isole le quadriceps en contraction pure. Cible la goutte au-dessus du genou.',ex:'Tiens 1 sec en haut, contraction maximale. Descente lente.',es:'Quadriceps définis et striés de face.'},
+{id:'squat_bw',n:'Squat au poids du corps',g:'quads',pat:'squat',eq:'bw',lvl:1,m:'Quadriceps · Fessiers',why:'Le mouvement fondamental, à maîtriser avant toute charge. Suffisant pour progresser en début de parcours.',ex:'Pieds largeur épaules, descends fesses en arrière, buste droit. Ralentis la descente pour durcir.',es:'Cuisses et fessiers toniques.'},
+{id:'fente_bw',n:'Fentes au poids du corps',g:'quads',pat:'squat',eq:'bw',lvl:1,m:'Quadriceps · Fessiers · Équilibre',why:'Travaille chaque jambe séparément et développe l\'équilibre, sans aucun matériel.',ex:'Grand pas en avant, genou arrière proche du sol. Alterne les jambes.',es:'Jambes toniques et équilibrées.'},
+/* ── ISCHIOS / FESSIERS ── */
+{id:'rdl_hal',n:'Soulevé de terre roumain haltères',g:'ischios',pat:'hinge',eq:'gym',lvl:1,m:'Ischios · Fessiers · Lombaires',why:'La version haltères du soulevé roumain : plus facile à apprendre que la barre, avec une trajectoire naturelle et une charge progressive.',ex:'Haltères devant les cuisses, hanches vers l\'arrière, jambes quasi tendues. Descends jusqu\'à sentir l\'étirement à l\'arrière des cuisses.',es:'Fessiers et arrière de cuisse dessinés.'},
+{id:'sdt_roum',n:'Soulevé de terre roumain',g:'ischios',pat:'hinge',eq:'gym',lvl:2,m:'Ischios · Fessiers · Lombaires',why:'Le meilleur exercice pour ischios et fessiers ensemble, travaillés sous étirement maximal. Renforce toute la chaîne postérieure.',ex:'Hanches vers l\'arrière, jambes quasi-tendues, barre proche des jambes. Fort étirement en bas.',es:'Fessiers hauts et ronds, arrière de cuisse dessiné.'},
+{id:'hip_thrust',n:'Hip thrust barre',g:'fessiers',pat:'hinge',eq:'gym',lvl:1,m:'Grand fessier · Ischios',why:'La meilleure activation du grand fessier mesurée en EMG, supérieure au squat. Travaille en contraction là où le squat travaille en étirement.',ex:'Dos sur banc, barre sur les hanches avec un pad. Pousse par les talons, contracte 1 sec en haut sans cambrer.',es:'Fessiers ronds, hauts et puissants.'},
+{id:'leg_curl',n:'Leg curl allongé',g:'ischios',pat:'iso',eq:'gym',lvl:1,m:'Ischio-jambiers',why:'Isole les ischios en contraction. L\'équilibre quadriceps/ischios est la première prévention des blessures de genou.',ex:'Descente lente obligatoire 3 sec. Le tempo prime sur la charge.',es:'Arrière de cuisse galbé.'},
+{id:'pont_fes',n:'Pont fessier au sol',g:'fessiers',pat:'hinge',eq:'bw',lvl:1,m:'Fessiers · Ischios',why:'La version sans matériel du hip thrust. Excellent pour activer des fessiers endormis par la position assise.',ex:'Allongé, pieds au sol. Monte le bassin, contracte fort 2 sec en haut. Une jambe pour durcir.',es:'Fessiers toniques et relevés.'},
+{id:'good_m',n:'Good morning élastique',g:'ischios',pat:'hinge',eq:'home',lvl:1,m:'Ischios · Lombaires',why:'Apprend le mouvement de charnière de hanche, fondamental et protecteur pour le dos.',ex:'Élastique sur la nuque, hanches vers l\'arrière, dos droit. Remonte en serrant les fessiers.',es:'Chaîne postérieure solide.'},
+/* ── MOLLETS ── */
+{id:'mollet_d',n:'Mollets debout',g:'mollets',pat:'iso',eq:'gym',lvl:1,m:'Gastrocnémien',why:'Le gastrocnémien est la partie visible et bombée du mollet. Muscle têtu qui exige amplitude et rigueur.',ex:'Étirement maximal en bas, contraction tenue 2 sec en haut. Lent.',es:'Volume et galbe du mollet.'},
+{id:'mollet_a',n:'Mollets assis',g:'mollets',pat:'iso',eq:'gym',lvl:1,m:'Soléaire',why:'Genou fléchi = cible le soléaire, qui pousse le gastrocnémien vers l\'extérieur et élargit le mollet.',ex:'Amplitude maximale. Répétitions élevées car ce sont des fibres endurantes.',es:'Épaisseur latérale du mollet.'},
+{id:'mollet_bw',n:'Mollets sur une marche',g:'mollets',pat:'iso',eq:'bw',lvl:1,m:'Mollets',why:'Une marche suffit pour obtenir l\'amplitude complète nécessaire au développement du mollet.',ex:'Avant-pieds sur la marche, talons dans le vide. Descends bas, monte haut. Une jambe pour durcir.',es:'Mollets dessinés.'},
+/* ── ABDOS ── */
+{id:'releve_j',n:'Relevés de jambes suspendus',g:'abdos',pat:'core',eq:'gym',lvl:2,m:'Bas abdos · Fléchisseurs',why:'Le bas des abdominaux est la zone la plus difficile à développer et la plus visible quand on sèche.',ex:'Suspendu, monte les genoux jusqu\'à soulever le bassin. Contrôle la descente, pas d\'élan.',es:'Bas du ventre, V-cut abdominal.'},
+{id:'crunch_p',n:'Crunch à la poulie',g:'abdos',pat:'core',eq:'gym',lvl:1,m:'Abdos haut',why:'Permet de charger les abdominaux progressivement. Les abdos sont un muscle : ils grossissent avec de la résistance.',ex:'À genoux, corde derrière la nuque. Enroule le buste, le mouvement vient des abdos pas des bras.',es:'Épaisseur et relief des tablettes.'},
+{id:'planche',n:'Gainage planche',g:'abdos',pat:'core',eq:'bw',lvl:1,m:'Transverse · Gainage profond',type:'time',why:'Le transverse est la ceinture abdominale profonde : il garde le ventre plat au repos et protège le dos.',ex:'Corps parfaitement aligné, abdos et fessiers serrés. Ne creuse pas le bas du dos.',es:'Ventre plat, tronc solide.'},
+{id:'side_pl',n:'Gainage latéral',g:'abdos',pat:'core',eq:'bw',lvl:1,m:'Obliques · Stabilisateurs',type:'time',why:'Les obliques encadrent les abdominaux et dessinent les lignes latérales du V-cut.',ex:'Sur le côté, corps aligné, hanches hautes. Lever la jambe du dessus pour durcir.',es:'Lignes latérales du ventre.'},
+{id:'mount',n:'Mountain climbers',g:'abdos',pat:'core',eq:'bw',lvl:1,m:'Abdos · Cardio',type:'time',why:'Combine gainage et cardio : fait monter le rythme cardiaque tout en travaillant la sangle abdominale.',ex:'Position de pompe, ramène les genoux vers la poitrine en alternance, rythme soutenu, bassin stable.',es:'Ventre gainé, dépense calorique.'},
+{id:'crunch_bw',n:'Crunch au sol',g:'abdos',pat:'core',eq:'bw',lvl:1,m:'Abdos haut',why:'Le mouvement de base pour la partie haute des abdominaux, accessible à tous.',ex:'Mains sur les tempes sans tirer sur la nuque. Enroule le buste, souffle en montant.',es:'Tablettes du haut.'},
+/* ── CARDIO ── */
+{id:'marche_i',n:'Marche inclinée',g:'cardio',pat:'cardio',eq:'gym',lvl:1,m:'Cardio · Zone 2',type:'cardio',why:'Le meilleur cardio pour brûler du gras sans fatiguer les jambes ni les articulations : idéal en complément de la musculation.',ex:'Vitesse 5,5-6,5 km/h, inclinaison 10-15%. Tu dois pouvoir parler en marchant.',es:'Dépense calorique sans perte de muscle.'},
+{id:'velo',n:'Vélo',g:'cardio',pat:'cardio',eq:'gym',lvl:1,m:'Cardio · Zone 2',type:'cardio',why:'Le cardio le plus doux pour les articulations et les jambes. Parfait les jours où tu entraînes le bas du corps.',ex:'Cadence 80-90 tours/min, résistance modérée. Test de la parole.',es:'Endurance, dépense calorique.'},
+{id:'rameur',n:'Rameur',g:'cardio',pat:'cardio',eq:'gym',lvl:2,m:'Cardio · Corps entier',type:'cardio',why:'Sollicite tout le corps : bonne dépense calorique et travail du dos en prime.',ex:'Cadence 20-24 coups/min. Jambes, puis buste, puis bras. Attention à ne pas monter trop haut en intensité.',es:'Endurance globale, dos.'},
+{id:'marche_ext',n:'Marche rapide',g:'cardio',pat:'cardio',eq:'bw',lvl:1,m:'Cardio · Zone 2',type:'cardio',why:'Accessible partout, sans matériel, et remarquablement efficace pour la perte de gras sur la durée.',ex:'Allure soutenue, 30 à 45 min. Terrain vallonné si possible pour augmenter la dépense.',es:'Dépense calorique, récupération active.'},
+{id:'corde',n:'Corde à sauter',g:'cardio',pat:'cardio',eq:'home',lvl:2,m:'Cardio · Mollets',type:'cardio',why:'Très forte dépense calorique en peu de temps, et travaille la coordination.',ex:'Petits sauts, poignets qui font le travail. Alterne 1 min effort / 30 sec repos si besoin.',es:'Dépense élevée, mollets.'}
+];
+
+/* ═══════════════════════════════════════════════════════
+   MOTEUR DE GÉNÉRATION DE PROGRAMME
+   Compose une semaine sur mesure selon objectif, jours
+   disponibles, niveau, matériel, âge et point faible.
+   ═══════════════════════════════════════════════════════ */
+
+// Séries / répétitions / récup selon l'objectif
+const GOAL_SCHEME={
+  perte:   {comp:{s:3,r:'10-12',rec:'1min15',b:'bh'}, iso:{s:3,r:'12-15',rec:'45sec',b:'bi'}, label:'Perte de gras', cardio:true},
+  muscle:  {comp:{s:4,r:'8-10', rec:'2min',   b:'bh'}, iso:{s:3,r:'10-15',rec:'1min15',b:'bi'}, label:'Prise de muscle', cardio:false},
+  force:   {comp:{s:5,r:'4-6',  rec:'3min',   b:'bf'}, iso:{s:3,r:'8-12', rec:'1min30',b:'bi'}, label:'Force', cardio:false},
+  recomp:  {comp:{s:4,r:'8-12', rec:'1min45', b:'bh'}, iso:{s:3,r:'12-15',rec:'1min',  b:'bi'}, label:'Recomposition', cardio:true},
+  forme:   {comp:{s:3,r:'10-15',rec:'1min15',b:'bh'}, iso:{s:2,r:'12-15',rec:'1min',  b:'bi'}, label:'Remise en forme', cardio:true}
+};
+
+// Modèles de séance : liste de créneaux {g:groupe, role:'comp'|'iso'}
+const S={
+  fullA:{name:'Full Body A',slots:[{g:'quads',role:'comp'},{g:'pecs',role:'comp'},{g:'dos',role:'comp'},{g:'epaules',role:'iso'},{g:'abdos',role:'iso'}]},
+  fullB:{name:'Full Body B',slots:[{g:'ischios',role:'comp'},{g:'dos',role:'comp'},{g:'pecs',role:'comp'},{g:'biceps',role:'iso'},{g:'triceps',role:'iso'},{g:'abdos',role:'iso'}]},
+  fullC:{name:'Full Body C',slots:[{g:'quads',role:'comp'},{g:'epaules',role:'comp'},{g:'dos',role:'comp'},{g:'fessiers',role:'comp'},{g:'abdos',role:'iso'}]},
+  push:{name:'Push · Pecs Épaules Triceps',slots:[{g:'pecs',role:'comp'},{g:'pecs',role:'comp'},{g:'epaules',role:'comp'},{g:'pecs',role:'iso'},{g:'epaules',role:'iso'},{g:'triceps',role:'iso'},{g:'triceps',role:'iso'}]},
+  pull:{name:'Pull · Dos Biceps',slots:[{g:'dos',role:'comp'},{g:'dos',role:'comp'},{g:'dos',role:'comp'},{g:'dos',role:'iso'},{g:'biceps',role:'iso'},{g:'biceps',role:'iso'}]},
+  legs:{name:'Legs · Jambes',slots:[{g:'quads',role:'comp'},{g:'ischios',role:'comp'},{g:'quads',role:'comp'},{g:'fessiers',role:'comp'},{g:'ischios',role:'iso'},{g:'mollets',role:'iso'},{g:'abdos',role:'iso'}]},
+  upper:{name:'Upper · Haut du corps',slots:[{g:'pecs',role:'comp'},{g:'dos',role:'comp'},{g:'epaules',role:'comp'},{g:'dos',role:'comp'},{g:'biceps',role:'iso'},{g:'triceps',role:'iso'}]},
+  lower:{name:'Lower · Bas du corps',slots:[{g:'quads',role:'comp'},{g:'ischios',role:'comp'},{g:'fessiers',role:'comp'},{g:'quads',role:'iso'},{g:'mollets',role:'iso'},{g:'abdos',role:'iso'}]},
+  cardioAbs:{name:'Cardio + Abdos',slots:[{g:'cardio',role:'comp'},{g:'abdos',role:'iso'},{g:'abdos',role:'iso'}]}
+};
+
+// Répartition selon le nombre de jours disponibles
+const SPLITS={
+  2:['fullA','fullB'],
+  3:['fullA','fullB','fullC'],
+  4:['upper','lower','upper','lower'],
+  5:['push','pull','legs','upper','lower'],
+  6:['push','pull','legs','push','pull','legs']
+};
+const SPLITS_BEG={ // débutants : full body privilégié, plus efficace au départ
+  2:['fullA','fullB'],
+  3:['fullA','fullB','fullC'],
+  4:['fullA','fullB','fullA','fullB'],
+  5:['fullA','fullB','fullC','upper','lower'],
+  6:['fullA','fullB','fullC','upper','lower','cardioAbs']
+};
+const DAY_NAMES=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+const DAY_KEYS=['d1','d2','d3','d4','d5','d6','d7'];
+
+function pickExo(group,role,eqAllowed,lvl,used,variant){
+  // On reste TOUJOURS dans le matériel disponible : on assouplit d'abord
+  // le niveau, et si vraiment rien ne convient on saute le créneau.
+  let pool=LIB.filter(e=>e.g===group&&eqAllowed.includes(e.eq)&&(e.lvl||1)<=lvl);
+  if(!pool.length)pool=LIB.filter(e=>e.g===group&&eqAllowed.includes(e.eq));
+  if(!pool.length)return null;
+  // On privilégie le matériel le plus complet dont dispose la personne :
+  // un pratiquant en salle ne doit pas se voir proposer une version élastique
+  pool=pool.slice().sort((a,b)=>eqAllowed.indexOf(a.eq)-eqAllowed.indexOf(b.eq));
+  const wanted=pool.filter(e=>role==='comp'?e.pat!=='iso':e.pat==='iso');
+  let cand=wanted.length?wanted:pool;
+  const fresh=cand.filter(e=>!used.has(e.id));
+  if(fresh.length)cand=fresh;
+  // On reste dans le meilleur niveau de matériel disponible : mieux vaut
+  // répéter un bon exercice que proposer une version dégradée
+  const tier=cand.filter(e=>e.eq===eqAllowed[0]);
+  if(tier.length)cand=tier;
+  // variant : décale le choix pour que la 2e occurrence d'une séance diffère
+  return cand[(variant||0)%cand.length];
+}
+
+
+/* Durée estimée d'une séance, en minutes */
+function estimateMin(exos){
+  let m=8; // échauffement
+  exos.forEach(e=>{
+    if(e._type==='cardio'){m+=parseInt(e.sets)||20;return;}
+    const ns=parseInt(e.sets)||3;
+    let rest=0.75;
+    const rs=/(\d+)min(\d+)?/.exec(e.recup);
+    if(rs)rest=parseInt(rs[1])+(rs[2]?parseInt(rs[2])/60:0);
+    else if(/(\d+)sec/.test(e.recup))rest=parseInt(/(\d+)sec/.exec(e.recup)[1])/60;
+    m+=ns*(0.6+rest);
+  });
+  return m;
+}
+
+/* Ajuste la séance pour tenir dans le temps disponible.
+   Ordre de sacrifice, du moins au plus coûteux pour les résultats :
+   cardio → isolation → séries d'isolation → récup (sauf en force) →
+   séries des exercices de base. Les mouvements de base sont gardés
+   le plus longtemps possible : ce sont eux qui produisent les résultats. */
+function fitToTime(exos,budget,goal){
+  if(!budget||budget<=0)return exos;
+  const cutRest=(e,floorSec)=>{
+    let sec=0;
+    const m=/(\d+)min(\d+)?/.exec(e.recup);
+    if(m)sec=parseInt(m[1])*60+(m[2]?parseInt(m[2]):0);
+    else if(/(\d+)sec/.test(e.recup))sec=parseInt(/(\d+)sec/.exec(e.recup)[1]);
+    if(sec-15<floorSec)return false;
+    sec-=15;
+    e.recup=sec>=60?(Math.floor(sec/60)+'min'+(sec%60?String(sec%60):'')):(sec+'sec');
+    return true;
+  };
+  const setsOf=e=>{const m=/^(\d+)×(.+)$/.exec(e.sets);return m?[parseInt(m[1]),m[2]]:null;};
+  let guard=0;
+  while(estimateMin(exos)>budget&&guard++<80){
+    // 1. Le cardio de fin part en premier
+    const ci=exos.map((e,i)=>e._type==='cardio'?i:-1).filter(i=>i>=0).pop();
+    if(ci>=0&&exos.length>3){exos.splice(ci,1);continue;}
+    // 2. Dernière isolation / gainage
+    const ii=exos.map((e,i)=>(e.bl==='Isolation'||e.bl==='Gainage')?i:-1).filter(i=>i>=0).pop();
+    if(ii>=0&&exos.length>3){exos.splice(ii,1);continue;}
+    // 3. Une série sur les isolations restantes (plancher 2)
+    let done=false;
+    for(const e of exos){const s=setsOf(e);
+      if(s&&e.bl!=='Base'&&s[0]>2){e.sets=(s[0]-1)+'×'+s[1];done=true;break;}}
+    if(done)continue;
+    // 4. Récup raccourcie — jamais en force, où elle est indispensable
+    if(goal!=='force'){
+      for(const e of exos){if(e._type==='cardio')continue;
+        if(cutRest(e,e.bl==='Base'?60:40)){done=true;break;}}
+      if(done)continue;
+    }
+    // 5. Une série sur les exercices de base (plancher 3)
+    for(const e of exos){const s=setsOf(e);
+      if(s&&e.bl==='Base'&&s[0]>3){e.sets=(s[0]-1)+'×'+s[1];done=true;break;}}
+    if(done)continue;
+    // 6. Raccourcir le cardio plutôt que de le supprimer (plancher 10 min)
+    const cardio=exos.find(e=>e._type==='cardio');
+    if(cardio){
+      const cur=parseInt(cardio.sets)||20;
+      if(cur>10){
+        const nv=cur-5;
+        cardio.sets=/-/.test(cardio.sets)?`${nv}-${nv+10} min`:`${nv} min`;
+        continue;
+      }
+    }
+    // 7. Réduire encore le nombre d'exercices (plancher 3)
+    if(exos.length>3){exos.pop();continue;}
+    // 8. Dernier recours : 2 séries minimum
+    for(const e of exos){const s=setsOf(e);
+      if(s&&s[0]>2){e.sets=(s[0]-1)+'×'+s[1];done=true;break;}}
+    if(done)continue;
+    break;
+  }
+  return exos;
+}
+
+function generateProgram(p){
+  const days=parseInt(p.days||4);
+  const goal=p.trainGoal||'muscle';
+  const lvl=parseInt(p.level||2);
+  const sch=GOAL_SCHEME[goal]||GOAL_SCHEME.muscle;
+  const eqAllowed=p.equip==='gym'?['gym','home','bw']:p.equip==='home'?['home','bw']:['bw'];
+  const tpl=(lvl===1?SPLITS_BEG:SPLITS)[days]||SPLITS[4];
+  const prioCount=(Array.isArray(p.priority)?p.priority:(p.priority&&p.priority!=='none'?[p.priority]:[])).length;
+  // Volume ajusté : moins d'exercices pour les débutants, un peu moins après 50 ans
+  let maxExo=lvl===1?5:lvl===2?6:7;
+  // En force, les séries sont longues et les récups aussi : on réduit le nombre d'exercices
+  if(goal==='force')maxExo=Math.max(4,maxExo-2);
+  // Beaucoup de temps disponible : on peut ajouter du volume utile
+  if(parseInt(p.time||60)>=90)maxExo+=1;
+  // Peu de séances + priorités : on autorise un exercice de plus pour que
+  // la zone prioritaire ne prenne pas la place du reste du corps
+  if(days<=3&&prioCount>0)maxExo+=1;
+  else if(parseInt(p.time||60)<=30)maxExo=Math.min(maxExo,4);
+  if(p.age>=50)maxExo=Math.max(4,maxExo-1);
+  if(p.age>=65)maxExo=Math.max(4,maxExo-1);
+
+  const prog={};
+  const seenTpl={};
+  tpl.forEach((key,i)=>{
+    const model=S[key];
+    // Combien de fois ce modèle a déjà servi → sert à varier les exercices
+    const variant=seenTpl[key]||0;seenTpl[key]=variant+1;
+    const used=new Set();
+    let slots=model.slots.slice();
+    // Point faible : on ajoute un exercice supplémentaire si le groupe est travaillé ce jour-là
+    // Zones prioritaires : jusqu'à deux, chacune reçoit un exercice de plus
+    // le jour où elle est déjà travaillée. Placé tôt (muscle frais) mais après
+    // le mouvement de base principal pour ne pas compromettre la séance.
+    const prios=Array.isArray(p.priority)?p.priority:(p.priority&&p.priority!=='none'?[p.priority]:[]);
+    const BIG=['pecs','dos','quads','ischios','fessiers'];
+    prios.forEach(pr=>{
+      const already=slots.some(s=>s.g===pr);
+      const pos=BIG.includes(pr)?1:slots.filter(s=>s.role==='comp').length;
+      // Présente dans la séance → on ajoute un exercice de plus.
+      // Absente du modèle → on l'insère quand même : c'est une priorité,
+      // elle doit apparaître dans la semaine.
+      slots.splice(pos,0,{g:pr,role:(BIG.includes(pr)&&!already)?'comp':(already?'iso':'comp')});
+    });
+    slots=slots.slice(0,maxExo);
+    const exos=[];
+    slots.forEach((slot,idx)=>{
+      const e=pickExo(slot.g,slot.role,eqAllowed,lvl,used,variant);
+      if(!e)return;
+      used.add(e.id);
+      const cfg=slot.role==='comp'?sch.comp:sch.iso;
+      let sets=cfg.s,reps=cfg.r,rec=cfg.rec;
+      // En full body (peu de séances), on plafonne à 3 séries sur les exercices
+      // de base : impossible de tout faire en 4-5 séries, et mieux vaut couvrir
+      // l'ensemble du corps que sur-travailler deux mouvements
+      if(days<=3&&slot.role==='comp')sets=Math.min(sets,3);
+      if(p.age>=50&&slot.role==='comp')sets=Math.max(2,sets-1);
+      let disp,badge=cfg.b,bl=slot.role==='comp'?'Base':'Isolation';
+      if(e.type==='time'){disp=`${sets}×30-45s`;badge='bs';bl='Gainage';}
+      else if(e.type==='cardio'){disp='25-35 min';badge='be';bl='Cardio';rec='—';}
+      else disp=`${sets}×${reps}`;
+      exos.push({n:idx+1,name:e.n,muscles:e.m,sets:disp,recup:rec,badge,bl,
+        why:e.why,exec:e.ex,esth:e.es||null,judo:null,
+        charge:e.type==='cardio'?'Zone 2 : tu dois pouvoir parler en bougeant':
+               e.type==='time'?'Poids du corps · ajoute un lest quand 45s deviennent faciles':
+               'Choisis une charge où les 2 dernières reps sont difficiles mais propres',
+        _type:e.type||'reps'});
+    });
+    // Cardio en fin de séance pour les objectifs qui en bénéficient
+    if(sch.cardio&&exos.length&&key!=='cardioAbs'){
+      const c=LIB.filter(e=>e.g==='cardio'&&eqAllowed.includes(e.eq))[0];
+      if(c)exos.push({n:exos.length+1,name:c.n,muscles:c.m,sets:goal==='perte'?'20-30 min':'15-20 min',
+        recup:'—',badge:'be',bl:'Cardio',why:c.why,exec:c.ex,esth:c.es,judo:null,
+        charge:'Zone 2 : tu dois pouvoir parler en bougeant',_type:'cardio'});
+    }
+    // Durée ajustée au temps dont dispose la personne
+    fitToTime(exos,parseInt(p.time||60),goal);
+    exos.forEach((e,i)=>e.n=i+1);
+    let mins=Math.round(estimateMin(exos)/5)*5;
+    prog[DAY_KEYS[i]]={badge:model.name+(tpl.filter(t=>t===key).length>1?' '+String.fromCharCode(65+variant):''),dur:`${mins} min`,
+      warmup:['5 min cardio léger pour monter en température',
+              'Mobilisation des articulations sollicitées : 2 min',
+              '2 séries légères sur le premier exercice (40-50% de la charge)'],
+      exos};
+  });
+  return prog;
+}
+
+
+/* ═══ PROGRAMME ACTIF ═══
+   ED = le programme réellement affiché.
+   Soit le programme fait main, soit un programme généré. */
+let ED={};
+let DAYS=[];
+function loadProgram(){
+  if(profile&&profile.mode==='auto'){
+    let gen=null;
+    try{gen=JSON.parse(localStorage.getItem('sl_gen')||'null');}catch(e){}
+    // On régénère si absent ou si le profil d'entraînement a changé
+    const sig=[profile.trainGoal,profile.days,profile.level,profile.equip,(Array.isArray(profile.priority)?profile.priority.join(','):profile.priority),profile.time,profile.age>=50].join('|');
+    if(!gen||gen._sig!==sig){
+      gen=generateProgram(profile);gen._sig=sig;
+      try{localStorage.setItem('sl_gen',JSON.stringify(gen));}catch(e){}
+    }
+    ED={};Object.keys(gen).forEach(k=>{if(k!=='_sig')ED[k]=gen[k];});
+  }else{
+    ED=COACH_PROGRAM;
+  }
+  DAYS=Object.keys(ED);
+  // Types de saisie (gainage / cardio) déclarés par les exercices générés
+  Object.values(ED).forEach(d=>d.exos.forEach(e=>{
+    if(e._type&&e._type!=='reps')EXO_TYPE[e.name]=e._type;
+  }));
+}
+function regenerateProgram(){
+  if(!profile||profile.mode!=='auto')return;
+  try{localStorage.removeItem('sl_gen');}catch(e){}
+  loadProgram();buildAllSessions();buildDropdown();buildDayTabs();buildWeekGrid();
+}
+
 const KEY_EXOS=['Développé incliné haltères 30°','Développé couché barre','Dips lestés (buste penché)','Tractions pronation lestées','Barre au front (skull crusher)','Curl barre EZ','Squat barre'];
 const TARGETS={'Développé incliné haltères 30°':{reps:'6-8',sets:4},'Développé couché haltères':{reps:'8-10',sets:4},'Dips lestés (buste penché)':{reps:'8-10',sets:3},'Écarté poulie vis-à-vis':{reps:'12-15',sets:3},'Développé militaire haltères':{reps:'8-10',sets:3},'Élévations latérales':{reps:'12-15',sets:4},'Barre au front (skull crusher)':{reps:'8-10',sets:4},'Triceps corde poulie':{reps:'12-15',sets:3},'Tractions pronation lestées':{reps:'6-8',sets:4},'Rowing barre buste penché':{reps:'8-10',sets:4},'Tirage horizontal poulie':{reps:'10-12',sets:3},'Tirage vertical prise neutre':{reps:'10-12',sets:3},'Facepull corde':{reps:'15-20',sets:4},'Curl barre EZ':{reps:'8-10',sets:4},'Curl incliné haltères':{reps:'10-12',sets:3},'Curl marteau':{reps:'12',sets:3},'Squat barre':{reps:'6-8',sets:4},'Soulevé de terre roumain':{reps:'8-10',sets:4},'Presse à cuisses':{reps:'10-12',sets:3},'Leg curl allongé':{reps:'10-12',sets:3},'Leg extension':{reps:'12-15',sets:3},'Mollets debout':{reps:'12-15',sets:4},'Développé couché barre':{reps:'6-8',sets:4},'Développé incliné haltères':{reps:'10-12',sets:3},'Rowing haltère unilatéral':{reps:'10-12',sets:3},'Hip thrust barre':{reps:'10-12',sets:4},'Fentes bulgares':{reps:'10',sets:3}};
 
@@ -784,20 +1419,74 @@ function restoreAll(){
   if(!Object.keys(overrides).length){alert('Aucune modification à annuler.');return;}
   if(!confirm('Remettre TOUS les exercices du programme d\'origine ?\nTes performances enregistrées ne sont pas touchées.'))return;
   overrides={};saveOver();
-  ['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildDropdown();
+  buildAllSessions();buildDropdown();
   alert('✓ Programme d\'origine restauré.');
 }
 
 /* ═══ LISTE DÉROULANTE DYNAMIQUE (reflète tes modifications) ═══ */
-const DAY_LABELS={lun:'Lundi Push',mar:'Mardi Pull',mer:'Mercredi Legs',jeu:'Jeudi Upper',ven:'Vendredi Lower + Épaules + Abdos',sam:'Samedi (optionnel)'};
+const COACH_LABELS={lun:'Lundi Force Haut',mer:'Mercredi Force Bas',sam:'Samedi Esthétique'};
+const DAY_FR=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+function dayLabel(key,i){
+  if(COACH_LABELS[key])return COACH_LABELS[key];
+  return (DAY_FR[i]||'Jour '+(i+1))+' · '+(ED[key]?ED[key].badge:'');
+}
+function buildAllSessions(){
+  const wrap=document.getElementById('sp-wrap');
+  if(wrap){
+    wrap.innerHTML=DAYS.map((k,i)=>`<div id="sp-${k}" class="sp${i===0?' active':''}"></div>`).join('');
+  }
+  DAYS.forEach(buildSession);
+}
+function shortName(badge){
+  let s=badge.split('·')[0].trim();
+  // "Full Body A" → "Full A" · "Lower + Épaules + Abdos" → "Lower"
+  const fb=/^Full Body\s*([A-C])?$/.exec(s);
+  if(fb)return 'Full'+(fb[1]?' '+fb[1]:'');
+  s=s.split('+')[0].trim();
+  const w=s.split(' ');
+  return w.length>2?w.slice(0,2).join(' '):s;
+}
+function buildDayTabs(){
+  const tabs=document.getElementById('day-tabs');
+  if(!tabs)return;
+  tabs.innerHTML=DAYS.map((k,i)=>{
+    const d=ED[k];
+    const short=COACH_LABELS[k]?COACH_LABELS[k].split(' ')[0]:(DAY_FR[i]||'J'+(i+1)).slice(0,3);
+    return `<button class="stab${i===0?' active':''}" onclick="switchS('${k}',this)">${short} · ${shortName(d.badge)}</button>`;
+  }).join('');
+}
+function buildWeekGrid(){
+  const grid=document.getElementById('week-grid');
+  if(!grid)return;
+  const cols=['var(--bl)','var(--gr)','var(--am)','var(--pu)','var(--co)','var(--bl)','var(--gr)'];
+  // Mode coach : jours fixes dans la semaine + judo mardi et vendredi
+  const COACH_POS={lun:0,mer:2,sam:5};
+  const JUDO_DAYS={1:'Judo',4:'Judo'};
+  const isCoach=profile&&profile.mode!=='auto';
+  const map={};
+  if(isCoach){DAYS.forEach(k=>{if(COACH_POS[k]!==undefined)map[COACH_POS[k]]=k;});}
+  else{DAYS.forEach((k,i)=>{map[i]=k;});}
+  let h='';
+  for(let i=0;i<7;i++){
+    const k=map[i];
+    if(k){
+      h+=`<div class="wb gym"><div class="wbn">${DAY_FR[i].slice(0,3)}</div><div class="wbl">${shortName(ED[k].badge)}</div><div class="wd" style="background:${cols[i]};"></div></div>`;
+    }else if(isCoach&&JUDO_DAYS[i]){
+      h+=`<div class="wb mob"><div class="wbn">${DAY_FR[i].slice(0,3)}</div><div class="wbl">🥋 Judo</div><div class="wd" style="background:var(--pu);"></div></div>`;
+    }else{
+      h+=`<div class="wb judo"><div class="wbn">${DAY_FR[i].slice(0,3)}</div><div class="wbl">Repos</div><div class="wd" style="background:var(--tx4);"></div></div>`;
+    }
+  }
+  grid.innerHTML=h;
+}
 function buildDropdown(){
   const sel=document.getElementById('inp-exo');
   if(!sel)return;
   const prev=sel.value;
   let h='';
   const seen=new Set();
-  ['lun','mar','mer','jeu','ven','sam'].forEach(day=>{
-    h+=`<optgroup label="— ${DAY_LABELS[day]} —">`;
+  DAYS.forEach(day=>{
+    h+=`<optgroup label="— ${dayLabel(day,DAYS.indexOf(day))} —">`;
     ED[day].exos.forEach(e0=>{
       const e=getExo(day,e0.n);
       const label=e.name+(e._mod?' ✏️':'');
@@ -825,6 +1514,7 @@ function buildSession(key){
   d.exos.forEach(e0=>{
     const e=getExo(key,e0.n);
     const cid='exo-'+key+'-'+e0.n;
+    const inf=EXO_INFO[e.name]||EXO_INFO[e._baseName]||{};
     const lp=getLP(e.name);
     let lpStr='';
     if(lp){
@@ -844,10 +1534,14 @@ function buildSession(key){
     </div>
     <div class="edet" id="${cid}">
       ${e._mod?`<div class="mod-note">✏️ Tu as remplacé <strong>${e._baseName}</strong>. Les explications ci-dessous sont celles de l'exercice d'origine.</div>`:''}
-      <div class="dl">Pourquoi ?</div><div class="dt">${e.why}</div>
+      <div class="dl">Muscles travaillés</div><div class="dt">${inf.anat||e.muscles}</div>
+      <div class="dl">Pourquoi cet exercice ?</div><div class="dt">${e.why}</div>
+      ${inf.apport?`<div class="dl">Ce que ça t'apporte concrètement</div><div class="dt">${inf.apport}</div>`:''}
       <div class="dl">Exécution clé</div><div class="dt">${e.exec}</div>
+      ${inf.err?`<div class="err-box"><span class="err-t">⚠️ Erreur fréquente</span>${inf.err}</div>`:''}
       <div class="chips">
         ${e.esth?`<div class="chip chip-b"><div class="chipl">Esthétique</div>${e.esth}</div>`:''}
+        ${e.judo?`<div class="chip chip-g"><div class="chipl">🥋 Transfert judo</div>${e.judo}</div>`:''}
         <div class="chip chip-a" style="min-width:100%;flex:none;"><div class="chipl">Charges recommandées</div>${e.charge}</div>
       </div>
       <div class="edit-row">
@@ -904,11 +1598,14 @@ Object.values(overrides).forEach(o=>{if(o&&o._type&&o._type!=='reps')EXO_TYPE[o.
 
 function toggleExo(id){
   const det=document.getElementById(id);
-  const card=document.getElementById('card-'+id);
+  if(!det)return;
+  // Certaines cartes (repas, guide zone 2) n'ont pas de wrapper "card-xxx"
+  const card=document.getElementById('card-'+id)||det.closest('.ec');
   const wasOpen=det.classList.contains('open');
-  det.classList.toggle('open');card.classList.toggle('open');
+  det.classList.toggle('open');
+  if(card)card.classList.toggle('open');
   // Si on vient d'ouvrir, on s'assure que le contenu est visible (scroll doux)
-  if(!wasOpen){
+  if(!wasOpen&&card){
     setTimeout(()=>{
       const rect=card.getBoundingClientRect();
       const navH=90;
@@ -1091,8 +1788,13 @@ function updateChart(){
   if(!selExo||!all.includes(selExo))selExo=all[0];
   all.forEach(exo=>{const btn=document.createElement('button');btn.className='esbtn'+(exo===selExo?' active':'');btn.textContent=exo.split(' ').slice(0,3).join(' ');btn.onclick=()=>{selExo=exo;updateChart();};sel.appendChild(btn);});
   const data=sessions.filter(s=>s.exo===selExo).map(s=>({x:fmtShort(s.date),y:Math.round(Math.max(...s.sets.map(st=>st.kg||0)))}));
+  const canvas=document.getElementById('prog-chart');
+  // Si Chart.js n'a pas pu se charger (hors ligne / mauvais réseau),
+  // l'app doit continuer à fonctionner : on masque juste le graphique.
+  if(!canvas||typeof Chart==='undefined'){if(canvas)canvas.style.display='none';return;}
+  canvas.style.display='block';
   if(progChart)progChart.destroy();
-  const ctx=document.getElementById('prog-chart').getContext('2d');
+  const ctx=canvas.getContext('2d');
   progChart=new Chart(ctx,{type:'line',data:{labels:data.map(d=>d.x),datasets:[{label:'Charge max',data:data.map(d=>d.y),borderColor:'#5BA8F5',backgroundColor:'rgba(91,168,245,0.08)',fill:true,tension:0.35,pointBackgroundColor:'#5BA8F5',pointRadius:4,pointHoverRadius:7,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${Math.round(c.raw)} kg`},backgroundColor:'rgba(20,20,19,.95)',titleColor:'#f0efe9',bodyColor:'#a8a7a1',borderColor:'rgba(255,255,255,.1)',borderWidth:0.5}},scales:{x:{ticks:{font:{size:11},color:'#6b6a65'},grid:{color:'rgba(255,255,255,.04)'}},y:{ticks:{font:{size:11},color:'#6b6a65',callback:v=>v+'kg'},grid:{color:'rgba(255,255,255,.04)'}}}}});
 }
 
@@ -1173,7 +1875,7 @@ function exportCSV(){
 }
 
 /* SYNC */
-function genCode(){try{return btoa(unescape(encodeURIComponent(JSON.stringify({sessions,overrides,nutHist,nutToday,v:5,ts:Date.now()}))));}catch(e){return '';}}
+function genCode(){try{return btoa(unescape(encodeURIComponent(JSON.stringify({sessions,overrides,nutHist,nutToday,profile,v:6,ts:Date.now()}))));}catch(e){return '';}}
 function openSync(){
   document.getElementById('exp-code').textContent=genCode()||'Aucune donnée.';
   document.getElementById('copy-ok').style.display='none';
@@ -1205,11 +1907,12 @@ function importCode(){
     if(data.overrides){
       overrides=data.overrides;saveOver();
       Object.values(overrides).forEach(o=>{if(o&&o._type&&o._type!=='reps')EXO_TYPE[o.name]=o._type;});
-      ['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildDropdown();
+      buildAllSessions();buildDropdown();
     }
     if(data.nutHist){nutHist=data.nutHist;}
     if(data.nutToday&&data.nutToday.day===todayKey()){nutToday=data.nutToday;}
     if(data.nutHist||data.nutToday){saveNut();renderNut();}
+    if(data.profile){profile=data.profile;localStorage.setItem('sl_profile',JSON.stringify(profile));applyProfile();}
     msg.style.display='block';msg.style.color='var(--gr)';
     msg.textContent=`✓ ${sessions.length} exercices importés !`;
     refresh();setTimeout(()=>closeSync(),1500);
@@ -1223,10 +1926,10 @@ function switchMain(id,el){
   document.getElementById('mp-'+id).classList.add('active');el.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='tracker')refresh();
-  if(id==='seances')['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);
+  if(id==='seances')buildAllSessions();
 }
 function switchS(key,el){
-  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('#day-tabs .stab').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.sp').forEach(p=>p.classList.remove('active'));
   el.classList.add('active');document.getElementById('sp-'+key).classList.add('active');
 }
@@ -1235,6 +1938,288 @@ function switchCharge(id,el){
   el.classList.add('active');
   document.getElementById('cp-haut').style.display=id==='haut'?'block':'none';
   document.getElementById('cp-bas').style.display=id==='bas'?'block':'none';
+}
+
+/* ═══════════════════════════════════════════
+   PROFIL UTILISATEUR — calculs personnalisés
+   Chaque personne a ses propres données, stockées
+   uniquement dans son navigateur.
+   ═══════════════════════════════════════════ */
+let profile=null;
+try{profile=JSON.parse(localStorage.getItem('sl_profile')||'null');}catch(e){profile=null;}
+const picks={'p-sex':'h','p-goal':'cut','p-act':'1.55',
+  'p-mode':'auto','p-tgoal':'muscle','p-days':'4','p-level':'2','p-equip':'gym','p-prio':[],'p-time':'60'};
+// Sélection multiple (2 zones prioritaires maximum)
+function multiPick(group,el,val){
+  let cur=Array.isArray(picks[group])?picks[group].slice():[];
+  if(val==='none'){cur=[];}
+  else{
+    if(cur.includes(val))cur=cur.filter(v=>v!==val);
+    else{cur.push(val);if(cur.length>2)cur.shift();}
+  }
+  picks[group]=cur;
+  const parent=document.getElementById(group);
+  parent.querySelectorAll('.opt').forEach(b=>{
+    const oc=b.getAttribute('onclick')||'';
+    const v=(oc.match(/,'([a-z]+)'\)/)||[])[1];
+    b.classList.toggle('active',v==='none'?cur.length===0:cur.includes(v));
+  });
+}
+function segPick(group,el,val){
+  picks[group]=val;
+  const parent=document.getElementById(group);
+  parent.querySelectorAll('.seg-b,.opt').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  if(group==='p-mode'){
+    const ab=document.getElementById('auto-block');
+    if(ab)ab.style.display=val==='auto'?'block':'none';
+  }
+}
+
+// Mifflin-St Jeor : la formule la plus fiable pour le métabolisme de base
+function calcBMR(p){
+  const base=(10*p.weight)+(6.25*p.height)-(5*p.age);
+  return Math.round(p.sex==='h'?base+5:base-161);
+}
+function calcTargets(p){
+  const bmr=calcBMR(p);
+  const tdee=Math.round(bmr*parseFloat(p.act));
+  let kcal=tdee,floored=false;
+  if(p.goal==='cut'){
+    // Déficit proportionnel (18% de la dépense, plafonné à 500) :
+    // plus juste qu'un chiffre fixe, qui serait trop agressif pour un petit gabarit
+    kcal=tdee-Math.min(500,Math.round(tdee*0.18));
+  }else if(p.goal==='bulk'){
+    kcal=tdee+Math.min(400,Math.round(tdee*0.12));
+  }
+  // Plancher de sécurité : jamais en dessous de 1,1× le métabolisme de base
+  const floor=Math.max(Math.round(bmr*1.1),p.sex==='f'?1300:1600);
+  if(kcal<floor){kcal=floor;floored=true;}
+  kcal=Math.round(kcal/10)*10;
+  const protPerKg=p.goal==='cut'?2.2:p.goal==='bulk'?1.8:2.0;
+  const prot=Math.round(p.weight*protPerKg);
+  const fat=Math.round(p.weight*(p.goal==='cut'?0.9:1.0));
+  const carb=Math.max(50,Math.round((kcal-(prot*4)-(fat*9))/4));
+  return{bmr,tdee,kcal,prot,carb,fat,floored};
+}
+function goalLabel(g){return g==='cut'?'Sèche':g==='bulk'?'Prise de masse':'Maintien';}
+
+function saveProfile(){
+  const err=document.getElementById('onb-err');
+  const name=document.getElementById('p-name').value.trim();
+  const age=parseInt(document.getElementById('p-age').value);
+  const height=parseInt(document.getElementById('p-height').value);
+  const weight=parseFloat(document.getElementById('p-weight').value);
+  const targetW=parseFloat(document.getElementById('p-target').value);
+  const show=m=>{err.style.display='block';err.textContent=m;};
+  if(!name)return show('Indique ton prénom.');
+  if(isNaN(age)||age<12||age>90)return show('Âge invalide (12-90).');
+  if(isNaN(height)||height<120||height>230)return show('Taille invalide (120-230 cm).');
+  if(isNaN(weight)||weight<30||weight>200)return show('Poids invalide (30-200 kg).');
+  err.style.display='none';
+  profile={name,sex:picks['p-sex'],age,height,weight,
+           targetWeight:isNaN(targetW)?weight:targetW,
+           goal:picks['p-goal'],act:picks['p-act'],
+           mode:picks['p-mode'],trainGoal:picks['p-tgoal'],days:picks['p-days'],
+           level:picks['p-level'],equip:picks['p-equip'],priority:Array.isArray(picks['p-prio'])?picks['p-prio']:[],time:picks['p-time'],
+           created:profile?profile.created:Date.now()};
+  localStorage.setItem('sl_profile',JSON.stringify(profile));
+  document.getElementById('onb').classList.remove('show');
+  loadProgram();buildAllSessions();buildDropdown();buildDayTabs();buildWeekGrid();
+  applyProfile();
+}
+
+/* ═══ PAGE PLANNING ADAPTÉE AU PROFIL RÉEL ═══ */
+/* Groupe musculaire des exercices propres au programme coach
+   (absents de la bibliothèque générée) */
+const COACH_GROUPS={
+  'Tractions pronation lestées':'dos','Tirage vertical prise neutre':'dos',
+  'Dips lestés (buste penché)':'pecs','Développé incliné haltères':'pecs',
+  'Pallof press (anti-rotation)':'abdos','Gainage latéral (side plank)':'abdos',
+  'Superset Curl incliné + Barre au front':'bras','Superset Curl + Triceps':'bras',
+  'Tractions ou tirage vertical':'dos','Gainage planche lestée':'abdos',
+  'Triceps corde poulie':'triceps','Développé incliné haltères 30°':'pecs'
+};
+function exoGroup(name){
+  const l=LIB.find(x=>x.n===name);
+  if(l)return l.g;
+  return COACH_GROUPS[name]||null;
+}
+const G_LABEL={pecs:'Pectoraux',dos:'Dos',epaules:'Épaules',biceps:'Biceps',triceps:'Triceps',
+  quads:'Quadriceps',ischios:'Ischio-jambiers',fessiers:'Fessiers',mollets:'Mollets',abdos:'Abdos',bras:'Bras (biceps + triceps)',cardio:'Cardio'};
+function nbSets(s){const m=/^(\d+)×/.exec(s||'');return m?parseInt(m[1]):0;}
+
+function renderPlanning(){
+  if(!profile)return;
+  const nDays=DAYS.length;
+  const isCoach=profile.mode!=='auto';
+  const time=parseInt(profile.time||60);
+  // Cardio réellement présent dans le programme ?
+  let cardioDays=0;
+  DAYS.forEach(k=>{if(ED[k].exos.some(e=>e._type==='cardio'||e.bl==='Cardio'))cardioDays++;});
+
+  // Note d'en-tête
+  const note=document.getElementById('plan-note');
+  if(note){
+    if(isCoach){
+      note.innerHTML='🥋 <strong>Saison judo + esthétique</strong> — judo mardi et vendredi, salle lundi, mercredi et samedi. Le lourd sert la performance, le travail d\'isolation en fin de séance sert le physique sans coûter en récupération.';
+    }else{
+      note.innerHTML=`📅 <strong>${nDays} séance${nDays>1?'s':''} par semaine</strong> · ${time} min chacune`
+        +(cardioDays?` · cardio inclus dans ${cardioDays} séance${cardioDays>1?'s':''}`:'')
+        +`. Répartis-les avec au moins un jour de repos entre deux si possible.`;
+    }
+  }
+
+  // Carte planning
+  const card=document.getElementById('plan-card');
+  if(card){
+    if(isCoach){
+      card.innerHTML=`<div class="ct">🥋 Ta semaine en saison judo</div>
+        <table class="rt2"><tbody>
+        <tr><td>Lundi</td><td>Force Haut · tirage</td></tr>
+        <tr><td>Mardi</td><td>🥋 Judo</td></tr>
+        <tr><td>Mercredi</td><td>Force Bas · puissance</td></tr>
+        <tr><td>Jeudi</td><td>Repos — avant le judo</td></tr>
+        <tr><td>Vendredi</td><td>🥋 Judo</td></tr>
+        <tr><td>Samedi</td><td>Esthétique · épaules, bras</td></tr>
+        <tr><td>Dimanche</td><td>Repos complet</td></tr>
+        </tbody></table>
+        <div style="font-size:12px;color:var(--tx3);margin-top:10px;line-height:1.55;">Le jeudi est volontairement vide : c'est le jour tampon avant le judo du vendredi. Ne le remplis pas, c'est lui qui te permet d'arriver frais sur le tatami.</div>`;
+    }else{
+      // Suggestion de répartition selon le nombre de séances
+      const SPREAD={1:'Un jour au choix',2:'Lundi et jeudi — ou tout autre écart de 2-3 jours',
+        3:'Lundi, mercredi, vendredi',4:'Lundi, mardi, jeudi, vendredi',
+        5:'Lundi à vendredi',6:'Lundi à samedi'};
+      const rows=DAYS.map((k,i)=>`<tr><td>Séance ${i+1}</td><td>${shortName(ED[k].badge)} · ${ED[k].dur}</td></tr>`).join('');
+      card.innerHTML=`<div class="ct">📅 Ta semaine type</div>
+        <table class="rt2"><tbody>
+        ${rows}
+        <tr><td>Répartition conseillée</td><td>${SPREAD[nDays]||'À espacer dans la semaine'}</td></tr>
+        <tr><td>Jours de repos</td><td>${7-nDays} par semaine</td></tr>
+        </tbody></table>
+        <div style="font-size:12px;color:var(--tx3);margin-top:10px;line-height:1.55;">${nDays<=3
+          ?'Avec peu de séances, chacune travaille le corps entier : ne saute pas d\'exercice, ils comptent tous.'
+          :'Espace les séances qui touchent les mêmes muscles d\'au moins 48 h quand c\'est possible.'}</div>`;
+    }
+  }
+
+  // Fréquence cardiaque calculée depuis l'âge réel
+  const fcMax=Math.round(208-0.7*profile.age); // formule de Tanaka, plus fiable que 220-âge
+  const el1=document.getElementById('fc-max'),el2=document.getElementById('fc-z2');
+  if(el1)el1.textContent=`~${fcMax} bpm (${profile.age} ans)`;
+  if(el2)el2.textContent=`${Math.round(fcMax*0.6)} – ${Math.round(fcMax*0.7)} bpm`;
+
+  // Section zone 2 affichée seulement si du cardio est prévu
+  const z2=document.getElementById('z2-section');
+  if(z2)z2.style.display=(isCoach||cardioDays)?'block':'none';
+
+  // Volume réel par muscle, calculé depuis le programme
+  const box=document.getElementById('vol-box');
+  if(box){
+    const vol={},freq={};
+    DAYS.forEach(k=>{
+      const seen=new Set();
+      ED[k].exos.forEach(e=>{
+        const g=exoGroup(e.name);
+        if(!g||g==='cardio')return;
+        vol[g]=(vol[g]||0)+nbSets(e.sets);
+        if(!seen.has(g)){freq[g]=(freq[g]||0)+1;seen.add(g);}
+      });
+    });
+    const entries=Object.entries(vol).sort((a,b)=>b[1]-a[1]);
+    if(!entries.length){
+      box.innerHTML='<div style="font-size:13px;color:var(--tx2);">Volume détaillé disponible avec un programme généré.</div>';
+    }else{
+      const prio=Array.isArray(profile.priority)?profile.priority:(profile.priority&&profile.priority!=='none'?[profile.priority]:[]);
+      box.innerHTML=entries.map(([g,n])=>{
+        const isP=prio.includes(g);
+        return `<div class="mitem"><span class="mname">${G_LABEL[g]||g}${isP?' <span class="mod-b" style="background:var(--bl2);color:var(--bl);">priorité</span>':''}</span><span class="mdur">${n} séries · ${freq[g]}×/sem</span></div>`;
+      }).join('')
+      +`<div style="font-size:12px;color:var(--tx3);margin-top:10px;line-height:1.55;">Comptage des séries <strong>directes</strong>, sur le muscle principal de chaque exercice. Le travail indirect s'y ajoute : les biceps travaillent sur tous les tirages, les triceps sur toutes les poussées, les fessiers sur le squat et le soulevé.<br><br>Repère : environ 10 séries hebdomadaires entretiennent un muscle, 12 à 20 le développent activement.</div>`;
+    }
+  }
+}
+
+function applyProfile(){
+  if(!profile)return;
+  const t=calcTargets(profile);
+  NUT_TARGET.kcal=t.kcal;NUT_TARGET.prot=t.prot;NUT_TARGET.carb=t.carb;NUT_TARGET.fat=t.fat;
+  // En-tête
+  document.getElementById('hav').textContent=profile.name.charAt(0).toUpperCase();
+  document.getElementById('hsub').textContent=`${profile.weight} kg · ${profile.height} cm · ${goalLabel(profile.goal)}`;
+  document.getElementById('hbadge').textContent=profile.targetWeight!==profile.weight?`Cible ${profile.targetWeight} kg`:goalLabel(profile.goal);
+  document.title=`Sport — ${profile.name}`;
+  // Cibles nutrition
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set('t-kcal',t.kcal);set('t-prot',t.prot);set('t-carb',t.carb);set('t-fat',t.fat);
+  // Bloc stratégie
+  const strat=document.getElementById('strat-body');
+  if(strat){
+    const diff=Math.round((profile.weight-profile.targetWeight)*10)/10;
+    const rate=profile.weight*0.007; // ~0,7%/semaine : rythme sain
+    const weeks=diff>0?Math.ceil(diff/rate):0;
+    strat.innerHTML=`
+      <tr><td>Métabolisme de base</td><td>${t.bmr} kcal</td></tr>
+      <tr><td>Dépense totale estimée</td><td>${t.tdee} kcal</td></tr>
+      <tr><td>Ta cible quotidienne</td><td>${t.kcal} kcal</td></tr>
+      <tr><td>Protéines</td><td>${t.prot} g/jour</td></tr>
+      ${diff>0?`<tr><td>À perdre</td><td>${diff} kg · ~${weeks} sem.</td></tr>`:''}`;
+  }
+  const sn=document.getElementById('strat-note');
+  if(sn){
+    if(t.floored)sn.textContent="Ta cible a été relevée à un minimum sécuritaire : descendre plus bas ferait perdre du muscle plutôt que du gras.";
+    else if(profile.goal==='cut')sn.textContent="Calculé depuis ton profil (Mifflin-St Jeor). Un rythme sain se situe autour de 0,5 à 1% du poids par semaine — ne cherche pas à aller plus vite.";
+    else sn.textContent="Calculé depuis ton profil (Mifflin-St Jeor). Ajuste si ton poids ne bouge pas comme prévu après 2 semaines.";
+  }
+  const stratT=document.getElementById('strat-title');
+  if(stratT)stratT.textContent=`🔥 Ta stratégie — ${goalLabel(profile.goal)}`;
+  // Profil affiché dans Règles
+  const rb=document.getElementById('regen-btn');
+  if(rb)rb.style.display=profile.mode==='auto'?'block':'none';
+  const pb=document.getElementById('prof-box');
+  if(pb){
+    pb.innerHTML=`
+      <div class="prof-row"><span>Prénom</span><span>${profile.name}</span></div>
+      <div class="prof-row"><span>Âge · Taille</span><span>${profile.age} ans · ${profile.height} cm</span></div>
+      <div class="prof-row"><span>Poids · Cible</span><span>${profile.weight} → ${profile.targetWeight} kg</span></div>
+      <div class="prof-row"><span>Objectif</span><span>${goalLabel(profile.goal)}</span></div>
+      <div class="prof-row"><span>Calories · Protéines</span><span>${t.kcal} kcal · ${t.prot} g</span></div>
+      <div class="prof-row"><span>Programme</span><span>${profile.mode==='auto'?(GOAL_SCHEME[profile.trainGoal]||{}).label+' · '+profile.days+'j':'Coach'}</span></div>
+      ${profile.mode==='auto'?`<div class="prof-row"><span>Séances</span><span>${profile.time} min · niveau ${['','débutant','intermédiaire','avancé'][profile.level]||'—'}</span></div>`:''}`;
+  }
+  renderNut();renderPlanning();
+}
+
+function askRegen(){
+  if(!confirm('Générer un nouveau programme à partir de ton profil ?\nTes performances enregistrées sont conservées, mais tes modifications d\'exercices seront perdues.'))return;
+  overrides={};saveOver();
+  regenerateProgram();
+  alert('✓ Nouveau programme généré.');
+}
+function openProfile(){
+  if(profile){
+    document.getElementById('p-name').value=profile.name;
+    document.getElementById('p-age').value=profile.age;
+    document.getElementById('p-height').value=profile.height;
+    document.getElementById('p-weight').value=profile.weight;
+    document.getElementById('p-target').value=profile.targetWeight;
+    picks['p-sex']=profile.sex;picks['p-goal']=profile.goal;picks['p-act']=profile.act;
+    picks['p-mode']=profile.mode||'auto';picks['p-tgoal']=profile.trainGoal||'muscle';
+    picks['p-days']=String(profile.days||4);picks['p-level']=String(profile.level||2);
+    picks['p-equip']=profile.equip||'gym';picks['p-prio']=Array.isArray(profile.priority)?profile.priority.slice():(profile.priority&&profile.priority!=='none'?[profile.priority]:[]);picks['p-time']=String(profile.time||60);
+    const mark=(g,v)=>{const p=document.getElementById(g);if(!p)return;p.querySelectorAll('.seg-b,.opt').forEach(b=>{
+      const oc=b.getAttribute('onclick')||'';b.classList.toggle('active',oc.includes(`'${v}'`));});};
+    mark('p-sex',profile.sex);mark('p-goal',profile.goal);mark('p-act',profile.act);
+    mark('p-mode',picks['p-mode']);mark('p-tgoal',picks['p-tgoal']);mark('p-days',picks['p-days']);
+    mark('p-level',picks['p-level']);mark('p-equip',picks['p-equip']);(function(){const p=document.getElementById('p-prio');if(!p)return;const cur=picks['p-prio'];
+      p.querySelectorAll('.opt').forEach(b=>{const oc=b.getAttribute('onclick')||'';
+      const v=(oc.match(/,'([a-z]+)'\)/)||[])[1];
+      b.classList.toggle('active',v==='none'?cur.length===0:cur.includes(v));});})();mark('p-time',picks['p-time']);
+    const ab=document.getElementById('auto-block');
+    if(ab)ab.style.display=picks['p-mode']==='auto'?'block':'none';
+  }
+  document.getElementById('onb').classList.add('show');
+  window.scrollTo(0,0);
 }
 
 /* ═══ NUTRITION : 4 macros + archivage automatique ═══ */
@@ -1370,9 +2355,19 @@ function renderNutHist(){
   wrap.innerHTML=h;
 }
 
-function refresh(){updateStats();updateChart();updateProgBars();updateLog();}
+function refresh(){
+  // Chaque bloc est isolé : si l'un échoue, les autres continuent
+  try{updateStats();}catch(e){console.warn('stats',e);}
+  try{updateChart();}catch(e){console.warn('chart',e);}
+  try{updateProgBars();}catch(e){console.warn('bars',e);}
+  try{updateLog();}catch(e){console.warn('log',e);}
+}
 
-['lun','mar','mer','jeu','ven','sam'].forEach(buildSession);buildDropdown();buildCharges();refresh();showLP();renderNut();
+loadProgram();
+buildAllSessions();buildDayTabs();buildWeekGrid();buildDropdown();buildCharges();refresh();showLP();
+// Profil : premier lancement → écran de bienvenue, sinon on applique
+if(!profile){document.getElementById('onb').classList.add('show');renderNut();}
+else{applyProfile();}
 // Vérifie le changement de jour toutes les minutes
 setInterval(()=>{if(rollOverIfNeeded())renderNut();},60000);
 </script>
